@@ -3,7 +3,8 @@ title: Powerlevel10k 安裝設定教學
 date: 2020-06-13 18:56:20
 tags:
 categories:
-- 我也不知道怎麼分類
+- macOS
+- 程式
 ---
 教你安裝與設定比 Powerlevel9k 更強大好看的 ZSH 主題。
 <!--more-->
