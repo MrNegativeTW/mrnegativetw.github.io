@@ -8,7 +8,7 @@ subtitle: 什麼都寫 什麼都不奇怪
 description: I'm afraid of HARDWARE. Don't scare me.
 keywords: txw
 author: Trevor Wu
-language: zh-tw
+language: zh-TW
 timezone: Asia/Taipei
 
 # Sitemap
@@ -76,7 +76,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next514
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
