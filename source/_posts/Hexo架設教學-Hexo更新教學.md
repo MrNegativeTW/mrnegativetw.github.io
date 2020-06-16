@@ -32,3 +32,5 @@ hexo-server                0.2.2   0.2.2   1.0.0  hexo-site
 ```
 
 接著 terminal 執行 `npm update`
+
+輸入 `hexo -version` 可以確認版本
