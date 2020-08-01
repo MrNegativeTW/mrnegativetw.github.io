@@ -1,5 +1,5 @@
 ---
-title: Android 筆記 - MVVM、LiveData、DataBinding
+title: Android 筆記 - ViewModel、LiveData、DataBinding
 date: 2020-06-17 10:00:00
 tags:
 categories:
@@ -7,10 +7,11 @@ categories:
 ---
 很亂嗎？沒關係，把它們混起來做撒尿牛丸吧。
 <!--more-->
+本文章使用 `UserFragment` 和 `UserViewModel` 作為範例。
 
-# MVVM
-如何新增 ViewModel 呢？手動太麻煩了，直接右鍵 New 一個 Activity/Fragment with ViewModel，讓 Android Studio 幫我們把需要的資源都建立好吧！
-但是建立好之後還需要修改一些已經被棄用的東西，將 `ViewModelProviders.of(this)` 改成 `ViewModelProvider(this)`，像這樣：
+# ViewModel
+如何新增 ViewModel 呢？手動太麻煩了，直接右鍵 New 一個 Activity/Fragment with ViewModel，讓 Android Studio 幫我們建立 `Fragment` 和他的 `ViewModel` 吧。
+建立完成之後需要修改一些已經被棄用的東西，進入 `Fragment` 將 `ViewModelProviders.of(this)` 改成 `ViewModelProvider(this)`，像這樣：
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -21,8 +22,20 @@ override fun onCreate(savedInstanceState: Bundle?) {
 ```
 
 # Live Data
+進入剛建立的 UserViewModel，將數值使用 `MutableLiveData` 包起來。
+關於 `LiveData` 和 `MutableLiveData` 的差異，請見：[StackOverflow](https://stackoverflow.com/a/46814399/9412238)
+```kotlin
+class UserViewModel : ViewModel() {
+    val user = MutableLiveData<String>()
+}
+```
 
-
+然後就可以在 `Fragment` 裡面**觀察**這筆資料了。 
+```kotlin
+userViewModel.user.observe(this, Observer {
+    textView.text = it?.name
+})
+```
 
 # Data Binding
 ## 啟用
@@ -110,5 +123,6 @@ Android 官方有個 App 完美展現了 Jetpack 的應用：
 **[android](https://github.com/android)** / **[sunflower](https://github.com/android/sunflower/)**
 
 # 參考資料
-- [Day 15 LiveData](https://ithelp.ithome.com.tw/articles/10222799)
+這篇文章只是寫個大概，如果要看詳細介紹的話可以到下面兩個連結逛逛：
+- [Day 15 LiveData 介紹與使用](https://ithelp.ithome.com.tw/articles/10222799)
 - [Android MVVM探索系列](https://juejin.im/post/5bd6acd1e51d457a976637c3#heading-1)
