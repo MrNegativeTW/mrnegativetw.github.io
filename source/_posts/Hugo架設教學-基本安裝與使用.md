@@ -3,8 +3,7 @@ title: Hugo 架設教學 - 基本安裝與使用
 date: 2020-03-22 10:00:00
 tags:
 categories:
-- Hugo
-- 架設教學
+- Hugo 筆記
 ---
 這篇文章會教你如何把 Hugo 從無到有架設起來。
 <!--more-->
