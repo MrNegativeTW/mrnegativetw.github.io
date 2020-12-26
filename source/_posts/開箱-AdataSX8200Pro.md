@@ -1,5 +1,5 @@
 ---
-title: 開箱 - ADATA SX8200 Pro 512G
+title: ADATA SX8200 Pro 512G 裝 MacBook Pro
 date: 2020-12-15 10:00:00
 tags:
 categories:

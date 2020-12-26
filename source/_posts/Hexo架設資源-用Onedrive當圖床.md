@@ -4,7 +4,7 @@ date: 2018-08-02 20:48:34
 tags:
 categories:
 - Hexo 架設相關
-- 架設資源
+- 站點類
 ---
 這幾天在弄 Hexo 這個靜態部落格(就是你現在看的這個)，弄一弄發現「嘿 寫教學文需要圖片，我該去哪邊生圖片空間」
 就這樣，我找了手邊現有的雲端帳號和服務，包括 GD / pCloud / Box / DropBox / OneDrive / BlogSpot 等，不過 GD 老早就收了這功能、pCloud 則是需要付費、Box 別說了、DropBox 沒看到這功能，最後在我最不想用的 OneDrive 上看到了「內嵌」，然後我的圖床就這樣定下來了

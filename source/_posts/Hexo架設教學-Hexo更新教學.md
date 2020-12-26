@@ -4,7 +4,7 @@ date: 2020-06-15 10:00:00
 tags:
 categories:
 - Hexo 架設相關
-- 架設教學
+- 站點類
 ---
 教你如何更新 Hexo 的版本
 <!--more-->

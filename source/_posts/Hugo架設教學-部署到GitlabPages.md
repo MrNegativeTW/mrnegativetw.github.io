@@ -3,7 +3,7 @@ title: Hugo 架設教學 - 部署到 Gitlab Pages
 date: 2020-03-23 10:00:00
 tags:
 categories:
-- Hugo 筆記
+- Hugo 架設相關
 ---
 這篇文章會教你如何把 Hugo 部署到 Gitlab Pages 上。
 <!--more-->

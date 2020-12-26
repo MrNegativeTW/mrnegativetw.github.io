@@ -4,7 +4,7 @@ date: 2018-08-06 10:00:00
 tags:
 categories:
 - Hexo 架設相關
-- 架設教學
+- 站點類
 ---
 總之加入 Sitemap 可以被 Google 排名的更前面一些，所以加就對了
 <!--more-->
