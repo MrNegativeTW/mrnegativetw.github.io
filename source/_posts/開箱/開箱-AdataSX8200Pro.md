@@ -5,9 +5,11 @@ tags:
 categories:
 - 開箱
 ---
-專題製作的經費可以購買相關的物品，然後我就拿來買硬碟給 MacBook Pro 升級了。
+專題製作的經費可以購買相關的物品，然後我就拿來買硬碟給 MacBook Pro 13 (Early 2015, A1502) 升級了。
+![](https://bn1302files.storage.live.com/y4mwe9rksf0s0Xw-1O7wYGUXPSY_g3DxLGXRMI_ajWox9eUINNN0jxfGflgyW5Q_UbnnRkPZ7mqeFY7yG9zXKiYxElD1a9yO99tTbHy0HLr6wquZqBe7tcjZk_WY7FwsAotXRKLKAHoHGMDTkn91lUCqKSmB7r8x9RMWQnNyb_FtmElsbI4RwyQoodlJqACHMtv?width=4000&height=2667&cropmode=none)
 <!--more-->
-綜合一堆結果下來，這顆好像在性能、耗電、問題都是最平均的，不然我大概也不會選這顆樂透。
+
+MacBook Pro 對硬碟很挑，當初口袋名單有 Samsung、Intel、Micron 這些廠牌，但綜合一堆結果下來，這顆好像在性能、耗電、問題都是最平均的，不然我大概也不會選這顆樂透。
 
 # 主控與顆粒
 購買日期：2020 年 12 月 14 日，主控：`SM2262G AB`，顆粒：`ADATA 自封`。
@@ -17,10 +19,7 @@ categories:
 簡單來說買到了 SX8200，買這顆跟抽抽樂一樣，威剛你好樣的。
 
 # Adapter 開箱
-機型：MacBook Pro 13 Early 2015
-蝦皮隨便找了個 209 的轉接頭就買了。
-
-正面印有 `2008A6` `LOTES`，背面印有 `NFHK N-941A` `www.sznfhk.com`
+蝦皮隨便找了個 209 的轉接頭就買了，正面印有 `2008A6` `LOTES`，背面印有 `NFHK N-941A` `www.sznfhk.com`
 ![](https://bn1302files.storage.live.com/y4mX58DeQTOaKzBA0sTmcJlUZMO2nVrAWMJkn2m_p-9lJBsYQ2AkL4-Wc-kBwoG8WNtYcvrdwqkvadFBCNQ_LRbMYZzEGHbRKH_knIB1umCyFN5pUtRfSc-gDAfb7Tjq_ZOFD5P6K8PgPxMdnWpVAO0Ya9gYLQbgbbN6r-RONBMEOcULplWiaW4A_PMC_XpC4Ll?width=4000&height=1333)
 
 硬碟插上去的樣子，這裡有個問題，如果硬碟插到底，會卡到硬碟上的電容，如果不插到底，不曉得會不會出問題。待觀察。
@@ -59,6 +58,3 @@ Adapter：蝦皮 209 那個
 | SX8200 Pro 512G | NTD 1,799 | 欣亞數位 |
 | Adapter | NTD 209 | 蝦皮 |
 | 仿小米 24 合 1 工具組| NTD 169 | 蝦皮 |
-
-### 裝機照
-![](https://bn1302files.storage.live.com/y4mwe9rksf0s0Xw-1O7wYGUXPSY_g3DxLGXRMI_ajWox9eUINNN0jxfGflgyW5Q_UbnnRkPZ7mqeFY7yG9zXKiYxElD1a9yO99tTbHy0HLr6wquZqBe7tcjZk_WY7FwsAotXRKLKAHoHGMDTkn91lUCqKSmB7r8x9RMWQnNyb_FtmElsbI4RwyQoodlJqACHMtv?width=4000&height=2667&cropmode=none)
