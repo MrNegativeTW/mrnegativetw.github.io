@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="這篇文章會教你如何把 Hugo 部署到 Gitlab Pages 上。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hugo 架設教學 - 部署到 Gitlab Pages">
+<meta property="og:url" content="https://mrnegativetw.github.io/Hugo-%E6%9E%B6%E8%A8%AD%E7%9B%B8%E9%97%9C/Hugo%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-%E9%83%A8%E7%BD%B2%E5%88%B0GitlabPages/index.html">
+<meta property="og:site_name" content="TxW Tech Studio">
+<meta property="og:description" content="這篇文章會教你如何把 Hugo 部署到 Gitlab Pages 上。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://b80xhg.bn.files.1drv.com/y4mpZrNasWdYh4_fInzxP-LcKGyTqHkwlu3JRiz4brkz0_-F-KK3cigYle1zSAfilswFdJnQ__e_XRLngDcu6YNtzVbBypAOKWx1liflZWWl7PDkEnN0uWwwZxfu6_SqrRVHRuLUN_sxpTwRmrJ84e1XiUURZ-izt8cx01dojdoDO6FPhzYFFtFKjU0bQvstO4nL76ySUVoQiZ67zBP1gZRoQ">
+<meta property="og:image" content="https://b82wqq.bn.files.1drv.com/y4ms6t6AEF9BtQkMl1V4VsvPhoX34U3wkDnLve0dBeD0KoHo00-RnW28W1awQdCM2_k24tXUnt7M_hWepdESCoOkBWGISLDTSZWxVg8I6mc1RsBV3qnkqoGA8urZ8s_Y0WKJxEv9c6mstgs0Xn7SKaOdeRQo5Hxhs6gdjam9ZaqkOBZjIhyRE9uarkhgFIIwR4j2yS3zjpFjkfjbtJ4zX0_ig">
+<meta property="article:published_time" content="2020-03-23T02:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-06T06:33:15.349Z">
+<meta property="article:author" content="Trevor Wu">
+<meta property="article:tag" content="txw">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://b80xhg.bn.files.1drv.com/y4mpZrNasWdYh4_fInzxP-LcKGyTqHkwlu3JRiz4brkz0_-F-KK3cigYle1zSAfilswFdJnQ__e_XRLngDcu6YNtzVbBypAOKWx1liflZWWl7PDkEnN0uWwwZxfu6_SqrRVHRuLUN_sxpTwRmrJ84e1XiUURZ-izt8cx01dojdoDO6FPhzYFFtFKjU0bQvstO4nL76ySUVoQiZ67zBP1gZRoQ">
+
+
+<link rel="canonical" href="https://mrnegativetw.github.io/Hugo-%E6%9E%B6%E8%A8%AD%E7%9B%B8%E9%97%9C/Hugo%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-%E9%83%A8%E7%BD%B2%E5%88%B0GitlabPages/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/Hugo-%E6%9E%B6%E8%A8%AD%E7%9B%B8%E9%97%9C/Hugo%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-%E9%83%A8%E7%BD%B2%E5%88%B0GitlabPages/","path":"Hugo-架設相關/Hugo架設教學-部署到GitlabPages/","title":"Hugo 架設教學 - 部署到 Gitlab Pages"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Hugo 架設教學 - 部署到 Gitlab Pages | TxW Tech Studio</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">TxW Tech Studio</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">什麼都寫 什麼都不奇怪</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A6%96%E5%85%88"><span class="nav-number">1.</span> <span class="nav-text">首先</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gitlab-ci-yml-%E8%A8%AD%E5%AE%9A"><span class="nav-number">2.</span> <span class="nav-text">.gitlab-ci.yml 設定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A1%94%E5%95%A6%EF%BC%81"><span class="nav-number">3.</span> <span class="nav-text">塔啦！</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Trevor Wu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Trevor Wu</p>
+  <div class="site-description" itemprop="description">I'm afraid of HARDWARE. Don't scare me.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MrNegativeTW" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MrNegativeTW" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/mrtrevorwu" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;mrtrevorwu" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Hugo-%E6%9E%B6%E8%A8%AD%E7%9B%B8%E9%97%9C/Hugo%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-%E9%83%A8%E7%BD%B2%E5%88%B0GitlabPages/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Trevor Wu">
+      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TxW Tech Studio">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hugo 架設教學 - 部署到 Gitlab Pages
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2020-03-23 10:00:00" itemprop="dateCreated datePublished" datetime="2020-03-23T10:00:00+08:00">2020-03-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2022-02-06 14:33:15" itemprop="dateModified" datetime="2022-02-06T14:33:15+08:00">2022-02-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hugo-%E6%9E%B6%E8%A8%AD%E7%9B%B8%E9%97%9C/" itemprop="url" rel="index"><span itemprop="name">Hugo 架設相關</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>這篇文章會教你如何把 Hugo 部署到 Gitlab Pages 上。</p>
+<span id="more"></span>
+<p>Gitlab Pages 的基本建立就不說了。</p>
+<h1 id="首先"><a href="#首先" class="headerlink" title="首先"></a>首先</h1><p>Hugo 的靜態檔案會產生至 public 資料夾中，所以基本上不用做太多設定，把整個網站的資料夾加入 git 即可，不過基於某種原因，我的 Repoitory 沒有包含到整個站點資料夾，僅有必要部分。<br><img data-src="https://b80xhg.bn.files.1drv.com/y4mpZrNasWdYh4_fInzxP-LcKGyTqHkwlu3JRiz4brkz0_-F-KK3cigYle1zSAfilswFdJnQ__e_XRLngDcu6YNtzVbBypAOKWx1liflZWWl7PDkEnN0uWwwZxfu6_SqrRVHRuLUN_sxpTwRmrJ84e1XiUURZ-izt8cx01dojdoDO6FPhzYFFtFKjU0bQvstO4nL76ySUVoQiZ67zBP1gZRoQ"></p>
+<p>Gitlab Pages 還有個好處，它可以把整個 Project 設為 Private，但 Pages 設為 Public，這樣一來大家只能看到靜態內容，不用擔心整個 Project 曝光。</p>
+<h1 id="gitlab-ci-yml-設定"><a href="#gitlab-ci-yml-設定" class="headerlink" title=".gitlab-ci.yml 設定"></a>.gitlab-ci.yml 設定</h1><p>唯一需要設定的大概就是 CI&#x2F;CD ，如下修改即可直接上線。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This file is a template, and might need editing before it works on your project.</span></span><br><span class="line"><span class="comment"># Full project: https://gitlab.com/pages/plain-html</span></span><br><span class="line"><span class="attr">pages:</span></span><br><span class="line">  <span class="attr">stage:</span> <span class="string">deploy</span></span><br><span class="line">  <span class="attr">script:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">echo</span> <span class="string">&#x27;Nothing to do...&#x27;</span></span><br><span class="line">  <span class="attr">artifacts:</span></span><br><span class="line">    <span class="attr">paths:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">public</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="塔啦！"><a href="#塔啦！" class="headerlink" title="塔啦！"></a>塔啦！</h1><p>通過！上線！<br><img data-src="https://b82wqq.bn.files.1drv.com/y4ms6t6AEF9BtQkMl1V4VsvPhoX34U3wkDnLve0dBeD0KoHo00-RnW28W1awQdCM2_k24tXUnt7M_hWepdESCoOkBWGISLDTSZWxVg8I6mc1RsBV3qnkqoGA8urZ8s_Y0WKJxEv9c6mstgs0Xn7SKaOdeRQo5Hxhs6gdjam9ZaqkOBZjIhyRE9uarkhgFIIwR4j2yS3zjpFjkfjbtJ4zX0_ig"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Hugo-%E6%9E%B6%E8%A8%AD%E7%9B%B8%E9%97%9C/Hugo%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-%E5%9F%BA%E6%9C%AC%E5%AE%89%E8%A3%9D%E8%88%87%E4%BD%BF%E7%94%A8/" rel="prev" title="Hugo 架設教學 - 基本安裝與使用">
+                  <i class="fa fa-chevron-left"></i> Hugo 架設教學 - 基本安裝與使用
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E7%84%A1%E6%B3%95%E5%88%86%E9%A1%9E/Google%20%E6%96%87%E4%BB%B6%E9%80%8F%E9%81%8E%E7%B6%B2%E5%9D%80%E7%9B%B4%E6%8E%A5%E5%88%87%E6%8F%9B%E4%BD%BF%E7%94%A8%E8%80%85/" rel="next" title="Google 文件透過網址直接切換使用者">
+                  Google 文件透過網址直接切換使用者 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Trevor Wu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

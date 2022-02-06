@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Gitea 說明文件實在是寫得不太好，弄了一小段時間才成功裝上 Raspberry Pi。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 Raspberry Pi 2B 上架設 Gitea">
+<meta property="og:url" content="https://mrnegativetw.github.io/%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8/%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-Gitea/index.html">
+<meta property="og:site_name" content="TxW Tech Studio">
+<meta property="og:description" content="Gitea 說明文件實在是寫得不太好，弄了一小段時間才成功裝上 Raspberry Pi。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-02-06T06:33:15.349Z">
+<meta property="article:modified_time" content="2022-02-06T06:33:15.349Z">
+<meta property="article:author" content="Trevor Wu">
+<meta property="article:tag" content="txw">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://mrnegativetw.github.io/%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8/%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-Gitea/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8/%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-Gitea/","path":"架設教學/架設教學-Gitea/","title":"在 Raspberry Pi 2B 上架設 Gitea"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>在 Raspberry Pi 2B 上架設 Gitea | TxW Tech Studio</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">TxW Tech Studio</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">什麼都寫 什麼都不奇怪</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%BC%89-Gitea"><span class="nav-number">1.</span> <span class="nav-text">下載 Gitea</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-MySQL"><span class="nav-number">2.</span> <span class="nav-text">安裝 MySQL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-Gitea"><span class="nav-number">3.</span> <span class="nav-text">安裝 Gitea</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Trevor Wu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Trevor Wu</p>
+  <div class="site-description" itemprop="description">I'm afraid of HARDWARE. Don't scare me.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MrNegativeTW" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MrNegativeTW" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/mrtrevorwu" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;mrtrevorwu" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8/%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-Gitea/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Trevor Wu">
+      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TxW Tech Studio">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          在 Raspberry Pi 2B 上架設 Gitea
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2022-02-06 14:33:15" itemprop="dateCreated datePublished" datetime="2022-02-06T14:33:15+08:00">2022-02-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8/" itemprop="url" rel="index"><span itemprop="name">架設教學</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Gitea 說明文件實在是寫得不太好，弄了一小段時間才成功裝上 Raspberry Pi。</p>
+<span id="more"></span>
+<p>中文版文件爛，英文也不是很好，自己 try and error 比較實在。</p>
+<h1 id="下載-Gitea"><a href="#下載-Gitea" class="headerlink" title="下載 Gitea"></a>下載 Gitea</h1><p>本教學使用 <a target="_blank" rel="noopener" href="https://docs.gitea.io/en-us/install-from-binary/">執行檔安裝</a>，直接前往 <a target="_blank" rel="noopener" href="https://dl.gitea.io/gitea/">下載頁面</a> 找到適合自己平台的。</p>
+<p>因樹莓派平台比較特殊，而且這塊樹莓派是 arm-v7 的版本，所以我試了幾個版本才找到能用的。</p>
+<ol>
+<li><p>開 Treminal，下載 <code>arm-6</code> 版本的執行檔，並重命名為 <code>gitea</code>，本文撰寫時為 <code>1.12.4</code> 版。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O gitea https://dl.gitea.io/gitea/1.12.4/gitea-1.12.4-linux-arm-6</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>給權限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x gitea</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="安裝-MySQL"><a href="#安裝-MySQL" class="headerlink" title="安裝 MySQL"></a>安裝 MySQL</h1><p>Gitea 還需要 SQL 才能正常運作，所以就裝個很常見的 MySQL 給他用，然後因為都是在本機端執行，所以可以略過官方說明文件說的一大堆步驟。</p>
+<ol>
+<li><p>開 Terminal，更新 apt 後裝個 MySQL</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install mariadb-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>進入 SQL 的主控台看看，預設密碼為樹莓派的登入密碼。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql -u root -p</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建立一個使用者給 gitea 用</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;gitea&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;gitea&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>開一個 <code>giteadb</code> 資料庫給 gitea 用</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE giteadb <span class="type">CHARACTER</span> <span class="keyword">SET</span> <span class="string">&#x27;utf8mb4&#x27;</span> <span class="keyword">COLLATE</span> <span class="string">&#x27;utf8mb4_unicode_ci&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是說明文件提到：用 <code>utf8mb4</code> 以便支援奇怪的東西</p>
+</li>
+<li><p>權限全開</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> giteadb.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;gitea&#x27;</span>;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>離開</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="安裝-Gitea"><a href="#安裝-Gitea" class="headerlink" title="安裝 Gitea"></a>安裝 Gitea</h1><p>進入前面下載 gitea 所在的資料夾讓他跑起來</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gitea web</span><br></pre></td></tr></table></figure>
+
+<div class="note info"><p>如果你有裝 ufw 這類的防火牆，記得將 3000 port 加入允許名單<br>以 ufw 來說，指令為：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 3000</span><br></pre></td></tr></table></figure></div>
+
+<p>接著就可以使用 Web GUI 進行設定了，設定時需注意將資料庫名稱改為上述設定ㄉ的 <code>giteadb</code>，不然會噴錯說沒權限。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E7%84%A1%E6%B3%95%E5%88%86%E9%A1%9E/WD%E5%90%84%E5%B9%B4%E4%BB%BD%E7%A1%AC%E7%A2%9F%E7%B4%80%E9%8C%84/" rel="prev" title="WD  各年份硬碟紀錄">
+                  <i class="fa fa-chevron-left"></i> WD  各年份硬碟紀錄
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Trevor Wu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

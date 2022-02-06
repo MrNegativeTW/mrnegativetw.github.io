@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="很亂嗎？沒關係，把它們混起來做撒尿牛丸吧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 筆記 - ViewModel、LiveData、DataBinding">
+<meta property="og:url" content="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-ViewModelLiveDataDataBinding/index.html">
+<meta property="og:site_name" content="TxW Tech Studio">
+<meta property="og:description" content="很亂嗎？沒關係，把它們混起來做撒尿牛丸吧。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://raw.githubusercontent.com/android/sunflower/master/screenshots/jetpack_donut.png">
+<meta property="article:published_time" content="2020-06-17T02:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-06T06:33:15.349Z">
+<meta property="article:author" content="Trevor Wu">
+<meta property="article:tag" content="txw">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/android/sunflower/master/screenshots/jetpack_donut.png">
+
+
+<link rel="canonical" href="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-ViewModelLiveDataDataBinding/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-ViewModelLiveDataDataBinding/","path":"Android-筆記/Android-ViewModelLiveDataDataBinding/","title":"Android 筆記 - ViewModel、LiveData、DataBinding"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android 筆記 - ViewModel、LiveData、DataBinding | TxW Tech Studio</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">TxW Tech Studio</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">什麼都寫 什麼都不奇怪</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ViewModel"><span class="nav-number">1.</span> <span class="nav-text">ViewModel</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Live-Data"><span class="nav-number">2.</span> <span class="nav-text">Live Data</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Binding"><span class="nav-number">3.</span> <span class="nav-text">Data Binding</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%9F%E7%94%A8"><span class="nav-number">3.1.</span> <span class="nav-text">啟用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E5%AF%AB-Layout"><span class="nav-number">3.2.</span> <span class="nav-text">改寫 Layout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Binding-%E6%AA%94%E6%A1%88%E5%88%B0%E5%BA%95%E5%9C%A8%E5%93%AA%E8%A3%A1"><span class="nav-number">3.3.</span> <span class="nav-text">Binding 檔案到底在哪裡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85"><span class="nav-number">4.</span> <span class="nav-text">注意事項</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%92%92%E5%B0%BF%E7%89%9B%E4%B8%B8"><span class="nav-number">5.</span> <span class="nav-text">撒尿牛丸</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Trevor Wu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Trevor Wu</p>
+  <div class="site-description" itemprop="description">I'm afraid of HARDWARE. Don't scare me.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MrNegativeTW" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MrNegativeTW" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/mrtrevorwu" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;mrtrevorwu" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-ViewModelLiveDataDataBinding/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Trevor Wu">
+      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TxW Tech Studio">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android 筆記 - ViewModel、LiveData、DataBinding
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2020-06-17 10:00:00" itemprop="dateCreated datePublished" datetime="2020-06-17T10:00:00+08:00">2020-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2022-02-06 14:33:15" itemprop="dateModified" datetime="2022-02-06T14:33:15+08:00">2022-02-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android-%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">Android 筆記</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>很亂嗎？沒關係，把它們混起來做撒尿牛丸吧。</p>
+<span id="more"></span>
+<p>本文章使用 <code>UserFragment</code> 和 <code>UserViewModel</code> 作為範例。</p>
+<h1 id="ViewModel"><a href="#ViewModel" class="headerlink" title="ViewModel"></a>ViewModel</h1><p>如何新增 ViewModel 呢？手動太麻煩了，直接右鍵 New 一個 Activity&#x2F;Fragment with ViewModel，讓 Android Studio 幫我們建立 <code>Fragment</code> 和他的 <code>ViewModel</code> 吧。<br>建立完成之後需要修改一些已經被棄用的東西，進入 <code>Fragment</code> 將 <code>ViewModelProviders.of(this)</code> 改成 <code>ViewModelProvider(this)</code>，像這樣：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">val</span> userViewModel = ViewModelProvider(<span class="keyword">this</span>).<span class="keyword">get</span>(UserViewModel::<span class="keyword">class</span>.java)</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Live-Data"><a href="#Live-Data" class="headerlink" title="Live Data"></a>Live Data</h1><p>進入剛建立的 UserViewModel，將數值使用 <code>MutableLiveData</code> 包起來。<br>關於 <code>LiveData</code> 和 <code>MutableLiveData</code> 的差異，請見：<a target="_blank" rel="noopener" href="https://stackoverflow.com/a/46814399/9412238">StackOverflow</a></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserViewModel</span> : <span class="type">ViewModel</span></span>() &#123;</span><br><span class="line">    <span class="keyword">val</span> user = MutableLiveData&lt;String&gt;()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然後就可以在 <code>Fragment</code> 裡面<strong>觀察</strong>這筆資料了。 </p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">userViewModel.user.observe(<span class="keyword">this</span>, Observer &#123;</span><br><span class="line">    textView.text = it?.name</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="Data-Binding"><a href="#Data-Binding" class="headerlink" title="Data Binding"></a>Data Binding</h1><h2 id="啟用"><a href="#啟用" class="headerlink" title="啟用"></a>啟用</h2><p>在 build.gradle(Module: app) 中加入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &#x27;kotlin-kapt&#x27;</span><br><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">    // ...</span><br><span class="line">    buildFeatures &#123;</span><br><span class="line">        dataBinding = true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="改寫-Layout"><a href="#改寫-Layout" class="headerlink" title="改寫 Layout"></a>改寫 Layout</h2><p>將現有 Layout 使用 <code>&lt;layout&gt;</code> 標籤包起來，並加入 <code>&lt;data&gt;</code> 標籤，如下所示：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">layout</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">&quot;http://schemas.android.com/apk/res-auto&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">&quot;http://schemas.android.com/tools&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">variable</span> </span></span><br><span class="line"><span class="tag">            <span class="attr">name</span>=<span class="string">&quot;user&quot;</span> </span></span><br><span class="line"><span class="tag">            <span class="attr">type</span>=<span class="string">&quot;com.example.User&quot;</span> /&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   // Original Layout</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;variable&gt;</code> 中的：</p>
+<ul>
+<li><code>name</code>：此 ViewModel 在此 Layout 中的別名</li>
+<li><code>type</code>：你要引入的 ViewModel</li>
+</ul>
+<p>接著在 Layout 中的 text 欄位就可以使用 <code>@&#123;user.firstName&#125;</code> 這種格式取代了</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:text</span>=<span class="string">&quot;@&#123;user.firstName&#125;&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:text</span>=<span class="string">&quot;PlaceHolder&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>順帶一提，使用 <code>@&#123;&#125;</code> 後 Layout 預覽中的文字會直接不見，所以可以使用 <code>tools:text</code> 屬性指定 Place holder，其他 tools 屬性請參考 <a target="_blank" rel="noopener" href="https://developer.android.com/studio/write/tool-attributes#tools_instead_of_android">Tools attributes reference</a></p>
+<h2 id="Binding-檔案到底在哪裡"><a href="#Binding-檔案到底在哪裡" class="headerlink" title="Binding 檔案到底在哪裡"></a>Binding 檔案到底在哪裡</h2><p>很多教學都說：「設定好 Data Binding之後會自動產生 Bidning 的 Class」，但這個檔案不管如何在列表中都沒看到，實際打 Code 好像也不會自動引入？<br>實際上此檔案會位於後方帶有 <code>(generate)</code> 的資料夾中，所以平常在檔案列表是找不到的，至於引入方法可以在要引入的檔案最上面輸入 <code>import com.YOUR.PACKAGE.</code></p>
+<p>接著引入</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> binding = DataBindingUtil.setContentView&lt;ActivityViewModelBinding&gt;(<span class="keyword">this</span>, R.layout.activity_view_model)</span><br><span class="line">binding.viewModel = userViewModel</span><br><span class="line">binding.setLifecycleOwner(<span class="keyword">this</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h1><p>LiveData 和 DataBinding 擇一使用即可，也就是下列選一：</p>
+<ul>
+<li>在 Activity &#x2F; Fragment 用 observe 更新 UI<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">viewModel.name.observe(<span class="keyword">this</span>, <span class="keyword">object</span> : Observer&lt;String&gt; &#123;</span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onChanged</span><span class="params">(name: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">                viewModel.updateName(name)</span><br><span class="line">            &#125;</span><br><span class="line">&#125;)```</span><br><span class="line"></span><br><span class="line">- 在 layout.xml 用 @&#123;&#125; 更新 UI</span><br><span class="line">```xml</span><br><span class="line">&lt;TextView </span><br><span class="line">    android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">    android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">    android:text=<span class="string">&quot;@&#123;user.firstName&#125;&quot;</span> /&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="撒尿牛丸"><a href="#撒尿牛丸" class="headerlink" title="撒尿牛丸"></a>撒尿牛丸</h1><p>這三者都是屬於 <a target="_blank" rel="noopener" href="https://developer.android.com/jetpack">Android JetPack</a> 中的 Architecture，借張圖表示：<br><img data-src="https://raw.githubusercontent.com/android/sunflower/master/screenshots/jetpack_donut.png" alt="jetpack_donut"></p>
+<p>Android 官方有個 App 完美展現了 Jetpack 的應用：<br><strong><a target="_blank" rel="noopener" href="https://github.com/android">android</a></strong> &#x2F; <strong><a target="_blank" rel="noopener" href="https://github.com/android/sunflower/">sunflower</a></strong></p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p>這篇文章只是寫個大概，如果要看詳細介紹的話可以到下面兩個連結逛逛：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10222799">Day 15 LiveData 介紹與使用</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.im/post/5bd6acd1e51d457a976637c3#heading-1">Android MVVM探索系列</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Google-Cloud-Platform/GCP-%E5%B0%87CloudSDK%E8%B7%AF%E7%B6%93%E5%8A%A0%E5%85%A5zsh/" rel="prev" title="將 Cloud SDK 路徑加入 ZSH 中">
+                  <i class="fa fa-chevron-left"></i> 將 Cloud SDK 路徑加入 ZSH 中
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E7%84%A1%E6%B3%95%E5%88%86%E9%A1%9E/%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC%E8%B7%AF%E4%B8%8A%E7%9A%84%E6%9B%B8%E5%96%AE/" rel="next" title="程式開發路上的書單">
+                  程式開發路上的書單 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Trevor Wu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

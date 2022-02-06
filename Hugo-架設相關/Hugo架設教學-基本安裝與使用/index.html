@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="這篇文章會教你如何把 Hugo 從無到有架設起來。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hugo 架設教學 - 基本安裝與使用">
+<meta property="og:url" content="https://mrnegativetw.github.io/Hugo-%E6%9E%B6%E8%A8%AD%E7%9B%B8%E9%97%9C/Hugo%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-%E5%9F%BA%E6%9C%AC%E5%AE%89%E8%A3%9D%E8%88%87%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="TxW Tech Studio">
+<meta property="og:description" content="這篇文章會教你如何把 Hugo 從無到有架設起來。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2020-03-22T02:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-06T06:33:15.349Z">
+<meta property="article:author" content="Trevor Wu">
+<meta property="article:tag" content="txw">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://mrnegativetw.github.io/Hugo-%E6%9E%B6%E8%A8%AD%E7%9B%B8%E9%97%9C/Hugo%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-%E5%9F%BA%E6%9C%AC%E5%AE%89%E8%A3%9D%E8%88%87%E4%BD%BF%E7%94%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/Hugo-%E6%9E%B6%E8%A8%AD%E7%9B%B8%E9%97%9C/Hugo%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-%E5%9F%BA%E6%9C%AC%E5%AE%89%E8%A3%9D%E8%88%87%E4%BD%BF%E7%94%A8/","path":"Hugo-架設相關/Hugo架設教學-基本安裝與使用/","title":"Hugo 架設教學 - 基本安裝與使用"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Hugo 架設教學 - 基本安裝與使用 | TxW Tech Studio</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">TxW Tech Studio</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">什麼都寫 什麼都不奇怪</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D"><span class="nav-number">1.</span> <span class="nav-text">安裝</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows"><span class="nav-number">1.1.</span> <span class="nav-text">Windows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#macOS"><span class="nav-number">1.2.</span> <span class="nav-text">macOS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E7%B6%B2%E7%AB%99"><span class="nav-number">2.</span> <span class="nav-text">建立網站</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8B%E6%89%BE%E4%B8%BB%E9%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">尋找主題</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A"><span class="nav-number">3.1.</span> <span class="nav-text">基本設定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A2%E7%94%9F%E5%85%A7%E5%AE%B9"><span class="nav-number">4.</span> <span class="nav-text">產生內容</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Trevor Wu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Trevor Wu</p>
+  <div class="site-description" itemprop="description">I'm afraid of HARDWARE. Don't scare me.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MrNegativeTW" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MrNegativeTW" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/mrtrevorwu" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;mrtrevorwu" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Hugo-%E6%9E%B6%E8%A8%AD%E7%9B%B8%E9%97%9C/Hugo%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-%E5%9F%BA%E6%9C%AC%E5%AE%89%E8%A3%9D%E8%88%87%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Trevor Wu">
+      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TxW Tech Studio">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hugo 架設教學 - 基本安裝與使用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2020-03-22 10:00:00" itemprop="dateCreated datePublished" datetime="2020-03-22T10:00:00+08:00">2020-03-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2022-02-06 14:33:15" itemprop="dateModified" datetime="2022-02-06T14:33:15+08:00">2022-02-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hugo-%E6%9E%B6%E8%A8%AD%E7%9B%B8%E9%97%9C/" itemprop="url" rel="index"><span itemprop="name">Hugo 架設相關</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>這篇文章會教你如何把 Hugo 從無到有架設起來。</p>
+<span id="more"></span>
+<h1 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h1><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><div class="note info"><p>本篇文章 Windows 部分皆使用 PowerShell 操作。</p>
+</div>
+
+<p>Windows 下分為「使用套件包管理員」及「手動下載 Release」兩種安裝方式，本文使用套件包管理員的安裝方式，省事快速方便。</p>
+<p>首先安裝 Chocolatey：<a target="_blank" rel="noopener" href="https://chocolatey.org/install#individual">官網</a><br>基本上就是用<strong>管理員</strong>權限打開 PowerShell 並輸入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString(&#x27;https://chocolatey.org/install.ps1&#x27;))</span><br></pre></td></tr></table></figure>
+
+<p>安裝完成後重新開啟 PowerShell 並輸入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install hugo -confirm</span><br></pre></td></tr></table></figure>
+<p>安裝完成後一樣重啟 PowerShell 即可使用 <code>hugo</code> 指令確認安裝是否成功。</p>
+<h2 id="macOS"><a href="#macOS" class="headerlink" title="macOS"></a>macOS</h2><p>未安裝，未來會更新</p>
+<h1 id="建立網站"><a href="#建立網站" class="headerlink" title="建立網站"></a>建立網站</h1><p>因為我打算使用 Gitlab 來發布 Hugo，所以我選擇在 Gitlab 的資料夾建立網站，不過先不用急著新增資料夾，先 cd 進去就好，例如 <code>cd ~/Documents/GitLab</code>，接著請 Hugo 建立新網站</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hugo new site username.gitlab.io</span><br></pre></td></tr></table></figure>
+<p>最後一個 <code>username.gitlab.io</code> 為新網站資料夾名稱，指令完成後 cd 進入。</p>
+<h1 id="尋找主題"><a href="#尋找主題" class="headerlink" title="尋找主題"></a>尋找主題</h1><p>首先至 <a target="_blank" rel="noopener" href="https://themes.gohugo.io/">Hugo Themes</a> 找個中意的主題使用</p>
+<div class="note info"><p>個人使用：<a target="_blank" rel="noopener" href="https://themes.gohugo.io/hugo-devresume-theme">Dev Resume</a><br>還有一個看起來也不錯：<a target="_blank" rel="noopener" href="https://themes.gohugo.io/theme/hugo-coder/">Hugo Coder</a></p>
+</div>
+
+<p>找到主題後可以使用如下 git 指令將主題安裝進來，或者照主題說明檔安裝。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/cowboysmall-tools/hugo-devresume-theme.git themes/devresume</span><br></pre></td></tr></table></figure>
+
+<h2 id="基本設定"><a href="#基本設定" class="headerlink" title="基本設定"></a>基本設定</h2><p>使用編輯器開啟網站根目錄的 <code>config.tmol</code><br>前三行修改為自己的設定，再外加一項 <code>theme</code> 指定使用的主題<br>主題名稱為稍早的 git 指令第四項參數(<code>themes/devresume</code>) 的資料夾名稱 </p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">baseURL</span> <span class="string">=</span> <span class="string">&quot;https://covid19resume.gitlab.io/&quot;</span></span><br><span class="line"><span class="string">languageCode</span> <span class="string">=</span> <span class="string">&quot;en-us&quot;</span></span><br><span class="line"><span class="string">title</span> <span class="string">=</span> <span class="string">&quot;武漢肺炎簡歷&quot;</span></span><br><span class="line"><span class="string">theme</span> <span class="string">=</span> <span class="string">&quot;devresume&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>最後輸入 <code>hugo server</code> 即可在本地端 <code>localhost:1313</code> 預覽網站的樣貌了，而且每當存檔，網頁都會自己重新整理！超好用！</p>
+<h1 id="產生內容"><a href="#產生內容" class="headerlink" title="產生內容"></a>產生內容</h1><p>於網站根目錄輸入 <code>hugo</code> 即可產生靜態內容，並依據個人所需找地方部署囉！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Windows/Windows-%E7%94%A8Hyper%E5%8F%96%E4%BB%A3%E9%86%9C%E9%99%8B%E7%9A%84PowerShell/" rel="prev" title="用 Hyper 取代醜陋的 PowerShell 讓終端機好看又實用">
+                  <i class="fa fa-chevron-left"></i> 用 Hyper 取代醜陋的 PowerShell 讓終端機好看又實用
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Hugo-%E6%9E%B6%E8%A8%AD%E7%9B%B8%E9%97%9C/Hugo%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-%E9%83%A8%E7%BD%B2%E5%88%B0GitlabPages/" rel="next" title="Hugo 架設教學 - 部署到 Gitlab Pages">
+                  Hugo 架設教學 - 部署到 Gitlab Pages <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Trevor Wu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

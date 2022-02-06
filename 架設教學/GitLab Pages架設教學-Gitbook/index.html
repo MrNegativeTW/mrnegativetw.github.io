@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Gitbook，一個用來寫電子書的平台，在 V1 時非常好用，但近期改版為 V2 後，不但很多功能被拿掉，而且很多地方也改為付費制，V2 中還加入了 Space 機制，一本書就是一個 Space，免費使用者只能擁有一個公開 Space 和一個私人 Space，換言之就是使用者付費啦可我還是很迷戀 V1，而且剛好我在 Gitbook V2 Beta 時開了兩個space，GitBook 提示我說：「">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitLab Pages 架設教學 - Gitbook">
+<meta property="og:url" content="https://mrnegativetw.github.io/%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8/GitLab%20Pages%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-Gitbook/index.html">
+<meta property="og:site_name" content="TxW Tech Studio">
+<meta property="og:description" content="Gitbook，一個用來寫電子書的平台，在 V1 時非常好用，但近期改版為 V2 後，不但很多功能被拿掉，而且很多地方也改為付費制，V2 中還加入了 Space 機制，一本書就是一個 Space，免費使用者只能擁有一個公開 Space 和一個私人 Space，換言之就是使用者付費啦可我還是很迷戀 V1，而且剛好我在 Gitbook V2 Beta 時開了兩個space，GitBook 提示我說：「">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://okhbwa.bn.files.1drv.com/y4msU3XsAQPxkfZcgPgX5sP9obke0G8MuFBfQv1qf_5SQFBvdWcVdFGFGKE_gaj-EPhsCitu0NZo503ynaEMoTLTypECUDIMKDO6Hh8XSjUzc-KVo7G-hoETDg84kDm7UVH_u8SX3KvL1eNlpTgIK8j_c074Y51HU-SwjhbeZ3sZru2wy-05D4Ulad1B_gwAx8aX_BasF6vZdh0_3tmaE8BCg">
+<meta property="og:image" content="https://okfata.bn.files.1drv.com/y4maJusq4SOvi52RqyHMmJV9ERwUOJ7BDRCHFnLRxvM9wyifYFQMTkw9DRXx7Xx4Ds5gT9xLg4oUxDLtewOvVRDvJqrt-mxoPOSeCcSx_ijo9_axF8yhej_tQ10G79ZKwYM1AnR36pQXS_fpGehlFK-zP5Xcoh7NPfcSxGJ2KAFDPm0CNTZBn7TmItA0hd77fza8dXhGXRjn-saBsmzEO44JQ">
+<meta property="og:image" content="https://okgl1w.bn.files.1drv.com/y4mr7jkR1jM2moVBXdQeBMwq7NVwxrIGLHmpV4cbQw8nKrc_NEXOn5XVNopPyL-fRxm0ayBJTm4BcV3U_C1b-klw-be6AMNuud7ESbdk_SkDiDUr8tvTxE0cWwZ7jc29k7HueOwGrsay0aUDpokKW6sehpFdrMZqs9mVP4kuYIsPljzA6spO7lqGLeXFjx0OPicUoR-Ev3MlK8DoA_7PrpXbA">
+<meta property="og:image" content="https://okeyvg.bn.files.1drv.com/y4m3crUy0SvfL6O9l8WXBU1MYPoO6zIbH9hGQBaUmbiI6ot8mGdbKVqn2TXoXuG6LOCxYde0sMui_hwtHjVGzO2J8thQveF3dwMniQ-rYJ6dMkX7WgheyQaLmOcdyRY8u8rAr8DPv9ApgDdjk_tjJFf7WH0N0GZb0fU06CmRYaPiJOPjTbwlP-B5pYGJ9g8VelzYNUUXQfhQPpDPwMyMReETQ">
+<meta property="og:image" content="https://okgxsq.bn.files.1drv.com/y4mB9lRkggph2WPSFS0ZKLnhGqYWZIMGf6s8TgHkU8zhhBYEMOfqFOAGx2zyWn8PdazR7I2hx-mDG5DTmBYWExpHS6qKKBqZpQfOWZ8rmfQ613o6vVOFhwpcd4U9D8oyvFeQzy0-c5nG6yNIb8coUsuGsX5NJaxGgyWjcmP1kycyd_739c57Y9SezPdd8kvYuEOhEAYvVfbqehvzw5sAgHZkg">
+<meta property="og:image" content="https://b81iwa.bn.files.1drv.com/y4msgdSi-NuIrZVVyAi8obdcNehd1WjGZ2KUXuyTnTh6Gd8kuV5TdGt_8OXsYcZdO0Kq-uN3ALuP4cBp04QMx_BHgK5n2mpujKbn0p_lebOWjvqQ6Zk2LGGNphWex7S0oGp5kp-fyDvbbLwjs4Di2OsNeRI2rvoetNUPEN3ZWPz-k0m06bLJ3fMtwd5gHm3dUxxj3Mr0-RqvYptj1eNd036xA">
+<meta property="og:image" content="https://b83hsw.bn.files.1drv.com/y4mTesH1qVSo3chBcPBBJkxRe4zn5Y4QWijOyOggOURdXF3yFz7VpJ2XTAGqkGAkB3VLNOn7PTKNGdFqbc1OUKix-PWD15ERp3tPbqxjIEfxyvnMcwMfpmOy-NqiHL9u3RIVbc23tnSGrEI83soE9N16_1yb6keiG_C9sJy3Rco4T3jnRRm0JMPLOE0OYeHnsmmUOF7jbR4AMAIWSw-dk9HTg">
+<meta property="og:image" content="https://b80s1w.bn.files.1drv.com/y4mmHw7ydwi3kUnd0mXAo18doL-pMw4GpRtxHJQeRE8zy7FG25ZN429SSLvR_zL19CuBpLVwtfMFmzVqp1XKnUGS2srJ-_AmU7zoldirnCF6yu4XKvSXFaKcIb5CD72tzjY_6O4EoZeB0UwQCvoli_uUj1aR1lVyIoPNgAUxis6JPyljzpVAITvq4NjRwQ_FNKaje5zru4NgW3ymdbSp5T6ew">
+<meta property="og:image" content="https://b82ryg.bn.files.1drv.com/y4mqT6ZpW_UBDiGTEjvwS0NO7c7Roqi7V3z-R8igp0XNI0NJLRw3hO_fmQ29edSJg6iCcOFzKckLcL_TqPlwA9ApaE3eSBDo1uSiJVEQ1JINr8Mw_pDAffMVn_nPQ7YXg8Wd3HGRHD87LlJ7_RMP5cKVZEGmytE6a4VpjFjPkXu-u3vHvGjGVNa02CBUVbfkI95GQW2Y4lP3iN_uUY-deQbbw">
+<meta property="og:image" content="https://b83vpg.bn.files.1drv.com/y4mQVqQYOc4_JFjlI1-GjgmXURi8cbWYPAw_YlGunUrOA8ylJAG21hn5QQIpQrxo1UqgibcsUWTgg3qZrcW0vcHhSkTmTKfxtcdZ1x7jtG2-fIu50TllcSdrC4NI4_fdm7d4WKNedJWDDdb5Joo7qi9rRGFOJ5IvZ_TgpwPiz781ZoqMS4xAO6m1zwOn9EjZswfT2isxShv8Nut4YTdlr6q6w">
+<meta property="og:image" content="https://bfjqvw.bn.files.1drv.com/y4mzWpLi0dJCDlV8TBQ_c-VN0infqNBYYe-lYhvErnQE9-xOWrGf_2gCQH_MV4bh7fy3ziPuye-ryxPOxyYegLZI4H8pd2PohidCTBugKMJZcsdjIUq8KUQ1YOKI8MuYuH2ym6p-EEFYBzeQZa79IagQ4ZEEs4E4PtrsRGuIjRWiuQ2bAITZbV5tuYptb-3KAnMc6g44zk54c_e1AehdkrviA">
+<meta property="og:image" content="https://bfifna.bn.files.1drv.com/y4mmQ6d4i6ufRt71RQ9nPDYt88WCiX-GiLSfKvcfG-x0ed8njHlXMAzpuE_gCi_N8-64Pc0ldycHxTN2nNiWuENjUhNJZ513GPIsI9IexD7Bg5k2XZviW-RSr9YZ3iZVFY2C4U-toyWS0llNU-xY1T-epc18TyCuRje5ce9EPLU8xARdy2S8eRbDISSwYszZEnTHj5lfEJejNJKhG-MKVqXGQ">
+<meta property="og:image" content="https://bfjxbg.bn.files.1drv.com/y4mfnSCUfMnu-U-CwcOjlS671Wo2Rtv1RfTORmqT2UVYDsOijysJ4YsxkUfqHNhzp2FtOWHsLjTORfx9Orp6WAxYa0MVQ57dBpf1-2tBziBTAwu37ik-uI6d4A7MTB1v7OPXyzn9KTUYKKuHVcoT8_XeyjpIDWP736HrNKAD0WD7MUhopaIFv-S6-N5pDxQ2Xf8zGIiOlDRrrFcU2wZhJ1w4g">
+<meta property="og:image" content="https://bfgn8a.bn.files.1drv.com/y4mHjzVTc7MLTNY3X1C0CNI6nkC4y34gaPWRN_zLzLa-J973kuKVpz0pEPOrxqb2zhqcC3IV-if0NI5y8fk8-EXkNRNN2O73I2dAAFLPIqU8A_eP2l6Zw8ptg-Kw-RO-Jsy0lOpug2DYWMyMmhmJl9H0xIRVJ5CNIYnnRb_AezHNqL7bwBHW53MNlW6LQ_WKvOeWX7DqGn1NDb7W_E6YcBfEA">
+<meta property="og:image" content="https://bfimew.bn.files.1drv.com/y4mfO-w3_wp3QH75sbPN5LoSy7aHIvQe6TPZIQ3N-lOQJUijoSeA5oR_RNw_zGQoy_4L8TMHZFMwxCy5PVPY-p8t4C5MfKVEbtvlofcoOvkKg5QXjTi_LqJOH3_kGPlLdbU3c0H1wt58QliVtQ0UrFgrzhZzj1EZ1Xhns--tFv97hIgojDaT-ITthzNZOYM68pWrBkWR0W-kRaC2QCTrXOEOw">
+<meta property="og:image" content="https://bfhwkg.bn.files.1drv.com/y4mBWJHsXuNH_m6N6h14CKodVFpkjLSo8q6IhqjbypK-7y9g7zg4RnPs4Q429_LymQ7g7SctGjXLiXjVh7Cj9IBUnicPs0d-Y4LP_1LQ_rdKtG9bFjOWuyJyqsUwbd2Brb3CaJb0clKsW5wivE5fzJ57cxtjX9dru3CNvBfki4PN7_7HvJMy4QXslJYiOwQxn0HVDvSYL5K3McfQJYl4eDZxQ">
+<meta property="article:published_time" content="2018-07-31T12:23:57.000Z">
+<meta property="article:modified_time" content="2022-02-06T06:33:15.349Z">
+<meta property="article:author" content="Trevor Wu">
+<meta property="article:tag" content="txw">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://okhbwa.bn.files.1drv.com/y4msU3XsAQPxkfZcgPgX5sP9obke0G8MuFBfQv1qf_5SQFBvdWcVdFGFGKE_gaj-EPhsCitu0NZo503ynaEMoTLTypECUDIMKDO6Hh8XSjUzc-KVo7G-hoETDg84kDm7UVH_u8SX3KvL1eNlpTgIK8j_c074Y51HU-SwjhbeZ3sZru2wy-05D4Ulad1B_gwAx8aX_BasF6vZdh0_3tmaE8BCg">
+
+
+<link rel="canonical" href="https://mrnegativetw.github.io/%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8/GitLab%20Pages%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-Gitbook/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8/GitLab%20Pages%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-Gitbook/","path":"架設教學/GitLab Pages架設教學-Gitbook/","title":"GitLab Pages 架設教學 - Gitbook"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>GitLab Pages 架設教學 - Gitbook | TxW Tech Studio</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">TxW Tech Studio</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">什麼都寫 什麼都不奇怪</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BA%96%E5%82%99"><span class="nav-number">1.</span> <span class="nav-text">準備</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5-%E5%81%B7%E9%81%8E%E4%BE%86"><span class="nav-number">2.</span> <span class="nav-text">第一步 - 偷過來</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E5%BE%9E-GitLab-%E6%90%B6%E9%81%8E%E4%BE%86"><span class="nav-number">3.</span> <span class="nav-text">第二步 - 從 GitLab 搶過來</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5-%E9%96%8B%E5%A7%8B%E5%AF%AB%E6%9B%B8"><span class="nav-number">4.</span> <span class="nav-text">第三步 - 開始寫書</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5-%E9%82%84%E7%B5%A6-GitLab"><span class="nav-number">5.</span> <span class="nav-text">第四步 - 還給 GitLab</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Trevor Wu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Trevor Wu</p>
+  <div class="site-description" itemprop="description">I'm afraid of HARDWARE. Don't scare me.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MrNegativeTW" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MrNegativeTW" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/mrtrevorwu" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;mrtrevorwu" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8/GitLab%20Pages%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8-Gitbook/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Trevor Wu">
+      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TxW Tech Studio">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GitLab Pages 架設教學 - Gitbook
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2018-07-31 20:23:57" itemprop="dateCreated datePublished" datetime="2018-07-31T20:23:57+08:00">2018-07-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2022-02-06 14:33:15" itemprop="dateModified" datetime="2022-02-06T14:33:15+08:00">2022-02-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9E%B6%E8%A8%AD%E6%95%99%E5%AD%B8/" itemprop="url" rel="index"><span itemprop="name">架設教學</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Gitbook，一個用來寫電子書的平台，在 V1 時非常好用，但近期改版為 V2 後，不但很多功能被拿掉，而且很多地方也改為付費制，V2 中還加入了 Space 機制，一本書就是一個 Space，免費使用者只能擁有一個公開 Space 和一個私人 Space，換言之就是使用者付費啦<br><br>可我還是很迷戀 V1，而且剛好我在 Gitbook V2 Beta 時開了兩個space，GitBook 提示我說：「欸你這樣不行」<br>就因為這兩個原因讓我爬著爬著發現 GitLab 官方文件裡面有提供架設 Gitbook 的範本，經過多方嘗試之後終於成功將V2的文章轉移過來啦！</p>
+<span id="more"></span>
+<h1 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h1><ul>
+<li><strong><a target="_blank" rel="noopener" href="https://gitlab.com/users/sign_in">註冊一個 GitLab </a>帳號</strong><br>這 不解釋</li>
+<li><strong>GitBook Editor (<a target="_blank" rel="noopener" href="https://github.com/GitbookIO/editor-legacy/releases">傳統板</a> 或 <a target="_blank" rel="noopener" href="https://legacy.gitbook.com/editor">新<a href="">版</a>)</strong><br>用來編輯電子書，畢竟以前的 Gitbook 都是用這個工具編寫，而現在我們要架設的就是舊版的 Gitbook，所以用這套工具理所當然</li>
+<li><strong><a target="_blank" rel="noopener" href="https://desktop.github.com">GitHub Desktop</a></strong><br>用來與 GitLab 上的資料同步。 對，用 Github 來同步 GitLab。</li>
+</ul>
+<h1 id="第一步-偷過來"><a href="#第一步-偷過來" class="headerlink" title="第一步 - 偷過來"></a>第一步 - 偷過來</h1><p>首先到 GitLab 官方提供的<a target="_blank" rel="noopener" href="https://gitlab.com/pages/gitbook"> Gitbook 範本</a>偷(Fork)一份過來<br><img data-src="https://okhbwa.bn.files.1drv.com/y4msU3XsAQPxkfZcgPgX5sP9obke0G8MuFBfQv1qf_5SQFBvdWcVdFGFGKE_gaj-EPhsCitu0NZo503ynaEMoTLTypECUDIMKDO6Hh8XSjUzc-KVo7G-hoETDg84kDm7UVH_u8SX3KvL1eNlpTgIK8j_c074Y51HU-SwjhbeZ3sZru2wy-05D4Ulad1B_gwAx8aX_BasF6vZdh0_3tmaE8BCg" alt="gitbook_tutorial_1"><br>GitLab 接著會提示請選擇命名空間，選自己的頭像就對了<br><img data-src="https://okfata.bn.files.1drv.com/y4maJusq4SOvi52RqyHMmJV9ERwUOJ7BDRCHFnLRxvM9wyifYFQMTkw9DRXx7Xx4Ds5gT9xLg4oUxDLtewOvVRDvJqrt-mxoPOSeCcSx_ijo9_axF8yhej_tQ10G79ZKwYM1AnR36pQXS_fpGehlFK-zP5Xcoh7NPfcSxGJ2KAFDPm0CNTZBn7TmItA0hd77fza8dXhGXRjn-saBsmzEO44JQ" alt="gitbook_tutorial_2"><br>緊接著進到自己剛剛 Fork 的專案中，於左側選擇 <strong>設定 &gt; 一般</strong>，並展開 <strong>Advanced</strong><br><img data-src="https://okgl1w.bn.files.1drv.com/y4mr7jkR1jM2moVBXdQeBMwq7NVwxrIGLHmpV4cbQw8nKrc_NEXOn5XVNopPyL-fRxm0ayBJTm4BcV3U_C1b-klw-be6AMNuud7ESbdk_SkDiDUr8tvTxE0cWwZ7jc29k7HueOwGrsay0aUDpokKW6sehpFdrMZqs9mVP4kuYIsPljzA6spO7lqGLeXFjx0OPicUoR-Ev3MlK8DoA_7PrpXbA" alt="gitbook_tutorial_3"><br>然後選擇 <strong>Remove fork relationship</strong>，沒錯 我們要移除與主專案的連結，將這個專案變成自己的！<br><img data-src="https://okeyvg.bn.files.1drv.com/y4m3crUy0SvfL6O9l8WXBU1MYPoO6zIbH9hGQBaUmbiI6ot8mGdbKVqn2TXoXuG6LOCxYde0sMui_hwtHjVGzO2J8thQveF3dwMniQ-rYJ6dMkX7WgheyQaLmOcdyRY8u8rAr8DPv9ApgDdjk_tjJFf7WH0N0GZb0fU06CmRYaPiJOPjTbwlP-B5pYGJ9g8VelzYNUUXQfhQPpDPwMyMReETQ" alt="gitbook_tutorial_4"><br>輸入 <strong>gitbook</strong> 解除連結<br><img data-src="https://okgxsq.bn.files.1drv.com/y4mB9lRkggph2WPSFS0ZKLnhGqYWZIMGf6s8TgHkU8zhhBYEMOfqFOAGx2zyWn8PdazR7I2hx-mDG5DTmBYWExpHS6qKKBqZpQfOWZ8rmfQ613o6vVOFhwpcd4U9D8oyvFeQzy0-c5nG6yNIb8coUsuGsX5NJaxGgyWjcmP1kycyd_739c57Y9SezPdd8kvYuEOhEAYvVfbqehvzw5sAgHZkg" alt="gitbook_tutorial_5"><br>接著回到專案首頁，選擇 README.md，對他編輯並儲存，加個空白或者隨便打幾個字都可以，目的是要觸發 GitLab 產生頁面，完成後可以按左側的 CI&#x2F;CD 確認是否已經開始建造<br><img data-src="https://b81iwa.bn.files.1drv.com/y4msgdSi-NuIrZVVyAi8obdcNehd1WjGZ2KUXuyTnTh6Gd8kuV5TdGt_8OXsYcZdO0Kq-uN3ALuP4cBp04QMx_BHgK5n2mpujKbn0p_lebOWjvqQ6Zk2LGGNphWex7S0oGp5kp-fyDvbbLwjs4Di2OsNeRI2rvoetNUPEN3ZWPz-k0m06bLJ3fMtwd5gHm3dUxxj3Mr0-RqvYptj1eNd036xA" alt="gitbook_tutorial_6"><br>這時按 <strong>執行中(上圖) &gt; pages</strong> 即可看到黑盒子<br><img data-src="https://b83hsw.bn.files.1drv.com/y4mTesH1qVSo3chBcPBBJkxRe4zn5Y4QWijOyOggOURdXF3yFz7VpJ2XTAGqkGAkB3VLNOn7PTKNGdFqbc1OUKix-PWD15ERp3tPbqxjIEfxyvnMcwMfpmOy-NqiHL9u3RIVbc23tnSGrEI83soE9N16_1yb6keiG_C9sJy3Rco4T3jnRRm0JMPLOE0OYeHnsmmUOF7jbR4AMAIWSw-dk9HTg" alt="gitbook_tutorial_7"><br>待黑盒子底部出現 <code>Job succeeded</code> 就代表成功啦！<br><img data-src="https://b80s1w.bn.files.1drv.com/y4mmHw7ydwi3kUnd0mXAo18doL-pMw4GpRtxHJQeRE8zy7FG25ZN429SSLvR_zL19CuBpLVwtfMFmzVqp1XKnUGS2srJ-_AmU7zoldirnCF6yu4XKvSXFaKcIb5CD72tzjY_6O4EoZeB0UwQCvoli_uUj1aR1lVyIoPNgAUxis6JPyljzpVAITvq4NjRwQ_FNKaje5zru4NgW3ymdbSp5T6ew" alt="gitbook_tutorial_8"><br>成功後就前往 <strong>設定 &gt; 頁面</strong> 領取我們的網頁連結吧！<br><img data-src="https://b82ryg.bn.files.1drv.com/y4mqT6ZpW_UBDiGTEjvwS0NO7c7Roqi7V3z-R8igp0XNI0NJLRw3hO_fmQ29edSJg6iCcOFzKckLcL_TqPlwA9ApaE3eSBDo1uSiJVEQ1JINr8Mw_pDAffMVn_nPQ7YXg8Wd3HGRHD87LlJ7_RMP5cKVZEGmytE6a4VpjFjPkXu-u3vHvGjGVNa02CBUVbfkI95GQW2Y4lP3iN_uUY-deQbbw" alt="gitbook_tutorial_9"><br>好啦，到這邊為止我們已經做好 GitLab 上的初始設定了，接著讓我們開始本地端的操作吧！</p>
+<h1 id="第二步-從-GitLab-搶過來"><a href="#第二步-從-GitLab-搶過來" class="headerlink" title="第二步 - 從 GitLab 搶過來"></a>第二步 - 從 GitLab 搶過來</h1><p>打開你的 GitHub Desktop ，然後選擇 <code>File &gt; Clone Repository</code><br><img data-src="https://b83vpg.bn.files.1drv.com/y4mQVqQYOc4_JFjlI1-GjgmXURi8cbWYPAw_YlGunUrOA8ylJAG21hn5QQIpQrxo1UqgibcsUWTgg3qZrcW0vcHhSkTmTKfxtcdZ1x7jtG2-fIu50TllcSdrC4NI4_fdm7d4WKNedJWDDdb5Joo7qi9rRGFOJ5IvZ_TgpwPiz781ZoqMS4xAO6m1zwOn9EjZswfT2isxShv8Nut4YTdlr6q6w" alt="gitbook_tutorial_10"><br>接著從 GitLab 複製 Repo 的 git 網址，並貼到 GitHub Desktop 的 URL 頁面中<br><code>Local Path</code> 請自行選擇一個合適存放的地點 <del>(例如垃圾桶)</del><br><img data-src="https://bfjqvw.bn.files.1drv.com/y4mzWpLi0dJCDlV8TBQ_c-VN0infqNBYYe-lYhvErnQE9-xOWrGf_2gCQH_MV4bh7fy3ziPuye-ryxPOxyYegLZI4H8pd2PohidCTBugKMJZcsdjIUq8KUQ1YOKI8MuYuH2ym6p-EEFYBzeQZa79IagQ4ZEEs4E4PtrsRGuIjRWiuQ2bAITZbV5tuYptb-3KAnMc6g44zk54c_e1AehdkrviA" alt="gitbook_tutorial_11"><br><img data-src="https://bfifna.bn.files.1drv.com/y4mmQ6d4i6ufRt71RQ9nPDYt88WCiX-GiLSfKvcfG-x0ed8njHlXMAzpuE_gCi_N8-64Pc0ldycHxTN2nNiWuENjUhNJZ513GPIsI9IexD7Bg5k2XZviW-RSr9YZ3iZVFY2C4U-toyWS0llNU-xY1T-epc18TyCuRje5ce9EPLU8xARdy2S8eRbDISSwYszZEnTHj5lfEJejNJKhG-MKVqXGQ" alt="gitbook_tutorial_12"></p>
+<h1 id="第三步-開始寫書"><a href="#第三步-開始寫書" class="headerlink" title="第三步 - 開始寫書"></a>第三步 - 開始寫書</h1><p>打開你的 GitBook Editor (這邊採用新版示範)，起始畫面選擇 Do thet later<br>就算選了 Login 也登入不進去，GitBook 把舊版的登入權限拿掉了 <del>(GitBook你到底在衝三小)</del><br><img data-src="https://bfjxbg.bn.files.1drv.com/y4mfnSCUfMnu-U-CwcOjlS671Wo2Rtv1RfTORmqT2UVYDsOijysJ4YsxkUfqHNhzp2FtOWHsLjTORfx9Orp6WAxYa0MVQ57dBpf1-2tBziBTAwu37ik-uI6d4A7MTB1v7OPXyzn9KTUYKKuHVcoT8_XeyjpIDWP736HrNKAD0WD7MUhopaIFv-S6-N5pDxQ2Xf8zGIiOlDRrrFcU2wZhJ1w4g" alt="gitbook_tutorial_13"></p>
+<p>接著選擇 <code>GitBook Editor &gt; Open</code>，並選擇到你剛剛儲存 Repo 的位置<br><img data-src="https://bfgn8a.bn.files.1drv.com/y4mHjzVTc7MLTNY3X1C0CNI6nkC4y34gaPWRN_zLzLa-J973kuKVpz0pEPOrxqb2zhqcC3IV-if0NI5y8fk8-EXkNRNN2O73I2dAAFLPIqU8A_eP2l6Zw8ptg-Kw-RO-Jsy0lOpug2DYWMyMmhmJl9H0xIRVJ5CNIYnnRb_AezHNqL7bwBHW53MNlW6LQ_WKvOeWX7DqGn1NDb7W_E6YcBfEA" alt="gitbook_tutorial_14"></p>
+<p>然後就能看到書籍啦！ 興奮吧？<br><img data-src="https://bfimew.bn.files.1drv.com/y4mfO-w3_wp3QH75sbPN5LoSy7aHIvQe6TPZIQ3N-lOQJUijoSeA5oR_RNw_zGQoy_4L8TMHZFMwxCy5PVPY-p8t4C5MfKVEbtvlofcoOvkKg5QXjTi_LqJOH3_kGPlLdbU3c0H1wt58QliVtQ0UrFgrzhZzj1EZ1Xhns--tFv97hIgojDaT-ITthzNZOYM68pWrBkWR0W-kRaC2QCTrXOEOw" alt="gitbook_tutorial_15"></p>
+<h1 id="第四步-還給-GitLab"><a href="#第四步-還給-GitLab" class="headerlink" title="第四步 - 還給 GitLab"></a>第四步 - 還給 GitLab</h1><p>GitBook Editor 這邊就不教學了，使用起來很簡單，總之完成後我們要把東西推上去 GitLab 讓他自動為我們產生電子書，這時候就是 GitHub Desktop 派上用場的時候啦！</p>
+<p>打開你的 GitHub Desktop，並選到剛剛 Clone 下來的 Repo<br>1.<code>Summary (required)</code> 填入主要變更內容，<code>Description</code> 填入詳細變更內容（選填）<br>2.接著按下 <code>Commit to master</code><br>3.最後一步，Push 上去 GitLab<br><img data-src="https://bfhwkg.bn.files.1drv.com/y4mBWJHsXuNH_m6N6h14CKodVFpkjLSo8q6IhqjbypK-7y9g7zg4RnPs4Q429_LymQ7g7SctGjXLiXjVh7Cj9IBUnicPs0d-Y4LP_1LQ_rdKtG9bFjOWuyJyqsUwbd2Brb3CaJb0clKsW5wivE5fzJ57cxtjX9dru3CNvBfki4PN7_7HvJMy4QXslJYiOwQxn0HVDvSYL5K3McfQJYl4eDZxQ" alt="gitbook_tutorial_15"></p>
+<p>接著就可到前面提到 GitLab 上的 CI&#x2F;CD 查看是否開始自動產生囉！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/Hexo-%E6%9E%B6%E8%A8%AD%E7%9B%B8%E9%97%9C/Hexo-%E7%94%A8Onedrive%E7%95%B6%E5%9C%96%E5%BA%8A/" rel="next" title="Hexo 架設資源 - 用 Onedrive 當圖床">
+                  Hexo 架設資源 - 用 Onedrive 當圖床 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Trevor Wu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

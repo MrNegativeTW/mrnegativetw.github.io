@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="因當時上課有整理大量素材的需求，所以這個小程式就這樣產生了，使用本程式可以快速取得資料夾中所有檔案的詳細資訊，加速作業進行，例如：  快速比對素材 於兩台電腦中比對檔案清單是否相同…等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快速取得資料夾內所有檔案的詳細資料">
+<meta property="og:url" content="https://mrnegativetw.github.io/%E7%84%A1%E6%B3%95%E5%88%86%E9%A1%9E/%E5%BF%AB%E9%80%9F%E5%8F%96%E5%BE%97%E8%B3%87%E6%96%99%E5%A4%BE%E5%85%A7%E6%89%80%E6%9C%89%E6%AA%94%E6%A1%88%E7%9A%84%E8%A9%B3%E7%B4%B0%E8%B3%87%E6%96%99/index.html">
+<meta property="og:site_name" content="TxW Tech Studio">
+<meta property="og:description" content="因當時上課有整理大量素材的需求，所以這個小程式就這樣產生了，使用本程式可以快速取得資料夾中所有檔案的詳細資訊，加速作業進行，例如：  快速比對素材 於兩台電腦中比對檔案清單是否相同…等">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508145174726_screenshot-www-virustotal-com-zh-tw-file-fd9f5a7b78e75a0b1d283d951e534058e3-1508145163817.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508211974855_+2017-10-17+11.40.18.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508212210145_+2017-10-17+11.43.56.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508145423620_screenshot-drive-google-com-file-d-0B4lbk-oI6mmxU1IxNmpaQXJjOXc-view-1508145275928.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508146602793_2.PNG">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508146608139_3.PNG">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508146746380_4.PNG">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508147224296_1.PNG">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508147426162_2.PNG">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508147461086_3.PNG">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508147463995_4.PNG">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508147466575_5.PNG">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508147625971_6.PNG">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508212689567_+2017-10-17+11.57.08.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1509364391193_+2017-10-30+7.51.06.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1509364580943_+2017-10-30+7.55.26.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1509364603165_+2017-10-30+7.55.42.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1509364646785_+2017-10-30+7.55.51.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208020267_+2017-10-17+10.10.33.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208203403_+2017-10-17+10.11.10.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208323922_+2017-10-17+10.13.00.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208384317_+2017-10-17+10.13.30.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208483891_+2017-10-17+10.13.39.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208553426_+2017-10-17+10.14.31.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208950052_+2017-10-17+10.14.49.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208955749_+2017-10-17+10.15.08.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208961314_+2017-10-17+10.15.14.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208980067_+2017-10-17+10.15.54.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508211235669_+2017-10-17+11.27.48.png">
+<meta property="og:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508211376559_+2017-10-17+11.29.09.png">
+<meta property="article:published_time" content="2018-08-04T02:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-06T06:33:15.349Z">
+<meta property="article:author" content="Trevor Wu">
+<meta property="article:tag" content="txw">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508145174726_screenshot-www-virustotal-com-zh-tw-file-fd9f5a7b78e75a0b1d283d951e534058e3-1508145163817.png">
+
+
+<link rel="canonical" href="https://mrnegativetw.github.io/%E7%84%A1%E6%B3%95%E5%88%86%E9%A1%9E/%E5%BF%AB%E9%80%9F%E5%8F%96%E5%BE%97%E8%B3%87%E6%96%99%E5%A4%BE%E5%85%A7%E6%89%80%E6%9C%89%E6%AA%94%E6%A1%88%E7%9A%84%E8%A9%B3%E7%B4%B0%E8%B3%87%E6%96%99/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/%E7%84%A1%E6%B3%95%E5%88%86%E9%A1%9E/%E5%BF%AB%E9%80%9F%E5%8F%96%E5%BE%97%E8%B3%87%E6%96%99%E5%A4%BE%E5%85%A7%E6%89%80%E6%9C%89%E6%AA%94%E6%A1%88%E7%9A%84%E8%A9%B3%E7%B4%B0%E8%B3%87%E6%96%99/","path":"無法分類/快速取得資料夾內所有檔案的詳細資料/","title":"快速取得資料夾內所有檔案的詳細資料"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>快速取得資料夾內所有檔案的詳細資料 | TxW Tech Studio</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">TxW Tech Studio</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">什麼都寫 什麼都不奇怪</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%BC%89%E7%B6%B2%E5%9D%80-Windows"><span class="nav-number">1.</span> <span class="nav-text">下載網址 (Windows)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%BC%89%E7%B6%B2%E5%9D%80-OS-X"><span class="nav-number">2.</span> <span class="nav-text">下載網址 (OS X)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%B8-Windows"><span class="nav-number">3.</span> <span class="nav-text">使用教學 (Windows)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%B2%BC%E5%88%B0Excel-Windows"><span class="nav-number">4.</span> <span class="nav-text">如何貼到Excel? (Windows)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%B8-OS-X"><span class="nav-number">5.</span> <span class="nav-text">使用教學 (OS X)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%8A%E6%9B%B4%E6%AA%94%E6%A1%88%E5%AD%98%E5%8F%96%E6%AC%8A%E9%99%90"><span class="nav-number">5.1.</span> <span class="nav-text">變更檔案存取權限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%B7%E8%A1%8C%E6%AA%94%E6%A1%88"><span class="nav-number">5.2.</span> <span class="nav-text">執行檔案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%B2%BC%E8%87%B3Excel-OS-X"><span class="nav-number">6.</span> <span class="nav-text">如何貼至Excel (OS X)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86-OS-X"><span class="nav-number">7.</span> <span class="nav-text">錯誤處理 (OS X)</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Trevor Wu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Trevor Wu</p>
+  <div class="site-description" itemprop="description">I'm afraid of HARDWARE. Don't scare me.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MrNegativeTW" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MrNegativeTW" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/mrtrevorwu" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;mrtrevorwu" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/%E7%84%A1%E6%B3%95%E5%88%86%E9%A1%9E/%E5%BF%AB%E9%80%9F%E5%8F%96%E5%BE%97%E8%B3%87%E6%96%99%E5%A4%BE%E5%85%A7%E6%89%80%E6%9C%89%E6%AA%94%E6%A1%88%E7%9A%84%E8%A9%B3%E7%B4%B0%E8%B3%87%E6%96%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Trevor Wu">
+      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TxW Tech Studio">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          快速取得資料夾內所有檔案的詳細資料
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2018-08-04 10:00:00" itemprop="dateCreated datePublished" datetime="2018-08-04T10:00:00+08:00">2018-08-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2022-02-06 14:33:15" itemprop="dateModified" datetime="2022-02-06T14:33:15+08:00">2022-02-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%84%A1%E6%B3%95%E5%88%86%E9%A1%9E/" itemprop="url" rel="index"><span itemprop="name">無法分類</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>因當時上課有整理大量素材的需求，所以這個小程式就這樣產生了，使用本程式可以快速取得資料夾中所有檔案的詳細資訊，加速作業進行，例如：</p>
+<ul>
+<li>快速比對素材</li>
+<li>於兩台電腦中比對檔案清單是否相同<br>…等<span id="more"></span></li>
+</ul>
+<hr>
+<h1 id="下載網址-Windows"><a href="#下載網址-Windows" class="headerlink" title="下載網址 (Windows)"></a>下載網址 (Windows)</h1><p><a target="_blank" rel="noopener" href="https://github.com/MrNegativeTW/getFileInfo/releases/download/v1.0/getFileInfo_Windows.bat">按我從GitHub下載</a></p>
+<p>程式名稱：getFileInfo<br>格式：bat<br>大小：32位元組<br>經過virustotal掃描，無毒，請放心使用</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508145174726_screenshot-www-virustotal-com-zh-tw-file-fd9f5a7b78e75a0b1d283d951e534058e3-1508145163817.png"></p>
+<hr>
+<p>© <a href="mailto:danielhsutw0524+paper@gmail.com">Daniel Hsu</a></p>
+<h1 id="下載網址-OS-X"><a href="#下載網址-OS-X" class="headerlink" title="下載網址 (OS X)"></a>下載網址 (OS X)</h1><p><a target="_blank" rel="noopener" href="https://github.com/MrNegativeTW/getFileInfo/releases/download/v1.0/getFileInfo_OSX.command">按我從GitHub下載</a></p>
+<p>檔案名稱：getFileInfo<br>格式：command<br>檔案大小：169 byte（磁碟上 4 KB）</p>
+<p>Virustotal掃描</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508211974855_+2017-10-17+11.40.18.png"></p>
+<p>※若發生錯誤請見此 <a href="#%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86-OS-X">錯誤處理 (OS  X)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/MrNegativeTW/getFileInfo/releases/download/v1.0/getFileInfo_Home_OSX.command">按我從GitHub下載</a><br>檔案名稱：getFileInfo_Home<br>格式：command<br>檔案大小：62 byte（磁碟上 4 KB）</p>
+<p>Virustotal掃描</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508212210145_+2017-10-17+11.43.56.png"></p>
+<hr>
+<h1 id="使用教學-Windows"><a href="#使用教學-Windows" class="headerlink" title="使用教學 (Windows)"></a><strong>使用教學 (Windows)</strong></h1><p>請直接按圖中下載即可，若是Chrome跳出警告是否下載，請選擇「<strong>保留</strong>」</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508145423620_screenshot-drive-google-com-file-d-0B4lbk-oI6mmxU1IxNmpaQXJjOXc-view-1508145275928.png"></p>
+<p>接著將檔案移至素材資料夾，並雙擊開啟，但Windows可能會擋下來，請接著按<strong>其他資訊</strong>&gt;<strong>仍要執行</strong></p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508146602793_2.PNG" alt="按「其他資訊」"></p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508146608139_3.PNG" alt="按「仍要執行」"></p>
+<p>接著會產生一個fileInfo.txt，裡面就是所有檔案的詳細資料了</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508146746380_4.PNG"></p>
+<hr>
+<h1 id="如何貼到Excel-Windows"><a href="#如何貼到Excel-Windows" class="headerlink" title="如何貼到Excel? (Windows)"></a><strong>如何貼到Excel?</strong> <strong>(Windows)</strong></h1><p>複製上圖所選資料，於第一列第一行(“行”視情況調整)貼上，並且選取第一列有資料處(因資料都在第一列)</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508147224296_1.PNG"></p>
+<p>接著按<strong>資料</strong>&gt;<strong>資料剖析</strong></p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508147426162_2.PNG"></p>
+<p>於資料剖析精靈中，選擇<strong>分隔符號</strong>，並且按下一步</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508147461086_3.PNG"></p>
+<p>選擇<strong>空格</strong>，並且按下一步</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508147463995_4.PNG"></p>
+<p>選擇<strong>文字</strong>，並且按完成</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508147466575_5.PNG"></p>
+<p>資料剖析完成，如下圖</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_3CE51001DBF36C413E402BC2F21C1815805329FA6DF6C172BF2C25512A7F0188_1508147625971_6.PNG"></p>
+<hr>
+<h1 id="使用教學-OS-X"><a href="#使用教學-OS-X" class="headerlink" title="使用教學 (OS X)"></a>使用教學 (OS X)</h1><p>點擊進入Google雲端空間進行檔案下載</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508212689567_+2017-10-17+11.57.08.png"></p>
+<h2 id="變更檔案存取權限"><a href="#變更檔案存取權限" class="headerlink" title="變更檔案存取權限"></a>變更檔案存取權限</h2><p>因為OS X的系統安全層級較高的特性，必須先變更檔案權限，使用者方得以執行。</p>
+<p>至應用程式資料夾開啟「終端機」<br>或 使用Spotlight 開啟terminal <code>⌘+Space</code>後輸入<code>terminal.app</code></p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1509364391193_+2017-10-30+7.51.06.png"></p>
+<p>輸入 <code>sudo chmod +x 拖入檔案</code> (拖入檔案後將自動帶入完整路徑)，按下Enter</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1509364580943_+2017-10-30+7.55.26.png"></p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1509364603165_+2017-10-30+7.55.42.png"></p>
+<p>依畫面提示輸入使用者密碼後按Enter</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1509364646785_+2017-10-30+7.55.51.png"></p>
+<h2 id="執行檔案"><a href="#執行檔案" class="headerlink" title="執行檔案"></a>執行檔案</h2><p>下載後進入儲存位置並雙擊執行”getFileInfo.command” (在此以桌面為檔案目錄示範)</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208020267_+2017-10-17+10.10.33.png"></p>
+<p>後將自動執行並產生”fileInfo.txt”檔案，即可將終端機關閉</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208203403_+2017-10-17+10.11.10.png"></p>
+<p>雙擊開啟”fileInfo.txt”，選取範圍後 <code>⌘+C</code> 複製</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208323922_+2017-10-17+10.13.00.png"></p>
+<p><strong>※若發生錯誤請見此</strong> <a target="_blank" rel="noopener" href="https://paper.dropbox.com/doc/6VyRNNxWhAwVzN7EboRJh#:uid=804294759227104954009889&h2=%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86-(OS-X)"><strong>錯誤處理 (OS X)</strong></a></p>
+<hr>
+<h1 id="如何貼至Excel-OS-X"><a href="#如何貼至Excel-OS-X" class="headerlink" title="如何貼至Excel (OS X)"></a>如何貼至Excel (OS X)</h1><p>開啟Microsoft Excel，並新增「空白活頁簿」</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208384317_+2017-10-17+10.13.30.png"></p>
+<p>選取第一行第一列，並且 <code>⌘+V</code> 將先前所複製的資料貼上</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208483891_+2017-10-17+10.13.39.png"></p>
+<p> 貼上後選取第一列；選取「資料」標籤，並選擇「資料剖析」</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208553426_+2017-10-17+10.14.31.png"></p>
+<p>依序選擇「分隔符號」；取消勾選「定位字元」並勾選「空格」；點選「文字」並「完成」</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208950052_+2017-10-17+10.14.49.png"></p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208955749_+2017-10-17+10.15.08.png"></p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208961314_+2017-10-17+10.15.14.png"></p>
+<p>完成「資料剖析」</p>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508208980067_+2017-10-17+10.15.54.png"></p>
+<hr>
+<h1 id="錯誤處理-OS-X"><a href="#錯誤處理-OS-X" class="headerlink" title="錯誤處理 (OS X)"></a>錯誤處理 (OS X)</h1><ul>
+<li>因系統安全性與指令碼等權限設置問題，請嘗試不要將檔案至於外接磁碟中 (如記憶卡)，避免錯誤</li>
+<li><code>Operation not permitted</code> 代表權限不足，請先將檔案移出外接磁碟後重新嘗試</li>
+<li>或請致信告知修正錯誤</li>
+</ul>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508211235669_+2017-10-17+11.27.48.png"></p>
+<ul>
+<li>若發生錯誤且無法成功產出文字檔，請下載”getFileInfo_Home.command”並執行</li>
+</ul>
+<p>將直接取得 <code>~/</code> 家目錄下的檔案清單 (而非檔案當前目錄)</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://paper.dropbox.com/doc/6VyRNNxWhAwVzN7EboRJh#:uid=622718627338230581890063&h2=%E4%B8%8B%E8%BC%89%E7%B6%B2%E5%9D%80-(OS-X)">下載網址 (OS X)</a></li>
+</ul>
+<p><img data-src="https://d2mxuefqeaa7sj.cloudfront.net/s_DF7960DEC379D4546C6FFBF64A960F2F2F9208379399FE6467A3D9E2B4D11D92_1508211376559_+2017-10-17+11.29.09.png"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E4%B8%8D%E5%B0%88%E6%A5%AD%E9%9B%BB%E8%85%A6%E7%B6%AD%E4%BF%AE%E7%B6%93%E9%A9%97/%E9%9B%BB%E8%85%A6%E4%B9%85%E6%B2%92%E7%94%A8%E5%87%BA%E7%8F%BEReboot%20and%20Select%20proper%20boot%20device/" rel="prev" title="電腦久沒用出現 Reboot and Select proper boot device">
+                  <i class="fa fa-chevron-left"></i> 電腦久沒用出現 Reboot and Select proper boot device
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Hexo-%E6%9E%B6%E8%A8%AD%E7%9B%B8%E9%97%9C/Hexo-%E6%96%B0%E5%A2%9Esitemap/" rel="next" title="Hexo 架設教學 - 新增 Sitemap">
+                  Hexo 架設教學 - 新增 Sitemap <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Trevor Wu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

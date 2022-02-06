@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /小程式/
+Allow: /本站記事/
+Allow: /架設教學/
+Allow: /修電腦/
+Allow: /archives/
+Allow: /categories/
+
+Disallow: 
