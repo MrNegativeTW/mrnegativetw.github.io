@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="前幾天在爬學校的考試系統，不過用 Requests 操作登入不管怎樣就是進不去，後來發現表單送出資料中還有三欄隱藏的神秘資訊，Google 後才發現，原來 ASPX 頁面要登入可不是單單打密碼這麼簡單，這篇文章就讓我們來教學如何爬 ASPX 頁面吧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 3 筆記 - 利用 Requests 與 Beautiful Soup 爬取需登入的 ASPX 頁面">
+<meta property="og:url" content="https://mrnegativetw.github.io/Python-3-%E7%AD%86%E8%A8%98/Beautiful-Soup/Python3%E7%AD%86%E8%A8%98-%E5%88%A9%E7%94%A8Requests%E8%88%87BeautifulSoup%E7%88%AC%E5%8F%96%E9%9C%80%E7%99%BB%E5%85%A5%E7%9A%84ASPX%E9%A0%81%E9%9D%A2/index.html">
+<meta property="og:site_name" content="TxW Tech Studio">
+<meta property="og:description" content="前幾天在爬學校的考試系統，不過用 Requests 操作登入不管怎樣就是進不去，後來發現表單送出資料中還有三欄隱藏的神秘資訊，Google 後才發現，原來 ASPX 頁面要登入可不是單單打密碼這麼簡單，這篇文章就讓我們來教學如何爬 ASPX 頁面吧。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://pbawbq.bn.files.1drv.com/y4maqvsowB2aEytjI1DRUnTAn2TqXudLfLtr-1nNqR5Tv1LzYAxWmlu24fprz10arGJJP1EZW12_HTkulFgONYrypCoMj071RscH7JdnopbMuAztlvtgRIhfuEE3y9g2POgA8mXKS8nZ63UstIGhJl6v1ZRN_PwmO6rjKP8mYZ_ql8frLq8plxJbrH89KOoGiYbZwlFfg-ExunQ9VbkT6W_Ew">
+<meta property="article:published_time" content="2018-10-13T02:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-06T06:48:52.947Z">
+<meta property="article:author" content="Trevor Wu">
+<meta property="article:tag" content="txw">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pbawbq.bn.files.1drv.com/y4maqvsowB2aEytjI1DRUnTAn2TqXudLfLtr-1nNqR5Tv1LzYAxWmlu24fprz10arGJJP1EZW12_HTkulFgONYrypCoMj071RscH7JdnopbMuAztlvtgRIhfuEE3y9g2POgA8mXKS8nZ63UstIGhJl6v1ZRN_PwmO6rjKP8mYZ_ql8frLq8plxJbrH89KOoGiYbZwlFfg-ExunQ9VbkT6W_Ew">
+
+
+<link rel="canonical" href="https://mrnegativetw.github.io/Python-3-%E7%AD%86%E8%A8%98/Beautiful-Soup/Python3%E7%AD%86%E8%A8%98-%E5%88%A9%E7%94%A8Requests%E8%88%87BeautifulSoup%E7%88%AC%E5%8F%96%E9%9C%80%E7%99%BB%E5%85%A5%E7%9A%84ASPX%E9%A0%81%E9%9D%A2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/Python-3-%E7%AD%86%E8%A8%98/Beautiful-Soup/Python3%E7%AD%86%E8%A8%98-%E5%88%A9%E7%94%A8Requests%E8%88%87BeautifulSoup%E7%88%AC%E5%8F%96%E9%9C%80%E7%99%BB%E5%85%A5%E7%9A%84ASPX%E9%A0%81%E9%9D%A2/","path":"Python-3-筆記/Beautiful-Soup/Python3筆記-利用Requests與BeautifulSoup爬取需登入的ASPX頁面/","title":"Python 3 筆記 - 利用 Requests 與 Beautiful Soup 爬取需登入的 ASPX 頁面"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Python 3 筆記 - 利用 Requests 與 Beautiful Soup 爬取需登入的 ASPX 頁面 | TxW Tech Studio</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">TxW Tech Studio</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">什麼都寫 什麼都不奇怪</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9A%B1%E8%97%8F%E8%B3%87%E8%A8%8A"><span class="nav-number">1.</span> <span class="nav-text">隱藏資訊</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B9%BC%E7%BA%8C%E5%8B%95%E5%B7%A5"><span class="nav-number">2.</span> <span class="nav-text">繼續動工</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%90%E5%8A%9F%E8%88%87%E5%90%A6"><span class="nav-number">3.</span> <span class="nav-text">成功與否</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Trevor Wu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Trevor Wu</p>
+  <div class="site-description" itemprop="description">I'm afraid of HARDWARE. Don't scare me.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MrNegativeTW" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MrNegativeTW" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/mrtrevorwu" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;mrtrevorwu" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Python-3-%E7%AD%86%E8%A8%98/Beautiful-Soup/Python3%E7%AD%86%E8%A8%98-%E5%88%A9%E7%94%A8Requests%E8%88%87BeautifulSoup%E7%88%AC%E5%8F%96%E9%9C%80%E7%99%BB%E5%85%A5%E7%9A%84ASPX%E9%A0%81%E9%9D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Trevor Wu">
+      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TxW Tech Studio">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python 3 筆記 - 利用 Requests 與 Beautiful Soup 爬取需登入的 ASPX 頁面
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2018-10-13 10:00:00" itemprop="dateCreated datePublished" datetime="2018-10-13T10:00:00+08:00">2018-10-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2022-02-06 14:48:52" itemprop="dateModified" datetime="2022-02-06T14:48:52+08:00">2022-02-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python-3-%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">Python 3 筆記</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python-3-%E7%AD%86%E8%A8%98/Beautiful-Soup/" itemprop="url" rel="index"><span itemprop="name">Beautiful Soup</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>前幾天在爬學校的考試系統，不過用 Requests 操作登入不管怎樣就是進不去，後來發現表單送出資料中還有三欄隱藏的神秘資訊，Google 後才發現，原來 ASPX 頁面要登入可不是單單打密碼這麼簡單，這篇文章就讓我們來教學如何爬 ASPX 頁面吧。</p>
+<span id="more"></span>
+<h1 id="隱藏資訊"><a href="#隱藏資訊" class="headerlink" title="隱藏資訊"></a>隱藏資訊</h1><p>首先我們要找到表單的隱藏資訊，使用 Chrome 打開登入頁面，並右鍵 &gt; 檢查，切換到 Network 頁面，接著，輸入 <strong>錯誤</strong> 的帳號密碼，並送出，送出後會發現旁邊的 Network 頁面多了一些紀錄資訊出來<br>圖中的 Form Data 欄位，就是我們登入所需要的所有資料啦<br><img data-src="https://pbawbq.bn.files.1drv.com/y4maqvsowB2aEytjI1DRUnTAn2TqXudLfLtr-1nNqR5Tv1LzYAxWmlu24fprz10arGJJP1EZW12_HTkulFgONYrypCoMj071RscH7JdnopbMuAztlvtgRIhfuEE3y9g2POgA8mXKS8nZ63UstIGhJl6v1ZRN_PwmO6rjKP8mYZ_ql8frLq8plxJbrH89KOoGiYbZwlFfg-ExunQ9VbkT6W_Ew" alt="requests_1"></p>
+<p>上圖以學校考試系統為例，表單的送出資訊還包含了<code>__VIEWSTATE</code><br><code>__VIEWSTATEGENERATOR</code> <code>__EVENTVALIDATION</code>，這三個隱藏資訊，拿到這些東西之後就可以準備繼續動工了</p>
+<h1 id="繼續動工"><a href="#繼續動工" class="headerlink" title="繼續動工"></a>繼續動工</h1><p>首先開頭我們先引入 BeautifulSoup 和 requests<br>我使用的版本為：Python 3.7、BeautifulSoup4</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br></pre></td></tr></table></figure>
+
+<p>接著是重點部分</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> requests.Session() <span class="keyword">as</span> s:</span><br><span class="line">	page = s.get(<span class="string">&#x27;https://portal.stust.edu.tw/examseat/login.aspx&#x27;</span>)</span><br><span class="line">	soup = BeautifulSoup(page.content, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line"></span><br><span class="line">	payload_loginPage = &#123;</span><br><span class="line">		<span class="string">&#x27;txtStud_No&#x27;</span>: <span class="string">&#x27;YOUR USERNAME&#x27;</span>,</span><br><span class="line">		<span class="string">&#x27;txtPasswd&#x27;</span>: <span class="string">&#x27;YOUR PASSWORD&#x27;</span>,</span><br><span class="line">		<span class="string">&#x27;Button1&#x27;</span>: <span class="string">&#x27;登入&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	payload_loginPage[<span class="string">&quot;__VIEWSTATE&quot;</span>] = soup.select_one(<span class="string">&quot;#__VIEWSTATE&quot;</span>)[<span class="string">&quot;value&quot;</span>]</span><br><span class="line">	payload_loginPage[<span class="string">&quot;__VIEWSTATEGENERATOR&quot;</span>] = soup.select_one(<span class="string">&quot;#__VIEWSTATEGENERATOR&quot;</span>)[<span class="string">&quot;value&quot;</span>]</span><br><span class="line">	payload_loginPage[<span class="string">&quot;__EVENTVALIDATION&quot;</span>] = soup.select_one(<span class="string">&quot;#__EVENTVALIDATION&quot;</span>)[<span class="string">&quot;value&quot;</span>]</span><br><span class="line">	s.post(<span class="string">&#x27;https://portal.stust.edu.tw/examseat/login.aspx&#x27;</span>, data=payload_loginPage)</span><br></pre></td></tr></table></figure>
+<p>第 1 行：首先我們把 Requests 模組中的 session 功能叫出並簡稱為 <code>s</code><br>第 2 行：利用 HTTP Requests Methods 中的 GET 方法取得登入頁面，並存於 <code>page</code> 當中</p>
+<blockquote>
+<p>關於 HTTP Requests Methods，可以看這邊的說明 <a target="_blank" rel="noopener" href="https://www.w3schools.com/tags/ref_httpmethods.asp">英文版</a>、<a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/html_ref_httpmethods.asp">中文版</a></p>
+</blockquote>
+<p>第 3 行：使用 Beautiful Soup 對 <code>page</code> 的內容(content) 進行處理<br>第 5-9 行：表單的可視化部分，冒號前方為表單欄位名稱，後方為欄位數值</p>
+<blockquote>
+<p><code>&#39;Button1&#39;: &#39;登入&#39;</code> 就是按下送出扭的概念</p>
+</blockquote>
+<p>第 11-13 行：自動帶入這一坨隱藏資訊的數值，<br>第 14 行：最後就是把上面一坨的資料用 POST 的方式送交到表單進行驗證囉</p>
+<h1 id="成功與否"><a href="#成功與否" class="headerlink" title="成功與否"></a>成功與否</h1><p>如何知道成功與否呢？<br>最簡單的方式就是透過印出下一頁的資料來確認，所以可在最後面加上</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">page = s.get(<span class="string">&#x27;https://portal.stust.edu.tw/examseat/Default.aspx&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(page.text)</span><br></pre></td></tr></table></figure>
+
+<p>第 1 行：取得下一頁<br>第 2 行：印出頁面原始碼</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Python-3-%E7%AD%86%E8%A8%98/Python3%E7%AD%86%E8%A8%98-%E9%9B%9C%E4%BA%8B%E7%B8%BD%E5%8C%AF/" rel="prev" title="Python 3 筆記 - 雜事總匯">
+                  <i class="fa fa-chevron-left"></i> Python 3 筆記 - 雜事總匯
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E7%84%A1%E6%B3%95%E5%88%86%E9%A1%9E/%E5%A6%82%E4%BD%95%E5%9C%A8Gitbook%E4%B8%AD%E5%8A%A0%E5%85%A5GoogleAnalytics%E9%80%B2%E8%A1%8C%E6%B5%81%E9%87%8F%E8%BF%BD%E8%B9%A4/" rel="next" title="如何在 Gitbook 中加入 Google Analytics 進行流量追蹤">
+                  如何在 Gitbook 中加入 Google Analytics 進行流量追蹤 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Trevor Wu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
