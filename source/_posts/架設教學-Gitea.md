@@ -1,6 +1,6 @@
 ---
 title: 在 Raspberry Pi 2B 上架設 Gitea
-date: 2020-09-329 10:00:00
+date: 2020-09-29 10:00:00
 tags:
 categories: 
 - 架設教學
