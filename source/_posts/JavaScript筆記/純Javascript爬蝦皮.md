@@ -3,7 +3,7 @@ title: 使用純 Javascript 當爬蟲把蝦皮商品資訊抓下來
 date: 2022-03-31 10:00:00
 tags:
 categories:
-- 
+- JavaScript 筆記
 ---
 原本看到  BigGo 在高雄開 Android Developer 的缺，但投遞後說暫緩招募，問我要不要改應徵 React 工程師，答應後馬上就丟題目過來了，實作過程遇到一些很靠北的地方，所以紀錄一下。
 <!--more-->
@@ -11,7 +11,10 @@ categories:
 # 題目要求
 
 這裡就不把題目全部打出來，大概就是
+
 > 蝦皮某搜尋結果，用頁面抓爬的方式把商品連結、標題、價格等資訊抓下來，並存放到 Array 中，外加自動翻頁，限定使用原生 Javascript。
+
+遇到這題目第一直覺就是找 API，但 API 爬蟲是加分題，所以只好照題目說的一個一個抓下來。
 
 單筆資料格式須為：
 ```json
@@ -178,11 +181,12 @@ while (priviousPage != currentPage) {
     behavior: "smooth",
   });
   await new Promise((r) => setTimeout(r, 2000));
+
+  // Get goods information
   let resultItems = document.querySelectorAll(
     "#main > div > div._193wCc > div > div > div.OQtnd7 > div > div.row.shopee-search-item-result__items > div"
   );
 
-  // Get single page
   resultItems.forEach((element) => {
     let item = {};
 
@@ -206,7 +210,6 @@ while (priviousPage != currentPage) {
     item["link"] = link;
 
     goodsArray.push(item);
-    console.log(item);
   });
 
   // Go to next page
@@ -223,5 +226,5 @@ console.log(goodsArray);
 
 ## 可以改進的地方
 
-- 主要的爬蟲應該拆出來變成 function，但由於是要在瀏覽器 console 執行的我就不拆了。
-- 等 2 秒捲動在等 2 秒才爬真的很暴力，應該有偵測載入完成的方法只是我找不到
+- 其實應該拆成很多 function 會比較容易閱讀或維護，但這是要在瀏覽器 console 執行的就不拆了
+- 等 2 秒捲動在等 2 秒才爬真的很暴力，應該有偵測載入完成的方法
