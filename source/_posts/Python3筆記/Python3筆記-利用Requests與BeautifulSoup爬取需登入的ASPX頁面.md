@@ -4,7 +4,6 @@ date: 2018-10-13 10:00:00
 tags:
 categories:
 - Python 3 筆記
-- Beautiful Soup
 ---
 前幾天在爬學校的考試系統，不過用 Requests 操作登入不管怎樣就是進不去，後來發現表單送出資料中還有三欄隱藏的神秘資訊，Google 後才發現，原來 ASPX 頁面要登入可不是單單打密碼這麼簡單，這篇文章就讓我們來教學如何爬 ASPX 頁面吧。
 <!--more-->

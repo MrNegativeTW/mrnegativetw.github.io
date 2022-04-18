@@ -3,7 +3,7 @@ title: 電腦久沒用出現 Reboot and Select proper boot device
 date: 2018-08-03 10:00:00
 tags:
 categories: 
-- 不專業電腦維修經驗
+- 電腦維修經驗
 ---
 前幾天朋友剛從待了兩個月的澎湖回來，結果不知道是不是太久沒用電腦的關係，一開機就出現了`Reboot and Select proper boot device`，後來他不知道去哪一間店花了 300 檢測，店家說法是：「需要重灌喔，你的 SSD 壞了」，聽到之後嚇的馬上跑來找我，畢竟很多資料都還放在 SSD 裡面，他不希望重灌。
 <!--more-->

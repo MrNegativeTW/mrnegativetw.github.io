@@ -3,7 +3,7 @@ title: 如何在 Gitbook 中加入 Google Analytics 進行流量追蹤
 date: 2018-10-18 10:00:00
 tags:
 categories:
-- 無法分類
+- 其他
 ---
 這幾天回去寫我放在 Gitbook 上的「[Ryzen 安裝黑蘋果教學](https://mtwstudio.gitbook.io/ryzentosh/)」，一時興起想說找找看有沒有 Gitbook 提供的流量分析，結果不得了，觀看次數竟然破千了，但是流量分析看起來不是很專業，所以乾脆把 Google (Google：閃開，讓專業的來！) 分析加進來。
 

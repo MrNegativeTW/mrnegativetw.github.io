@@ -4,7 +4,6 @@ date: 2018-09-10 10:00:00
 tags:
 categories:
 - Python 3 筆記
-- WTForms
 ---
 前幾天在試著用 WTForms 做些東西，然後需要用到下拉選單，
 <!--more-->
