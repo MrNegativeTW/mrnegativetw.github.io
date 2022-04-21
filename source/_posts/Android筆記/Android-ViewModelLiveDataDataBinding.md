@@ -105,9 +105,10 @@ viewModel.name.observe(this, object : Observer<String> {
             override fun onChanged(name: String) {
                 viewModel.updateName(name)
             }
-})```
+})
+```
 
-- 在 layout.xml 用 @{} 更新 UI
+- 在 layout.xml 用 `@{}` 更新 UI
 ```xml
 <TextView 
     android:layout_width="wrap_content"
