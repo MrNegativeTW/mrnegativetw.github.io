@@ -20,15 +20,15 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="找了很多教學都只有貼程式碼，沒看到比較詳細的流程說明，所以這篇就來說明一下流程吧。">
+<meta name="description" content="找了很多教學都只有貼程式碼，但沒看到解說之類的，所以就來用我的淺見寫篇文章騙騙小孩子。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 筆記 - Data Binding 搭配 picasso 使用">
 <meta property="og:url" content="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-DataBinding%E8%88%87Picasso/index.html">
 <meta property="og:site_name" content="TxW Tech Studio">
-<meta property="og:description" content="找了很多教學都只有貼程式碼，沒看到比較詳細的流程說明，所以這篇就來說明一下流程吧。">
+<meta property="og:description" content="找了很多教學都只有貼程式碼，但沒看到解說之類的，所以就來用我的淺見寫篇文章騙騙小孩子。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-06-20T02:00:00.000Z">
-<meta property="article:modified_time" content="2022-04-21T05:30:32.301Z">
+<meta property="article:modified_time" content="2022-04-25T15:15:57.616Z">
 <meta property="article:author" content="Trevor Wu">
 <meta property="article:tag" content="txw">
 <meta name="twitter:card" content="summary">
@@ -137,7 +137,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -222,7 +222,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-04-21 13:30:32" itemprop="dateModified" datetime="2022-04-21T13:30:32+08:00">2022-04-21</time>
+      <time title="修改時間：2022-04-25 23:15:57" itemprop="dateModified" datetime="2022-04-25T23:15:57+08:00">2022-04-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -244,13 +244,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>找了很多教學都只有貼程式碼，沒看到比較詳細的流程說明，所以這篇就來說明一下流程吧。</p>
+        <p>找了很多教學都只有貼程式碼，但沒看到解說之類的，所以就來用我的淺見寫篇文章騙騙小孩子。</p>
 <span id="more"></span>
-<p>不廢話直接上 Code</p>
+
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><h2 id="CustomViewModel"><a href="#CustomViewModel" class="headerlink" title="CustomViewModel"></a>CustomViewModel</h2><ol>
 <li>依照你的狀況照常設定變數</li>
-<li>Uri 為空時將變數設定為 <code>Uri.EMPTY</code><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> photoUrl = MutableLiveData&lt;Uri&gt;()</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="keyword">if</span> (firebaseUser != <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>.photoUrl.value = firebaseUser.photoUrl</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.photoUrl.value = Uri.EMPTY</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure></li>
+<li>Uri 為空時將變數設定為 <code>Uri.EMPTY</code></li>
 </ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> photoUrl = MutableLiveData&lt;Uri&gt;()</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="keyword">if</span> (firebaseUser != <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>.photoUrl.value = firebaseUser.photoUrl</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.photoUrl.value = Uri.EMPTY</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="ImageBindingAdapter"><a href="#ImageBindingAdapter" class="headerlink" title="ImageBindingAdapter"></a>ImageBindingAdapter</h2><ol>
 <li>須為 object，非 class</li>
 <li>使用 <code>@JvmStatic</code> 及 <code>@BindingAdapter(&quot;&quot;)</code><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> ImageBindingAdapter &#123;</span><br><span class="line">    <span class="meta">@JvmStatic</span></span><br><span class="line">    <span class="meta">@BindingAdapter(<span class="meta-string">&quot;imageUrl&quot;</span>, <span class="meta-string">&quot;error&quot;</span>)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">setImageUrl</span><span class="params">(view: <span class="type">ImageView</span>, url: <span class="type">Uri</span>, notSignedIn: <span class="type">Drawable</span>)</span></span> &#123;</span><br><span class="line">        Picasso.<span class="keyword">get</span>()</span><br><span class="line">                .load(url)</span><br><span class="line">                .error(notSignedIn)</span><br><span class="line">                .into(view)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
@@ -266,7 +268,7 @@
 <li>傳入 xml 中自定義的 <code>@&#123;viewModel.photoUrl&#125;</code> 數值</li>
 <li>執行 Function 內容，也就是使用 Picasso 將傳過來的 <code>@&#123;viewModel.photoUrl&#125;</code> 載入 ImageView</li>
 </ol>
-<p>好了，希望可以幫助到也搞不懂原理的你。</p>
+<p>大 guy 是這樣。</p>
 
     </div>
 

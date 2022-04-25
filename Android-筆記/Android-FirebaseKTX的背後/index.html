@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://mqrcnq.bn.files.1drv.com/y4mMqUV2cTWrQufNzko3zgCNbbtbYfvPhEGwE6MOGgeK7g4_7x0nAstDTiBxqC5LwDxx4t5-BwQ8c2-TTaQggg0tks0zq_d1kPVu5j3_VC0Ty43RyF1FLti7T3E5viWDjCXysAFEHj-8wgjQmrW_-bJB2AIh7GifGczQKu0hXfEkjMljZ-ttM2UW6CekgB5apUybaNEsC89BfQ5CnZaAN636A">
 <meta property="og:image" content="https://nm8ftq.bn.files.1drv.com/y4myU7ySzGPqYCM6qSct5E0nKnhoYDif4uwsAGsOl7Vw1WfUxZSXHzzmjyGKeo1Reyd7n9Q1nvp4v2LeG5-LGYzSzS9qArYE3atkxhVOJ_RvJfWvLSYTTTFir8Kl03AwfnpjqkIZp4UbI2sa4_08DZxDK6sDaPwhlyTBkethc5ivE0iN23NAXJlRp18ObfAsKeh6Uy3otkVQyj32LY78PS9bg">
 <meta property="article:published_time" content="2020-09-05T02:00:00.000Z">
-<meta property="article:modified_time" content="2022-04-21T05:30:32.301Z">
+<meta property="article:modified_time" content="2022-04-25T15:15:57.616Z">
 <meta property="article:author" content="Trevor Wu">
 <meta property="article:tag" content="txw">
 <meta name="twitter:card" content="summary">
@@ -143,7 +143,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -228,7 +228,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-04-21 13:30:32" itemprop="dateModified" datetime="2022-04-21T13:30:32+08:00">2022-04-21</time>
+      <time title="修改時間：2022-04-25 23:15:57" itemprop="dateModified" datetime="2022-04-25T23:15:57+08:00">2022-04-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -252,7 +252,8 @@
     <div class="post-body" itemprop="articleBody">
         <p>今天在移動 Firebase 的 dependencies 到 *-ktx 時發現了些東西。</p>
 <span id="more"></span>
-<p>事情是這樣的，Firebase 發布 *-ktx 的 Android SDK 好一段時間了，但我開始做這專案時還是 java 的版本，直到這幾天我才想把 dependencies 全部移動到 *-ktx 上，然後移著移著就發現了 ktx 好像只是包上糖衣的 java？</p>
+
+<p>事情是這樣的，Firebase 發布 *-ktx 的 Android SDK 好一段時間了，但我開始做這專案時還是 java 的版本，直到這幾天我才想把 dependencies 全部移動到 *-ktx 上，然後移著移著就發現了 ktx 只是包上糖衣的 java，我還以為 Google 有重寫過呢。</p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>首先改 build.gradle(app) 裡面的 dependencies，基本上加上 -ktx 就完成了</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// Java</span><br><span class="line">com.google.firebase:firebase-firestore:21.6.0</span><br><span class="line"></span><br><span class="line">// Kotlin</span><br><span class="line">com.google.firebase:firebase-firestore-ktx:21.6.0</span><br></pre></td></tr></table></figure>
 
@@ -264,11 +265,14 @@
 <h1 id="拆起來各位"><a href="#拆起來各位" class="headerlink" title="拆起來各位"></a>拆起來各位</h1><p>Intellij IDEA 的編輯器有個好用的功能， <code>Ctrl</code>&#x2F;<code>Command</code> + <code>B</code> 按下去，源碼可以直接抓出來給你看，從哪邊引用的都一清二楚。</p>
 <h2 id="拆-Java"><a href="#拆-Java" class="headerlink" title="拆 Java"></a>拆 Java</h2><p>首先我們看看 Java 版中的 <code>FirebaseFirestore</code> 來自哪裡<br><img data-src="https://nmpsmw.bn.files.1drv.com/y4mg4WCDu6WF1YN9mnyjcOa6AiBih8nhtPfyLKp4aloZD-9jFokwyPVEKh3dlZqRZ6N5ba9xxLG0TV-YCORtktTMbWfjvV2G1Cmk7UPh9_4JgJ8X5FKQ2Om5Z75D4K4Go8YzP6H8RChT8RWX-GovSlf4yuSeQaiKjucz81I0NXfMDzfrKbDRgSXSczK2TKZXXH0XiXzKaXukzGpdiUgnsVArA"></p>
 <p>可以看到他連結到了 package <code>com.google.firebase.firestore</code> 中的 <code>FirebaseFirestore</code> class<br><img data-src="https://nm8ftq.bn.files.1drv.com/y4myU7ySzGPqYCM6qSct5E0nKnhoYDif4uwsAGsOl7Vw1WfUxZSXHzzmjyGKeo1Reyd7n9Q1nvp4v2LeG5-LGYzSzS9qArYE3atkxhVOJ_RvJfWvLSYTTTFir8Kl03AwfnpjqkIZp4UbI2sa4_08DZxDK6sDaPwhlyTBkethc5ivE0iN23NAXJlRp18ObfAsKeh6Uy3otkVQyj32LY78PS9bg"></p>
-<h2 id="拆-Kotlin"><a href="#拆-Kotlin" class="headerlink" title="拆 Kotlin"></a>拆 Kotlin</h2><p>接著看看 Kotlin 版中的 <code>Firebase.firestore</code> 來自哪裡<br><img data-src="https://nmq3vg.bn.files.1drv.com/y4m4D5wfGLxNubIJjwzkp5PmiimEIU6aogRbQufldE0qgdShnzONU9V5SNBN0Xbie4akFqqKYcJ3aybgdzzNbu8o8mBuT6XMcTOrVn1gVu_Nm8c5fjzsPit8_W13VTAYEqvdWYY1FVtEufgUrTDFCCB1PhaPDn2wSoxsabFZw844jnm_Rdqwujkf48cIxMvwV762uDRngH2qxWM_NOnwAk7ZA"></p>
+<h2 id="拆-Kotlin"><a href="#拆-Kotlin" class="headerlink" title="拆 Kotlin"></a>拆 Kotlin</h2><p>接著看看 Kotlin 版中的 <code>Firebase.firestore</code> 來自哪裡</p>
+<p><img data-src="https://nmq3vg.bn.files.1drv.com/y4m4D5wfGLxNubIJjwzkp5PmiimEIU6aogRbQufldE0qgdShnzONU9V5SNBN0Xbie4akFqqKYcJ3aybgdzzNbu8o8mBuT6XMcTOrVn1gVu_Nm8c5fjzsPit8_W13VTAYEqvdWYY1FVtEufgUrTDFCCB1PhaPDn2wSoxsabFZw844jnm_Rdqwujkf48cIxMvwV762uDRngH2qxWM_NOnwAk7ZA"></p>
 <p><strong>Firebase</strong><br>拆下去結果是空的，下一位</p>
 <p><strong>firestore</strong><br>這才是我們要看的，找到源碼後有沒有覺得很眼熟，就和我們在 Java 中寫的一樣<br><code>FirebaseFirestore.getInstance()</code><br><img data-src="https://mqrcnq.bn.files.1drv.com/y4mMqUV2cTWrQufNzko3zgCNbbtbYfvPhEGwE6MOGgeK7g4_7x0nAstDTiBxqC5LwDxx4t5-BwQ8c2-TTaQggg0tks0zq_d1kPVu5j3_VC0Ty43RyF1FLti7T3E5viWDjCXysAFEHj-8wgjQmrW_-bJB2AIh7GifGczQKu0hXfEkjMljZ-ttM2UW6CekgB5apUybaNEsC89BfQ5CnZaAN636A"></p>
 <p>那我們再拆拆看這裡的 <code>FirebaseFirestore</code> 來自哪裡</p>
 <p>最後還是連結到了和 Java 中一樣的 class<br><img data-src="https://nm8ftq.bn.files.1drv.com/y4myU7ySzGPqYCM6qSct5E0nKnhoYDif4uwsAGsOl7Vw1WfUxZSXHzzmjyGKeo1Reyd7n9Q1nvp4v2LeG5-LGYzSzS9qArYE3atkxhVOJ_RvJfWvLSYTTTFir8Kl03AwfnpjqkIZp4UbI2sa4_08DZxDK6sDaPwhlyTBkethc5ivE0iN23NAXJlRp18ObfAsKeh6Uy3otkVQyj32LY78PS9bg"></p>
+<hr>
+<p>糖衣 到處都是糖衣.jpg</p>
 
     </div>
 
@@ -282,8 +286,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/%E9%96%8B%E7%AE%B1/%E9%96%8B%E7%AE%B1-SamsungEvoPlus64G%E8%88%87256G%E9%96%8B%E7%AE%B1%E5%AF%A6%E6%B8%AC/" rel="prev" title="Samsung EVO Plus 64G 與 256G 開箱實測">
-                  <i class="fa fa-chevron-left"></i> Samsung EVO Plus 64G 與 256G 開箱實測
+                <a href="/%E9%96%8B%E7%AE%B1/%E9%96%8B%E7%AE%B1-SamsungEvoPlus64G%E8%88%87256G%E9%96%8B%E7%AE%B1%E5%AF%A6%E6%B8%AC/" rel="prev" title="開箱 - Samsung EVO Plus 64G 與 256G">
+                  <i class="fa fa-chevron-left"></i> 開箱 - Samsung EVO Plus 64G 與 256G
                 </a>
             </div>
             <div class="post-nav-item">
