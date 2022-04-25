@@ -5,13 +5,18 @@ tags:
 categories:
 - Android 筆記
 ---
-找了很多教學都只有貼程式碼，沒看到比較詳細的流程說明，所以這篇就來說明一下流程吧。
+
+找了很多教學都只有貼程式碼，但沒看到解說之類的，所以就來用我的淺見寫篇文章騙騙小孩子。
+
 <!--more-->
-不廢話直接上 Code
+
 # Code
+
 ## CustomViewModel
+
 1. 依照你的狀況照常設定變數
 2. Uri 為空時將變數設定為 `Uri.EMPTY`
+
 ```kotlin
 var photoUrl = MutableLiveData<Uri>()
 
@@ -59,4 +64,4 @@ object ImageBindingAdapter {
 3. 傳入 xml 中自定義的 `@{viewModel.photoUrl}` 數值
 4. 執行 Function 內容，也就是使用 Picasso 將傳過來的 `@{viewModel.photoUrl}` 載入 ImageView
 
-好了，希望可以幫助到也搞不懂原理的你。
+大 guy 是這樣。

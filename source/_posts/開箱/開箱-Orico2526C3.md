@@ -1,5 +1,5 @@
 ---
-title: ORICO 2.5 寸外接硬碟盒開箱 2139C3 與 2526C3
+title: 開箱 - ORICO 2.5 寸外接硬碟盒 2139C3 與 2526C3
 date: 2021-02-09 10:00:00
 tags:
 categories:
