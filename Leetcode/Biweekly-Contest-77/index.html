@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="這次的 Contest 對應 GMT+8 剛好是 22:30 ~ 24:00，但這天…我沒事，終於可以好好寫了。至於心態崩掉後看別人解法發現自己思路正確後又是另一回事了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode Biweekly Contest 77">
+<meta property="og:url" content="https://mrnegativetw.github.io/Leetcode/Biweekly-Contest-77/index.html">
+<meta property="og:site_name" content="TxW Tech Studio">
+<meta property="og:description" content="這次的 Contest 對應 GMT+8 剛好是 22:30 ~ 24:00，但這天…我沒事，終於可以好好寫了。至於心態崩掉後看別人解法發現自己思路正確後又是另一回事了。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-04-30T02:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-30T16:56:14.384Z">
+<meta property="article:author" content="Trevor Wu">
+<meta property="article:tag" content="txw">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://mrnegativetw.github.io/Leetcode/Biweekly-Contest-77/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/Leetcode/Biweekly-Contest-77/","path":"Leetcode/Biweekly-Contest-77/","title":"Leetcode Biweekly Contest 77"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Leetcode Biweekly Contest 77 | TxW Tech Studio</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127718395-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-127718395-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">TxW Tech Studio</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">什麼都寫 什麼都不奇怪</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2255-Count-Prefixes-of-a-Given-String"><span class="nav-number">1.</span> <span class="nav-text">2255. Count Prefixes of a Given String</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE%E8%A7%A3%E9%87%8B"><span class="nav-number">1.1.</span> <span class="nav-text">題目解釋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2256-Minimum-Average-Difference"><span class="nav-number">2.</span> <span class="nav-text">2256. Minimum Average Difference</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE%E8%A7%A3%E9%87%8B-1"><span class="nav-number">2.1.</span> <span class="nav-text">題目解釋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-1"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Trevor Wu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Trevor Wu</p>
+  <div class="site-description" itemprop="description">I'm afraid of HARDWARE. Don't scare me.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MrNegativeTW" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MrNegativeTW" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/mrtrevorwu" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;mrtrevorwu" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Leetcode/Biweekly-Contest-77/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Trevor Wu">
+      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TxW Tech Studio">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Leetcode Biweekly Contest 77
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2022-04-30 10:00:00" itemprop="dateCreated datePublished" datetime="2022-04-30T10:00:00+08:00">2022-04-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2022-05-01 00:56:14" itemprop="dateModified" datetime="2022-05-01T00:56:14+08:00">2022-05-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>這次的 Contest 對應 GMT+8 剛好是 22:30 ~ 24:00，但這天…我沒事，終於可以好好寫了。至於心態崩掉後看別人解法發現自己思路正確後又是另一回事了。</p>
+<span id="more"></span>
+
+<h1 id="2255-Count-Prefixes-of-a-Given-String"><a href="#2255-Count-Prefixes-of-a-Given-String" class="headerlink" title="2255. Count Prefixes of a Given String"></a>2255. Count Prefixes of a Given String</h1><p>Difficulty: <code>Easy</code>, <a target="_blank" rel="noopener" href="https://leetcode.com/contest/biweekly-contest-77/problems/count-prefixes-of-a-given-string/">Open in Leetcode</a></p>
+<p>You are given a string array <code>words</code> and a string <code>s</code>, where <code>words[i]</code> and <code>s</code> comprise only of lowercase English letters.</p>
+<p>Return the number of strings in <code>words</code> that are a prefix of <code>s</code>.</p>
+<p>A prefix of a string is a substring that occurs at the beginning of the string. A substring is a contiguous sequence of characters within a string.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: words = [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;ab&quot;,&quot;bc&quot;,&quot;abc&quot;], s = &quot;abc&quot;</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">The strings in words which are a prefix of s = &quot;abc&quot; are:</span><br><span class="line">&quot;a&quot;, &quot;ab&quot;, and &quot;abc&quot;.</span><br><span class="line">Thus the number of strings in words which are a prefix of s is 3.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: words = [&quot;a&quot;,&quot;a&quot;], s = &quot;aa&quot;</span><br><span class="line">Output: 2</span><br><span class="line">Explanation:</span><br><span class="line">Both of the strings are a prefix of s. </span><br><span class="line">Note that the same string can occur multiple times in words, and it should be counted each time.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>1 &lt;= words.length &lt;= 1000</code></li>
+<li><code>1 &lt;= words[i].length, s.length &lt;= 10</code></li>
+<li><code>words[i]</code> and <code>s</code> consist of lowercase English letters only.</li>
+</ul>
+<h2 id="題目解釋"><a href="#題目解釋" class="headerlink" title="題目解釋"></a>題目解釋</h2><p>把 <code>s</code> 拆開從只有一個字慢慢加上去，例如：s &#x3D; “fool”，那就會是 “f”, “fo”, “foo” 和 “fool”。接著看看 <code>words</code> 這個 list 中有幾個符合的 string。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><ol>
+<li>oh yes brute force</li>
+<li>for loop 把 <code>s</code> 從第一個字到最後一次都取出來</li>
+<li>for loop 跑過 <code>words</code> list 和取出的 <code>s</code> 比對，若一樣的話計數器加一</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countPrefixes</span>(<span class="params">self, words: <span class="type">List</span>[<span class="built_in">str</span>], s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(s)):</span><br><span class="line">            a = s[<span class="number">0</span>:i + <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> words:</span><br><span class="line">                <span class="keyword">if</span> a == j:</span><br><span class="line">                    count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> count</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="2256-Minimum-Average-Difference"><a href="#2256-Minimum-Average-Difference" class="headerlink" title="2256. Minimum Average Difference"></a>2256. Minimum Average Difference</h1><p>Difficulty: <code>Medium</code>, <a target="_blank" rel="noopener" href="https://leetcode.com/contest/biweekly-contest-77/problems/minimum-average-difference/">Open in Leetcode</a></p>
+<p>You are given a 0-indexed integer array <code>nums</code> of length <code>n</code>.</p>
+<p>The average difference of the index <code>i</code> is the absolute difference between the average of the first <code>i + 1</code> elements of <code>nums</code> and the average of the last <code>n - i - 1</code> elements. Both averages should be rounded down to the nearest integer.</p>
+<p>Return the index with the minimum average difference. If there are multiple such indices, return the smallest one.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [2,5,3,9,5,3]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">- The average difference of index 0 is: |2 / 1 - (5 + 3 + 9 + 5 + 3) / 5| = |2 / 1 - 25 / 5| = |2 - 5| = 3.</span><br><span class="line">- The average difference of index 1 is: |(2 + 5) / 2 - (3 + 9 + 5 + 3) / 4| = |7 / 2 - 20 / 4| = |3 - 5| = 2.</span><br><span class="line">- The average difference of index 2 is: |(2 + 5 + 3) / 3 - (9 + 5 + 3) / 3| = |10 / 3 - 17 / 3| = |3 - 5| = 2.</span><br><span class="line">- The average difference of index 3 is: |(2 + 5 + 3 + 9) / 4 - (5 + 3) / 2| = |19 / 4 - 8 / 2| = |4 - 4| = 0.</span><br><span class="line">- The average difference of index 4 is: |(2 + 5 + 3 + 9 + 5) / 5 - 3 / 1| = |24 / 5 - 3 / 1| = |4 - 3| = 1.</span><br><span class="line">- The average difference of index 5 is: |(2 + 5 + 3 + 9 + 5 + 3) / 6 - 0| = |27 / 6 - 0| = |4 - 0| = 4.</span><br><span class="line">The average difference of index 3 is the minimum average difference so return 3.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [0]</span><br><span class="line">Output: 0</span><br><span class="line">Explanation:</span><br><span class="line">The only index is 0 so return 0.</span><br><span class="line">The average difference of index 0 is: |0 / 1 - 0| = |0 - 0| = 0.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 105</code></li>
+<li><code>0 &lt;= nums[i] &lt;= 105</code></li>
+</ul>
+<h2 id="題目解釋-1"><a href="#題目解釋-1" class="headerlink" title="題目解釋"></a>題目解釋</h2><ol>
+<li>前面 <code>i + 1</code> 個數的平均減掉後面 <code>n - i - 1</code> 個數的平均</li>
+<li>算出來的平均取 floor 後相減，並取絕對值</li>
+<li>return 算出來絕對值最小的那個 index，aka 第幾次迴圈。</li>
+</ol>
+<h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><ol>
+<li>oh yes brute force with time limit exceeded</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minimumAverageDifference</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        min_diff_index = <span class="number">0</span></span><br><span class="line">        min_diff_value = <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line">        avg_diff = []</span><br><span class="line">        n = <span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            left_count = i + <span class="number">1</span></span><br><span class="line">            right_count = n - i - <span class="number">1</span></span><br><span class="line">            </span><br><span class="line">            avg_diff_left = <span class="built_in">sum</span>(nums[:i + <span class="number">1</span>]) / left_count</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> right_count != <span class="number">0</span>:</span><br><span class="line">                avg_diff_right = <span class="built_in">sum</span>(nums[i + <span class="number">1</span>:]) / right_count</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                avg_diff_right = <span class="number">0</span></span><br><span class="line">                </span><br><span class="line">            current_avg_diff = <span class="built_in">abs</span>(math.floor(avg_diff_left) - math.floor(avg_diff_right))</span><br><span class="line">            avg_diff.append(current_avg_diff)</span><br><span class="line">        <span class="keyword">return</span> avg_diff.index(<span class="built_in">min</span>(avg_diff))</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Brute force 吃到 Time Limit Exceeded 不意外，仔細想了想發現在每次 for loop 時都會重新把數字加過一次，但這步驟其實很不必要，我們可以將「上次的數」加上&#x2F;減掉「下一個 <code>nums[i]</code>」，這樣可以省下很多重複運算的時間。</li>
+</ol>
+<p>But，人生就是這個 but，我寫完暴力後吃 TLE，然後又去看第三題，但又放不下第二題，想完上述說的優化後，心態有點崩掉直接躺下去滑手機，直到結束看 Discuss 才知道，「幹，原來我的思路是正確的，只是沒有實作」。乾。</p>
+<p>最終 Accepted 的 code 長這樣：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minimumAverageDifference</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        min_diff_index = <span class="number">0</span></span><br><span class="line">        min_diff_value = <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        sum_start = <span class="number">0</span></span><br><span class="line">        sum_end = <span class="built_in">sum</span>(nums)</span><br><span class="line">        n = <span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            left_count = i + <span class="number">1</span></span><br><span class="line">            right_count = n - i - <span class="number">1</span></span><br><span class="line">            </span><br><span class="line">            sum_start += nums[i]</span><br><span class="line">            sum_end -= nums[i]</span><br><span class="line">            </span><br><span class="line">            avg_diff_left = sum_start / left_count</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> right_count != <span class="number">0</span>:</span><br><span class="line">                avg_diff_right = sum_end / right_count</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                avg_diff_right = <span class="number">0</span></span><br><span class="line">                </span><br><span class="line">            current_avg_diff = <span class="built_in">abs</span>(math.floor(avg_diff_left) - math.floor(avg_diff_right))</span><br><span class="line">            <span class="keyword">if</span> current_avg_diff &lt; min_diff_value:</span><br><span class="line">                min_diff_index = i</span><br><span class="line">                min_diff_value = current_avg_diff</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> min_diff_index</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Leetcode/Weekly-Contest-290/" rel="prev" title="Leetcode Weekly Contest 290">
+                  <i class="fa fa-chevron-left"></i> Leetcode Weekly Contest 290
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Trevor Wu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
