@@ -53,9 +53,7 @@ class Solution:
 
 # 2250. Count Number of Rectangles Containing Each Point
 
-Difficulty: `Medium`
-
-詳細題目請前往 [Leetcode](https://leetcode.com/contest/weekly-contest-290/problems/count-number-of-rectangles-containing-each-point/) 上觀看
+Difficulty: `Medium`, [Open in Leetcode](https://leetcode.com/contest/weekly-contest-290/problems/count-number-of-rectangles-containing-each-point/)
 
 ## 題目解釋
 
