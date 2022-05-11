@@ -41,7 +41,7 @@ Explanation: We only have to add one minute to current, so the minimum number of
 - `current` and `correct` are in the format `"HH:MM"`
 - `current <= correct`
 
-## 我的解法
+## Solution
 
 1. 既然是要步驟，先初始一個 counter `operations`
 2. 把字串拆成數字的 list 方便操作
@@ -114,7 +114,7 @@ Thus, answer[0] = [1,2,5,6] and answer[1] = [].
 - `winneri != loseri`
 - All `matches[i]` are unique.
 
-## 我的解法
+## Solution
 
 1. 把每一組跑過一次，並將 winner 和 loser 的編號與出現次數存在各自的 dict 中
 2. 將 `winner_dict` 跑過一次，只要 key 沒在 `loser_dict` 中出現，代表沒輸過，並存到 `no_lost`

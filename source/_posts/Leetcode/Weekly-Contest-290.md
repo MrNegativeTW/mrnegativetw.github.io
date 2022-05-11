@@ -38,7 +38,7 @@ There does not exist any integer present both in nums[0] and nums[1], so we retu
 
 求出所有 nums[i] 的交集，沒錯，就是 Easy。
 
-## 我的解法
+## Solution
 
 第一直覺就是用交集，但還真的沒遇過兩個 `list` 以上的交集，所以爬了一下文發現可以用 `map` 將 `nums[i]` 一口氣轉為 set，接著使用 `*` 俗稱 Unpacking Operators，將所有 `set` 放出來進行交集比對，最後排序一下就可以回傳了。
 
@@ -60,7 +60,7 @@ Difficulty: `Medium`, [Open in Leetcode](https://leetcode.com/contest/weekly-con
 給你很多很多長方形 `rectangles`，再給你很多 `points`，找出每一個 point 在有被包含在多少個 rectangles 中。
 換句話說，算出每一個 `point` 有小於等於多少個 `rectangle`。
 
-## 我的解法
+## Solution
 
 全部跑過一遍的暴力解這次碰壁了，直接吃 Time Limit Exceeded。
 

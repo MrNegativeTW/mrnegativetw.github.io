@@ -36,7 +36,7 @@ Explanation: 1 and -1 are both the closest numbers to 0, so 1 being larger is re
 - `1 <= n <= 1000`
 - `-105 <= nums[i] <= 105`
 
-## 我的解法
+## Solution
 
 1. 正負都要找最靠近 0 的，所以要一個 `正無限大` 與 `負無限大`
 2. 接著把 list 走過一遍：
