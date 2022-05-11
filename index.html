@@ -134,7 +134,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -187,6 +187,94 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-%E7%94%A8-LruCache-%E8%87%AA%E5%B9%B9%E5%9C%96%E7%89%87%E5%BF%AB%E5%8F%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Trevor Wu">
+      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TxW Tech Studio">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Android-%E7%AD%86%E8%A8%98/Android-%E7%94%A8-LruCache-%E8%87%AA%E5%B9%B9%E5%9C%96%E7%89%87%E5%BF%AB%E5%8F%96/" class="post-title-link" itemprop="url">Android 筆記 - 用 LruCache 自幹圖片快取</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2022-05-10 10:00:00" itemprop="dateCreated datePublished" datetime="2022-05-10T10:00:00+08:00">2022-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2022-05-11 23:34:55" itemprop="dateModified" datetime="2022-05-11T23:34:55+08:00">2022-05-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android-%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">Android 筆記</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>前陣子投了某公司的 Junior Android Developer，過了莫約一週原以為沒消息了，沒想到竟然發了作業給我，其中一項要求是要將讀取過的圖片快取，且不能使用 Picasso 或 Glide 等 Lib。</p>
+<p>自幹圖片快取對我來說最有挑戰，畢竟以前都無腦用 Glide，所以這篇文章就紀錄一下如何用 LruCache 重新造輪子。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Android-%E7%AD%86%E8%A8%98/Android-%E7%94%A8-LruCache-%E8%87%AA%E5%B9%B9%E5%9C%96%E7%89%87%E5%BF%AB%E5%8F%96/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Leetcode/Weekly-Contest-291/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -210,9 +298,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2022-05-01 10:00:00 / 修改時間：12:09:13" itemprop="dateCreated datePublished" datetime="2022-05-01T10:00:00+08:00">2022-05-01</time>
+      <time title="創建時間：2022-05-01 10:00:00" itemprop="dateCreated datePublished" datetime="2022-05-01T10:00:00+08:00">2022-05-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2022-05-11 23:34:55" itemprop="dateModified" datetime="2022-05-11T23:34:55+08:00">2022-05-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -299,7 +393,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-05-01 12:09:13" itemprop="dateModified" datetime="2022-05-01T12:09:13+08:00">2022-05-01</time>
+      <time title="修改時間：2022-05-11 23:34:55" itemprop="dateModified" datetime="2022-05-11T23:34:55+08:00">2022-05-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -386,7 +480,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-05-01 12:09:13" itemprop="dateModified" datetime="2022-05-01T12:09:13+08:00">2022-05-01</time>
+      <time title="修改時間：2022-05-11 23:34:55" itemprop="dateModified" datetime="2022-05-11T23:34:55+08:00">2022-05-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -481,7 +575,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-05-01 12:09:13" itemprop="dateModified" datetime="2022-05-01T12:09:13+08:00">2022-05-01</time>
+      <time title="修改時間：2022-05-11 23:34:55" itemprop="dateModified" datetime="2022-05-11T23:34:55+08:00">2022-05-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -568,7 +662,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-05-01 12:09:13" itemprop="dateModified" datetime="2022-05-01T12:09:13+08:00">2022-05-01</time>
+      <time title="修改時間：2022-05-11 23:34:55" itemprop="dateModified" datetime="2022-05-11T23:34:55+08:00">2022-05-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -655,7 +749,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-05-01 12:09:13" itemprop="dateModified" datetime="2022-05-01T12:09:13+08:00">2022-05-01</time>
+      <time title="修改時間：2022-05-11 23:34:55" itemprop="dateModified" datetime="2022-05-11T23:34:55+08:00">2022-05-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -742,7 +836,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-05-01 12:09:13" itemprop="dateModified" datetime="2022-05-01T12:09:13+08:00">2022-05-01</time>
+      <time title="修改時間：2022-05-11 23:34:55" itemprop="dateModified" datetime="2022-05-11T23:34:55+08:00">2022-05-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -829,7 +923,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-05-01 12:09:13" itemprop="dateModified" datetime="2022-05-01T12:09:13+08:00">2022-05-01</time>
+      <time title="修改時間：2022-05-11 23:34:55" itemprop="dateModified" datetime="2022-05-11T23:34:55+08:00">2022-05-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -916,7 +1010,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-05-01 12:09:13" itemprop="dateModified" datetime="2022-05-01T12:09:13+08:00">2022-05-01</time>
+      <time title="修改時間：2022-05-11 23:34:55" itemprop="dateModified" datetime="2022-05-11T23:34:55+08:00">2022-05-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -942,94 +1036,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/%E9%96%8B%E7%AE%B1/%E9%96%8B%E7%AE%B1-QP60%E8%A1%8C%E5%8B%95%E9%9B%BB%E6%BA%90/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Leetcode/CPE-2021-03-23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Trevor Wu">
-      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TxW Tech Studio">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Leetcode/CPE-2021-03-23/" class="post-title-link" itemprop="url">CPE 2021/03/23</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2021-03-23 10:00:00" itemprop="dateCreated datePublished" datetime="2021-03-23T10:00:00+08:00">2021-03-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-05-01 12:09:13" itemprop="dateModified" datetime="2022-05-01T12:09:13+08:00">2022-05-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>這篇文章算起來也遲一年才寫，當時是為了畢業門檻才去考，第一次掛蛋，第二次才對兩題，原想說對一題畢業門檻就達標了，沒想到對了兩題，直接讓我的 TQC+ Python 變成白花錢的證照，幹。</p>
-<p>阿至於為什麼歸類在 Leetcode 這分類，純粹是不想多開一個分類。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Leetcode/CPE-2021-03-23/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
