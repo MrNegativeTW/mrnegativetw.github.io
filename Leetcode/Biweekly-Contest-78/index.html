@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="這次兩題大概花 25 分鐘，而且都是第一次 submit 就吃 Accept，WTF 題外話，今天換到了 Windows 上做題目，各種鍵盤快捷鍵都超不順手，以後乖乖用 Mac 做題目比較實在。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode Biweekly Contest 78">
+<meta property="og:url" content="https://mrnegativetw.github.io/Leetcode/Biweekly-Contest-78/index.html">
+<meta property="og:site_name" content="TxW Tech Studio">
+<meta property="og:description" content="這次兩題大概花 25 分鐘，而且都是第一次 submit 就吃 Accept，WTF 題外話，今天換到了 Windows 上做題目，各種鍵盤快捷鍵都超不順手，以後乖乖用 Mac 做題目比較實在。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-05-14T02:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-14T16:43:28.058Z">
+<meta property="article:author" content="Trevor Wu">
+<meta property="article:tag" content="txw">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://mrnegativetw.github.io/Leetcode/Biweekly-Contest-78/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/Leetcode/Biweekly-Contest-78/","path":"Leetcode/Biweekly-Contest-78/","title":"Leetcode Biweekly Contest 78"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Leetcode Biweekly Contest 78 | TxW Tech Studio</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127718395-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-127718395-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">TxW Tech Studio</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">什麼都寫 什麼都不奇怪</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2269-Find-the-K-Beauty-of-a-Number"><span class="nav-number">1.</span> <span class="nav-text">2269. Find the K-Beauty of a Number</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE%E8%A7%A3%E9%87%8B"><span class="nav-number">1.1.</span> <span class="nav-text">題目解釋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2270-Number-of-Ways-to-Split-Array"><span class="nav-number">2.</span> <span class="nav-text">2270. Number of Ways to Split Array</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE%E8%A7%A3%E9%87%8B-1"><span class="nav-number">2.1.</span> <span class="nav-text">題目解釋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-1"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Trevor Wu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Trevor Wu</p>
+  <div class="site-description" itemprop="description">I'm afraid of HARDWARE. Don't scare me.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MrNegativeTW" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MrNegativeTW" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/mrtrevorwu" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;mrtrevorwu" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Leetcode/Biweekly-Contest-78/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Trevor Wu">
+      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TxW Tech Studio">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Leetcode Biweekly Contest 78
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2022-05-14 10:00:00" itemprop="dateCreated datePublished" datetime="2022-05-14T10:00:00+08:00">2022-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2022-05-15 00:43:28" itemprop="dateModified" datetime="2022-05-15T00:43:28+08:00">2022-05-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>這次兩題大概花 25 分鐘，而且都是第一次 submit 就吃 Accept，WTF</p>
+<p>題外話，今天換到了 Windows 上做題目，各種鍵盤快捷鍵都超不順手，以後乖乖用 Mac 做題目比較實在。</p>
+<span id="more"></span>
+
+<h1 id="2269-Find-the-K-Beauty-of-a-Number"><a href="#2269-Find-the-K-Beauty-of-a-Number" class="headerlink" title="2269. Find the K-Beauty of a Number"></a>2269. Find the K-Beauty of a Number</h1><p>Difficulty: <code>Easy</code>, <a target="_blank" rel="noopener" href="https://leetcode.com/contest/biweekly-contest-78/problems/find-the-k-beauty-of-a-number/">Open in Leetcode</a></p>
+<p>The <strong>k-beauty</strong> of an integer <code>num</code> is defined as the number of <strong>substrings</strong> of <code>num</code> when it is read as a string that meet the following conditions:</p>
+<ul>
+<li>It has a length of <code>k</code>.</li>
+<li>It is a divisor of <code>num</code>.</li>
+</ul>
+<p>Given integers <code>num</code> and <code>k</code>, return the k-beauty of <code>num</code>.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: num = 240, k = 2</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: The following are the substrings of num of length k:</span><br><span class="line">- &quot;24&quot; from &quot;240&quot;: 24 is a divisor of 240.</span><br><span class="line">- &quot;40&quot; from &quot;240&quot;: 40 is a divisor of 240.</span><br><span class="line">Therefore, the k-beauty is 2.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input: num = 430043, k = 2</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: The following are the substrings of num of length k:</span><br><span class="line">- &quot;43&quot; from &quot;430043&quot;: 43 is a divisor of 430043.</span><br><span class="line">- &quot;30&quot; from &quot;430043&quot;: 30 is not a divisor of 430043.</span><br><span class="line">- &quot;00&quot; from &quot;430043&quot;: 0 is not a divisor of 430043.</span><br><span class="line">- &quot;04&quot; from &quot;430043&quot;: 4 is not a divisor of 430043.</span><br><span class="line">- &quot;43&quot; from &quot;430043&quot;: 43 is a divisor of 430043.</span><br><span class="line">Therefore, the k-beauty is 2.</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>1 &lt;= num &lt;= 109</code></li>
+<li><code>1 &lt;= k &lt;= num.length</code> (taking <code>num</code> as a string)</li>
+</ul>
+<h2 id="題目解釋"><a href="#題目解釋" class="headerlink" title="題目解釋"></a>題目解釋</h2><p>從 <code>num</code> 的第一位開始，每次往後拿 <code>k</code> 個數，若拿到的數當 <strong>除數</strong> 時可以把 <code>num</code> 除盡就是 k-beauty。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>oh yes brute force</p>
+<ol>
+<li>每次拿 k 個數，依序往後拿</li>
+<li>拿出來的數轉 int 後去做比較，符合條件 count ++</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">divisorSubstrings</span>(<span class="params">self, num: <span class="built_in">int</span>, k: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        n = <span class="built_in">len</span>(<span class="built_in">str</span>(num))</span><br><span class="line">        num_str = <span class="built_in">str</span>(num)</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        start = <span class="number">0</span></span><br><span class="line">        end = k</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> end &lt;= n:</span><br><span class="line">            k_beauty = num_str[start:end]</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">int</span>(k_beauty) != <span class="number">0</span> <span class="keyword">and</span> num % <span class="built_in">int</span>(k_beauty) == <span class="number">0</span>:</span><br><span class="line">                count = count + <span class="number">1</span></span><br><span class="line">            start = start + <span class="number">1</span></span><br><span class="line">            end = end + <span class="number">1</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">return</span> count</span><br></pre></td></tr></table></figure>
+
+<h1 id="2270-Number-of-Ways-to-Split-Array"><a href="#2270-Number-of-Ways-to-Split-Array" class="headerlink" title="2270. Number of Ways to Split Array"></a>2270. Number of Ways to Split Array</h1><p>Difficulty: <code>Medium</code>, <a target="_blank" rel="noopener" href="https://leetcode.com/contest/biweekly-contest-78/problems/number-of-ways-to-split-array/">Open in Leetcode</a></p>
+<p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> of length <code>n</code>.</p>
+<p><code>nums</code> contains a <strong>valid split</strong> at index <code>i</code> if the following are true:</p>
+<ul>
+<li>The sum of the first <code>i + 1</code> elements is greater than or equal to the sum of the last <code>n - i - 1</code> elements.</li>
+<li>There is <strong>at least one element</strong> to the right of <code>i</code>. That is, <code>0 &lt;= i &lt; n - 1</code>.<br>Return the number of <strong>valid splits</strong> in <code>nums</code>.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [10,4,-8,7]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: </span><br><span class="line">There are three ways of splitting nums into two non-empty parts:</span><br><span class="line">- Split nums at index 0. Then, the first part is [10], and its sum is 10. The second part is [4,-8,7], and its sum is 3. Since 10 &gt;= 3, i = 0 is a valid split.</span><br><span class="line">- Split nums at index 1. Then, the first part is [10,4], and its sum is 14. The second part is [-8,7], and its sum is -1. Since 14 &gt;= -1, i = 1 is a valid split.</span><br><span class="line">- Split nums at index 2. Then, the first part is [10,4,-8], and its sum is 6. The second part is [7], and its sum is 7. Since 6 &lt; 7, i = 2 is not a valid split.</span><br><span class="line">Thus, the number of valid splits in nums is 2.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [2,3,1,0]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: </span><br><span class="line">There are two valid splits in nums:</span><br><span class="line">- Split nums at index 1. Then, the first part is [2,3], and its sum is 5. The second part is [1,0], and its sum is 1. Since 5 &gt;= 1, i = 1 is a valid split. </span><br><span class="line">- Split nums at index 2. Then, the first part is [2,3,1], and its sum is 6. The second part is [0], and its sum is 0. Since 6 &gt;= 0, i = 2 is a valid split.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>2 &lt;= nums.length &lt;= 10^5</code></li>
+<li><code>-10^5 &lt;= nums[i] &lt;= 10^5</code></li>
+</ul>
+<h2 id="題目解釋-1"><a href="#題目解釋-1" class="headerlink" title="題目解釋"></a>題目解釋</h2><p>看到題目覺得有點眼熟嗎？沒錯，上周有一題也很類似：<br><a target="_blank" rel="noopener" href="https://leetcode.com/contest/biweekly-contest-77/problems/minimum-average-difference/">2256. Minimum Average Difference</a></p>
+<ol>
+<li>前面 <code>i + 1</code> 的總和 與 後面 <code>n - i - 1</code> 的總和</li>
+<li>如果前面的總和大於後面的，valid splits ++</li>
+</ol>
+<h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><p>有了上次吃 Lime Limit Exceeded 的經驗這次就不會傻傻的每次 for loop 都 sum 一次。</p>
+<ol>
+<li>首先把兩邊的總和用工人智慧定義出來</li>
+<li>接著每次 for loop 對雙邊總和做加法與減法，仔細看看題目邊界會發現數字大小達到 <code>正負10^5</code>，list 長度也達到 <code>10^5</code>，若使用 <code>sum()</code> 一定吃 LTE</li>
+<li>最後比較，只要左邊大就 count++</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">waysToSplitArray</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        n = <span class="built_in">len</span>(nums)</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = <span class="built_in">sum</span>(nums)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n - <span class="number">1</span>):</span><br><span class="line">            i = nums[j]</span><br><span class="line">            left = left + i</span><br><span class="line">            right = right - i</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> left &gt;= right:</span><br><span class="line">                count = count + <span class="number">1</span></span><br><span class="line">                        </span><br><span class="line">        <span class="keyword">return</span> count</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Android-%E7%AD%86%E8%A8%98/Android-%E7%94%A8-LruCache-%E8%87%AA%E5%B9%B9%E5%9C%96%E7%89%87%E5%BF%AB%E5%8F%96/" rel="prev" title="Android 筆記 - 用 LruCache 自幹圖片快取">
+                  <i class="fa fa-chevron-left"></i> Android 筆記 - 用 LruCache 自幹圖片快取
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Trevor Wu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
