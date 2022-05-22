@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="今天是第一次在內湖租屋處寫 Leetcode Contest，其他就沒啥特別的，就是覺得兩題 medium 著重在不同 list 排序同時保持相對位置。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode Weekly Contest 294">
+<meta property="og:url" content="https://mrnegativetw.github.io/Leetcode/Weekly-Contest-294/index.html">
+<meta property="og:site_name" content="TxW Tech Studio">
+<meta property="og:description" content="今天是第一次在內湖租屋處寫 Leetcode Contest，其他就沒啥特別的，就是覺得兩題 medium 著重在不同 list 排序同時保持相對位置。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-05-22T02:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-22T10:46:03.920Z">
+<meta property="article:author" content="Trevor Wu">
+<meta property="article:tag" content="txw">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://mrnegativetw.github.io/Leetcode/Weekly-Contest-294/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/Leetcode/Weekly-Contest-294/","path":"Leetcode/Weekly-Contest-294/","title":"Leetcode Weekly Contest 294"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Leetcode Weekly Contest 294 | TxW Tech Studio</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127718395-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-127718395-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">TxW Tech Studio</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">什麼都寫 什麼都不奇怪</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2278-Percentage-of-Letter-in-String"><span class="nav-number">1.</span> <span class="nav-text">2278. Percentage of Letter in String</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE%E8%A7%A3%E9%87%8B"><span class="nav-number">1.1.</span> <span class="nav-text">題目解釋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2279-Maximum-Bags-With-Full-Capacity-of-Rocks"><span class="nav-number">2.</span> <span class="nav-text">2279. Maximum Bags With Full Capacity of Rocks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE%E8%A7%A3%E9%87%8B-1"><span class="nav-number">2.1.</span> <span class="nav-text">題目解釋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-1"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Trevor Wu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Trevor Wu</p>
+  <div class="site-description" itemprop="description">I'm afraid of HARDWARE. Don't scare me.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MrNegativeTW" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MrNegativeTW" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/mrtrevorwu" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;mrtrevorwu" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Leetcode/Weekly-Contest-294/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Trevor Wu">
+      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TxW Tech Studio">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Leetcode Weekly Contest 294
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2022-05-22 10:00:00 / 修改時間：18:46:03" itemprop="dateCreated datePublished" datetime="2022-05-22T10:00:00+08:00">2022-05-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>今天是第一次在內湖租屋處寫 Leetcode Contest，其他就沒啥特別的，就是覺得兩題 medium 著重在不同 list 排序同時保持相對位置。</p>
+<span id="more"></span>
+
+<h1 id="2278-Percentage-of-Letter-in-String"><a href="#2278-Percentage-of-Letter-in-String" class="headerlink" title="2278. Percentage of Letter in String"></a>2278. Percentage of Letter in String</h1><p>Difficulty: <code>Easy</code>, <a target="_blank" rel="noopener" href="https://leetcode.com/contest/weekly-contest-294/problems/percentage-of-letter-in-string/">Open in Leetcode</a></p>
+<p>Given a string <code>s</code> and a character <code>letter</code>, return the <strong>percentage</strong> of characters in <code>s</code> that equal <code>letter</code> rounded down to the nearest whole percent.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;foobar&quot;, letter = &quot;o&quot;</span><br><span class="line">Output: 33</span><br><span class="line">Explanation:</span><br><span class="line">The percentage of characters in s that equal the letter &#x27;o&#x27; is 2 / 6 * 100% = 33% when rounded down, so we return 33.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;jjjj&quot;, letter = &quot;k&quot;</span><br><span class="line">Output: 0</span><br><span class="line">Explanation:</span><br><span class="line">The percentage of characters in s that equal the letter &#x27;k&#x27; is 0%, so we return 0.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>1 &lt;= s.length &lt;= 100</code></li>
+<li><code>s</code> consists of lowercase English letters.</li>
+<li><code>letter</code> is a lowercase English letter.</li>
+</ul>
+<h2 id="題目解釋"><a href="#題目解釋" class="headerlink" title="題目解釋"></a>題目解釋</h2><p>特定字元在字串出現次數的比例。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>直接對 string 進行 count，取得出現次數，接著直接算比例。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">percentageLetter</span>(<span class="params">self, s: <span class="built_in">str</span>, letter: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        n = <span class="built_in">len</span>(s)</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">        count = s.count(letter)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> count == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> floor(<span class="number">100</span> * (<span class="built_in">float</span>(count) / <span class="built_in">float</span>(n)))</span><br></pre></td></tr></table></figure>
+
+<h1 id="2279-Maximum-Bags-With-Full-Capacity-of-Rocks"><a href="#2279-Maximum-Bags-With-Full-Capacity-of-Rocks" class="headerlink" title="2279. Maximum Bags With Full Capacity of Rocks"></a>2279. Maximum Bags With Full Capacity of Rocks</h1><p>Difficulty: <code>Medium</code>, <a target="_blank" rel="noopener" href="https://leetcode.com/contest/weekly-contest-294/problems/maximum-bags-with-full-capacity-of-rocks/">Open in Leetcode</a></p>
+<p>You have <code>n</code> bags numbered from <code>0</code> to <code>n - 1</code>. You are given two 0-indexed integer arrays <code>capacity</code> and <code>rocks</code>. The ith bag can hold a maximum of <code>capacity[i]</code> rocks and currently contains <code>rocks[i]</code> rocks. You are also given an integer <code>additionalRocks</code>, the number of additional rocks you can place in any of the bags.</p>
+<p>Return the maximum number of bags that could have full capacity after placing the additional rocks in some bags.</p>
+<ul>
+<li><code>n == capacity.length == rocks.length</code></li>
+<li><code>1 &lt;= n &lt;= 5 * 104</code></li>
+<li><code>1 &lt;= capacity[i] &lt;= 109</code></li>
+<li><code>0 &lt;= rocks[i] &lt;= capacity[i]</code></li>
+<li><code>1 &lt;= additionalRocks &lt;= 109</code></li>
+</ul>
+<h2 id="題目解釋-1"><a href="#題目解釋-1" class="headerlink" title="題目解釋"></a>題目解釋</h2><h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><p>這次寫完忘記想 edge case 直接吃 Wrong Answer，仔細看了才發現，「快滿的袋子也有可能在 list 中間」，因此不能從頭找起。</p>
+<ol>
+<li>首先把袋子的空容量算出來，並用新 list 紀錄起來</li>
+<li>用新 list 當 key 把全部的 list 排序，讓最少空間袋子的排在最前，最多空間的袋子排在最後。</li>
+<li>進入比較環節，若袋子空容量為 0，表示為滿袋， <code>full_bag</code> 加 1；<br> 若袋子容量為 1 或以上，表示仍未滿袋，就將這個容量記錄起來，並與「多餘的 rock 總數比較」，<br> 若累計的空容量小於等於「多餘的石頭總數」，表示此袋子裝滿但石頭還有剩，<code>full_bag</code> 加 1，若累計的空容量大於「多餘的石頭總數」，表示此袋子裝完了石頭，但袋子還有容量。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maximumBags</span>(<span class="params">self, capacity: <span class="type">List</span>[<span class="built_in">int</span>], rocks: <span class="type">List</span>[<span class="built_in">int</span>], additionalRocks: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        n = <span class="built_in">len</span>(capacity)</span><br><span class="line">        full_bag = <span class="number">0</span></span><br><span class="line">        empty_count = <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># Calculate difference between capacity and rocks</span></span><br><span class="line">        diff_list = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            diff_list.append(capacity[i] - rocks[i])</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># Sort three list at once, use diff_list as key.</span></span><br><span class="line">        diff_list, capacity, rocks = <span class="built_in">zip</span>(*<span class="built_in">sorted</span>(<span class="built_in">zip</span>(diff_list, capacity, rocks)))</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">if</span> diff_list[i] == <span class="number">0</span>:</span><br><span class="line">                full_bag = full_bag + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                empty_count = empty_count + diff_list[i]</span><br><span class="line">                <span class="keyword">if</span> empty_count &lt;= additionalRocks:</span><br><span class="line">                    full_bag  = full_bag + <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> full_bag</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Edge case:</span><br><span class="line">[91,54,63,99,24,45,78]</span><br><span class="line">[35,32,45,98,6,1,25]</span><br><span class="line">17</span><br><span class="line">Expected: 1, output: 0</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Leetcode/Biweekly-Contest-78/" rel="prev" title="Leetcode Biweekly Contest 78">
+                  <i class="fa fa-chevron-left"></i> Leetcode Biweekly Contest 78
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Trevor Wu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
