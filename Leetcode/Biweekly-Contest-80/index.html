@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="這禮拜變成 Easy Medium Hard Hard，難度直接倍增，Easy 當然也是暴力解的啦，至於第二題 Medium 就吃了 Time Limit Exceeded 和 Memory Limit Exceeded。 QAQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode Biweekly Contest 80">
+<meta property="og:url" content="https://mrnegativetw.github.io/Leetcode/Biweekly-Contest-80/index.html">
+<meta property="og:site_name" content="TxW Tech Studio">
+<meta property="og:description" content="這禮拜變成 Easy Medium Hard Hard，難度直接倍增，Easy 當然也是暴力解的啦，至於第二題 Medium 就吃了 Time Limit Exceeded 和 Memory Limit Exceeded。 QAQ">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-06-11T02:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-12T05:48:43.749Z">
+<meta property="article:author" content="Trevor Wu">
+<meta property="article:tag" content="txw">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://mrnegativetw.github.io/Leetcode/Biweekly-Contest-80/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/Leetcode/Biweekly-Contest-80/","path":"Leetcode/Biweekly-Contest-80/","title":"Leetcode Biweekly Contest 80"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Leetcode Biweekly Contest 80 | TxW Tech Studio</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127718395-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-127718395-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">TxW Tech Studio</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">什麼都寫 什麼都不奇怪</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2299-Strong-Password-Checker-II"><span class="nav-number">1.</span> <span class="nav-text">2299. Strong Password Checker II</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE%E8%A7%A3%E9%87%8B"><span class="nav-number">1.1.</span> <span class="nav-text">題目解釋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2300-Successful-Pairs-of-Spells-and-Potions"><span class="nav-number">2.</span> <span class="nav-text">2300. Successful Pairs of Spells and Potions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE%E8%A7%A3%E9%87%8B-1"><span class="nav-number">2.1.</span> <span class="nav-text">題目解釋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-1"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Trevor Wu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Trevor Wu</p>
+  <div class="site-description" itemprop="description">I'm afraid of HARDWARE. Don't scare me.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MrNegativeTW" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MrNegativeTW" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/mrtrevorwu" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;mrtrevorwu" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Leetcode/Biweekly-Contest-80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Trevor Wu">
+      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TxW Tech Studio">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Leetcode Biweekly Contest 80
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2022-06-11 10:00:00" itemprop="dateCreated datePublished" datetime="2022-06-11T10:00:00+08:00">2022-06-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2022-06-12 13:48:43" itemprop="dateModified" datetime="2022-06-12T13:48:43+08:00">2022-06-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>這禮拜變成 Easy Medium Hard Hard，難度直接倍增，Easy 當然也是暴力解的啦，至於第二題 Medium 就吃了 Time Limit Exceeded 和 Memory Limit Exceeded。</p>
+<p>QAQ</p>
+<span id="more"></span>
+
+<h1 id="2299-Strong-Password-Checker-II"><a href="#2299-Strong-Password-Checker-II" class="headerlink" title="2299. Strong Password Checker II"></a>2299. Strong Password Checker II</h1><p>Difficulty: <code>Easy</code>, <a target="_blank" rel="noopener" href="https://leetcode.com/contest/biweekly-contest-80/problems/strong-password-checker-ii/">Open in Leetcode</a></p>
+<p>A password is said to be <strong>strong</strong> if it satisfies all the following criteria:</p>
+<ul>
+<li>It has at least <code>8</code> characters.</li>
+<li>It contains at least <strong>one lowercase</strong> letter.</li>
+<li>It contains at least <strong>one uppercase</strong> letter.</li>
+<li>It contains at least <strong>one digit</strong>.</li>
+<li>It contains at least <strong>one special character</strong>. The special characters are the characters in the following string: <code>&quot;!@#$%^&amp;*()-+&quot;</code>.</li>
+<li>It does <strong>not</strong> contain <code>2</code> of the same character in adjacent positions (i.e., <code>&quot;aab&quot;</code> violates this condition, but <code>&quot;aba&quot;</code> does not).</li>
+</ul>
+<p>Given a string <code>password</code>, return <code>true</code> if it is a <strong>strong</strong> password. Otherwise, return <code>false</code>.</p>
+<h2 id="題目解釋"><a href="#題目解釋" class="headerlink" title="題目解釋"></a>題目解釋</h2><p>就是跑過一次 password 的每個字，確認這個 string 中的字有達到需求。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>基本上就是很醜的暴力解，用各種 <code>True</code> 和 <code>False</code>  組成的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">strongPasswordCheckerII</span>(<span class="params">self, password: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span></span><br><span class="line">    upper = <span class="literal">False</span></span><br><span class="line">    lower = <span class="literal">False</span></span><br><span class="line">    digits = <span class="literal">False</span></span><br><span class="line">    special = <span class="literal">False</span></span><br><span class="line">    special_list = [i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">&quot;!@#$%^&amp;*()-+&quot;</span>]</span><br><span class="line">    </span><br><span class="line">    n = <span class="built_in">len</span>(password)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">8</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    last_char = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> password:</span><br><span class="line">        <span class="keyword">if</span> i.isnumeric():</span><br><span class="line">            digits = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">if</span> i.isupper():</span><br><span class="line">            upper = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">if</span> i.islower():</span><br><span class="line">            lower = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">if</span> i <span class="keyword">in</span> special_list:</span><br><span class="line">            special = <span class="literal">True</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span> i == last_char:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">else</span>: </span><br><span class="line">            last_char = i</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> upper == <span class="literal">True</span> <span class="keyword">and</span> lower == <span class="literal">True</span> <span class="keyword">and</span> digits == <span class="literal">True</span> <span class="keyword">and</span> special == <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>讓我們來觀摩一下其他大神的解法：<br><a target="_blank" rel="noopener" href="https://leetcode.com/problems/strong-password-checker-ii/discuss/2138969/JavaPython-3-Use-HashSet-to-count-conditions-w-brief-explanation-and-analysis">[Java&#x2F;Python 3] Use HashSet to count conditions, w&#x2F; brief explanation and analysis</a></p>
+<p>利用 <code>s</code> <code>u</code> <code>l</code> <code>d</code> 表示 special characters, lower case, upper case 和 digits 並在判斷正確的時候把這些字元加入 set() 當中，最後只要確認 set() 長度是否為 4 即可。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">strongPasswordCheckerII</span>(<span class="params">self, password: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span></span><br><span class="line">    seen = <span class="built_in">set</span>()</span><br><span class="line">    <span class="keyword">for</span> i, c <span class="keyword">in</span> <span class="built_in">enumerate</span>(password):</span><br><span class="line">        <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> c == password[i - <span class="number">1</span>]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> c <span class="keyword">in</span> <span class="string">&quot;!@#$%^&amp;*()-+&quot;</span>:</span><br><span class="line">            seen.add(<span class="string">&#x27;s&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> c.isupper():</span><br><span class="line">            seen.add(<span class="string">&#x27;u&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> c.islower():</span><br><span class="line">            seen.add(<span class="string">&#x27;l&#x27;</span>)</span><br><span class="line">        <span class="keyword">elif</span> c.isdigit():</span><br><span class="line">            seen.add(<span class="string">&#x27;d&#x27;</span>)             </span><br><span class="line">    <span class="keyword">return</span>  <span class="built_in">len</span>(password) &gt; <span class="number">7</span> <span class="keyword">and</span> <span class="built_in">len</span>(seen) == <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<p>幹，好猛 &#x3D; &#x3D;</p>
+<h1 id="2300-Successful-Pairs-of-Spells-and-Potions"><a href="#2300-Successful-Pairs-of-Spells-and-Potions" class="headerlink" title="2300. Successful Pairs of Spells and Potions"></a>2300. Successful Pairs of Spells and Potions</h1><p>Difficulty: <code>Easy</code>, <a target="_blank" rel="noopener" href="https://leetcode.com/contest/biweekly-contest-80/problems/strong-password-checker-ii/">Open in Leetcode</a></p>
+<p>Total Accepted: 7291，Total Submissions: 33118，看來這題我不孤單，大家都在吃各種 Limit exceeded。</p>
+<p>You are given two positive integer arrays <code>spells</code> and <code>potions</code>, of length <code>n</code> and <code>m</code> respectively, where <code>spells[i]</code> represents the strength of the <code>ith</code> spell and <code>potions[j]</code> represents the strength of the <code>jth</code> potion.</p>
+<p>You are also given an integer <code>success</code>. A spell and potion pair is considered <strong>successful</strong> if the <strong>product</strong> of their strengths is <strong>at least</strong> <code>success</code>.</p>
+<p>Return an integer array <code>pairs</code> of length <code>n</code> where <code>pairs[i]</code> is the number of <strong>potions</strong> that will form a successful pair with the <code>ith</code> spell.</p>
+<h2 id="題目解釋-1"><a href="#題目解釋-1" class="headerlink" title="題目解釋"></a>題目解釋</h2><p>給你一串魔咒 <code>spells</code> 和藥水 <code>potions</code> 和成功合成的數值 <code>success</code>，我們要計算每一個 <code>spells</code> 去乘上每一個 <code>potions</code> 後有大於等於 <code>success</code> 的數量。</p>
+<p>回傳的 <code>pairs</code> 是 <code>spells</code> 的數量。</p>
+<h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><p>我第一次只用一個 dict，不意外吃 Time Limit Exceeded，第二次改用兩個 dict，直接吃 Memory Limit Exceeded。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">successfulPairs</span>(<span class="params">self, spells: <span class="type">List</span>[<span class="built_in">int</span>], potions: <span class="type">List</span>[<span class="built_in">int</span>], success: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span></span><br><span class="line">    pairs = []</span><br><span class="line">    spells_dict = &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> spells:</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        potions_dict = &#123;&#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> i <span class="keyword">in</span> spells_dict:</span><br><span class="line">            potions_dict = spells_dict[i]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> potions:</span><br><span class="line">            compare = <span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> j <span class="keyword">not</span> <span class="keyword">in</span> potions_dict:</span><br><span class="line">                compare = i * j</span><br><span class="line">                potions_dict[j] = compare</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                compare = potions_dict[j]</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> compare &gt;= success:</span><br><span class="line">                count = count + <span class="number">1</span></span><br><span class="line">            </span><br><span class="line">        pairs.append(count)</span><br><span class="line">        <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> spells_dict:</span><br><span class="line">            spells_dict[i] = potions_dict</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> pairs</span><br></pre></td></tr></table></figure>
+
+<p>所以我們來看看大神的解法：<br><a target="_blank" rel="noopener" href="https://leetcode.com/problems/successful-pairs-of-spells-and-potions/discuss/2138875/JavaC%2B%2BPython-Straignt-Forward-with-Explantion">[JavaC++&#x2F;Python] Straignt Forward with Explantion
+</a></p>
+<p>使用數學基本概念，<code>spell[i]</code> * <code>potions[j]</code> 要等於 success，那 <code>potions[j]</code> 一定要大於某個數，相乘時才會大於等於 success。</p>
+<p>所以先算出這個數到底要多大 <code>need = success * 1.0 / spell</code></p>
+<p>接著用 bisect_left 取得數字要插入在哪個 index，</p>
+<p>最後算出右邊有幾個數即可。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">successfulPairs</span>(<span class="params">self, spells: <span class="type">List</span>[<span class="built_in">int</span>], potions: <span class="type">List</span>[<span class="built_in">int</span>], success: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span></span><br><span class="line">    potions.sort()</span><br><span class="line">    <span class="keyword">return</span> [<span class="built_in">len</span>(potions) - bisect_left(potions, (success + a - <span class="number">1</span>) // a) <span class="keyword">for</span> a <span class="keyword">in</span> spells]</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Leetcode/Biweekly-Contest-79/" rel="prev" title="Leetcode Biweekly Contest 79">
+                  <i class="fa fa-chevron-left"></i> Leetcode Biweekly Contest 79
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Trevor Wu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
