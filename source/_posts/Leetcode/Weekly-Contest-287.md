@@ -6,7 +6,9 @@ categories:
 - Leetcode
 ---
 
-我的第一場 Leetcode Contest，這天看我爸搭平台搭到一半才想到跑回來寫。這場好玩的是，我先寫了 Medium 才回去寫 Easy，然後 Easy 還卡超久，結果是因為題目沒看清楚 lol。
+我的第一場 Leetcode Contest，這天半路想到才跑回來寫，好玩的是，我先寫了 Medium 才回去寫 Easy，然後 Easy 還卡超久，結果是因為題目沒看清楚 lol。
+
+我不會寫程式，所以這系列就純粹記錄一下我的解題歷程。
 
 <!-- more -->
 
