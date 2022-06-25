@@ -218,7 +218,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-06-25 14:23:29" itemprop="dateModified" datetime="2022-06-25T14:23:29+08:00">2022-06-25</time>
+      <time title="修改時間：2022-06-25 14:25:34" itemprop="dateModified" datetime="2022-06-25T14:25:34+08:00">2022-06-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -242,37 +242,14 @@
     <div class="post-body" itemprop="articleBody">
           <p>最近公司指派了一項專案給我，就是要幫捷運看板寫個 Android App，然後在裡面放 WebView 讓他可以接到前端顯示資訊，一開始還在想：簡單！</p>
 <p>結果 Android WebView 直接擺爛不播放 HTML5 中的 <code>&lt;video&gt;</code> tag，Stack Overflow 上方法試過一輪了，怎麼搞他就是不播放，最後只好導入  GeckoView，導入後 APK 暴增至 500 MB 又是另一個故事了</p>
-<hr>
-<p>你可以看這裡 <a target="_blank" rel="noopener" href="https://firefox-source-docs.mozilla.org/mobile/android/geckoview/consumer/geckoview-quick-start.html">Getting Started with GeckoView¶</a>，看不懂再來看我文章</p>
-<h1 id="設定-Gradle"><a href="#設定-Gradle" class="headerlink" title="設定 Gradle"></a>設定 Gradle</h1><p>文件說可以到 <a target="_blank" rel="noopener" href="https://maven.mozilla.org/?prefix=maven2/org/mozilla/geckoview/">Maven Repository</a> 去查你要的 <code>channel</code> 和 <code>version</code>，<code>channel</code> 要選好，如果不選的話 APK 會直上 500MB</p>
-<p>舉例來說：<br>我開發的目標機器有支援 ARM v8，而且我想要最新的穩定版，所以：</p>
-<ul>
-<li><code>channel</code> 我選擇 <code>arm64-v8a</code></li>
-<li><code>version</code> 我選擇 <code>102.0.20220623063721</code></li>
-</ul>
-<p>這樣一來 APK 剩下 145MB，至於為什麼會暴漲？因為 GeckoView 等於把一個瀏覽器塞進去你的 APP 中。</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ext &#123;</span><br><span class="line">    geckoviewChannel = &lt;channel&gt;</span><br><span class="line">    geckoviewVersion = &lt;version&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">repositories</span> &#123;</span><br><span class="line">    maven &#123;</span><br><span class="line">        url <span class="string">&quot;https://maven.mozilla.org/maven2/&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>最新版貌似不支援使用 <code>JavaVersion.VERSION1_8</code> 編譯，所以使用 11</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">compileOptions &#123;</span><br><span class="line">    sourceCompatibility JavaVersion.VERSION_11</span><br><span class="line">    targetCompatibility JavaVersion.VERSION_11</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    // ...</span><br><span class="line">  implementation &quot;org.mozilla.geckoview:geckoview-$&#123;geckoviewChannel&#125;:$&#123;geckoviewVersion&#125;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="加入-GeckoView"><a href="#加入-GeckoView" class="headerlink" title="加入 GeckoView"></a>加入 GeckoView</h1><p>在 layout 的 xml 中加入</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">org.mozilla.geckoview.GeckoView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/geckoView&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>接著因 GeckoRuntime 只能有一個實體，所以創立一個 companion object 給他，並指向 <code>null</code></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> geckoRuntime: GeckoRuntime? = <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>最後稍微設定一下就能用啦</p>
-<p>因為我的專案有開啟 ViewBinding，所以設定 session 時使用 <code>binding.geckoView</code></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">setUpGeckoView</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (geckoRuntime == <span class="literal">null</span>) &#123;</span><br><span class="line">        geckoRuntime = GeckoRuntime.create(requireContext())</span><br><span class="line">    &#125;</span><br><span class="line">    geckoSession.contentDelegate = <span class="keyword">object</span> : GeckoSession.ContentDelegate &#123;&#125;</span><br><span class="line">    geckoSession.<span class="keyword">open</span>(geckoRuntime!!)</span><br><span class="line">    binding.geckoView.setSession(geckoSession)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="啟用-Autoplay"><a href="#啟用-Autoplay" class="headerlink" title="啟用 Autoplay"></a>啟用 Autoplay</h1><p>GeckoView 預設是不會自動播放影片的，就算你的 HTML 中加入了 <code>autoplay</code> 或 <code>autoplay=&quot;autoplay&quot;</code>，他都不會理你</p>
-<p>所以除了 <code>contentDelegate</code> 之外，還需要加入 <code>permissionDelegate</code>，當收到 <code>PERMISSION_AUTOPLAY_AUDIBLE</code> 或 <code>PERMISSION_AUTOPLAY_INAUDIBLE</code> 時回傳 <code>ALLOW</code> 讓影片能正常播。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">geckoSession.permissionDelegate = <span class="keyword">object</span> : GeckoSession.PermissionDelegate &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onContentPermissionRequest</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">        session: <span class="type">GeckoSession</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">        perm: <span class="type">ContentPermission</span></span></span></span><br><span class="line"><span class="params"><span class="function">    )</span></span>: GeckoResult&lt;<span class="built_in">Int</span>&gt;? &#123;</span><br><span class="line">        <span class="keyword">when</span> (perm.permission) &#123;</span><br><span class="line">            GeckoSession.PermissionDelegate.PERMISSION_AUTOPLAY_AUDIBLE,</span><br><span class="line">            GeckoSession.PermissionDelegate.PERMISSION_AUTOPLAY_INAUDIBLE -&gt; &#123;</span><br><span class="line">                <span class="keyword">return</span> GeckoResult.fromValue(ContentPermission.VALUE_ALLOW)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onContentPermissionRequest(session, perm)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Android-%E7%AD%86%E8%A8%98/Android-GeckoView%E5%95%9F%E7%94%A8Autoplay/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -329,7 +306,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-06-25 14:23:29" itemprop="dateModified" datetime="2022-06-25T14:23:29+08:00">2022-06-25</time>
+      <time title="修改時間：2022-06-25 14:25:34" itemprop="dateModified" datetime="2022-06-25T14:25:34+08:00">2022-06-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -416,7 +393,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-06-25 14:23:29" itemprop="dateModified" datetime="2022-06-25T14:23:29+08:00">2022-06-25</time>
+      <time title="修改時間：2022-06-25 14:25:34" itemprop="dateModified" datetime="2022-06-25T14:25:34+08:00">2022-06-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -504,7 +481,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-06-25 14:23:29" itemprop="dateModified" datetime="2022-06-25T14:23:29+08:00">2022-06-25</time>
+      <time title="修改時間：2022-06-25 14:25:34" itemprop="dateModified" datetime="2022-06-25T14:25:34+08:00">2022-06-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -591,7 +568,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-06-25 14:23:29" itemprop="dateModified" datetime="2022-06-25T14:23:29+08:00">2022-06-25</time>
+      <time title="修改時間：2022-06-25 14:25:34" itemprop="dateModified" datetime="2022-06-25T14:25:34+08:00">2022-06-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -678,7 +655,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-06-25 14:23:29" itemprop="dateModified" datetime="2022-06-25T14:23:29+08:00">2022-06-25</time>
+      <time title="修改時間：2022-06-25 14:25:34" itemprop="dateModified" datetime="2022-06-25T14:25:34+08:00">2022-06-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -765,7 +742,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-06-25 14:23:29" itemprop="dateModified" datetime="2022-06-25T14:23:29+08:00">2022-06-25</time>
+      <time title="修改時間：2022-06-25 14:25:34" itemprop="dateModified" datetime="2022-06-25T14:25:34+08:00">2022-06-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -853,7 +830,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-06-25 14:23:29" itemprop="dateModified" datetime="2022-06-25T14:23:29+08:00">2022-06-25</time>
+      <time title="修改時間：2022-06-25 14:25:34" itemprop="dateModified" datetime="2022-06-25T14:25:34+08:00">2022-06-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -941,7 +918,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-06-25 14:23:29" itemprop="dateModified" datetime="2022-06-25T14:23:29+08:00">2022-06-25</time>
+      <time title="修改時間：2022-06-25 14:25:34" itemprop="dateModified" datetime="2022-06-25T14:25:34+08:00">2022-06-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1028,7 +1005,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-06-25 14:23:29" itemprop="dateModified" datetime="2022-06-25T14:23:29+08:00">2022-06-25</time>
+      <time title="修改時間：2022-06-25 14:25:34" itemprop="dateModified" datetime="2022-06-25T14:25:34+08:00">2022-06-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
