@@ -10,7 +10,7 @@ categories:
 
 結果 Android WebView 直接擺爛不播放 HTML5 中的 `<video>` tag，Stack Overflow 上方法試過一輪了，怎麼搞他就是不播放，最後只好導入  GeckoView，導入後 APK 暴增至 500 MB 又是另一個故事了
 
----
+<!--more-->
 
 你可以看這裡 [Getting Started with GeckoView¶](https://firefox-source-docs.mozilla.org/mobile/android/geckoview/consumer/geckoview-quick-start.html)，看不懂再來看我文章
 
