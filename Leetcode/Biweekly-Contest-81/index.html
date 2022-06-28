@@ -20,28 +20,28 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="OpenWrt 裡面的套件包真的是又多又雜，開一篇文章來記錄一下都裝了什麼。">
+<meta name="description" content="Graph 題我直接當場去世。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenWrt 推薦安裝的套件包">
-<meta property="og:url" content="https://mrnegativetw.github.io/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-%E6%8E%A8%E8%96%A6%E5%AE%89%E8%A3%9D%E7%9A%84%E5%A5%97%E4%BB%B6%E5%8C%85/index.html">
+<meta property="og:title" content="Leetcode Biweekly Contest 81">
+<meta property="og:url" content="https://mrnegativetw.github.io/Leetcode/Biweekly-Contest-81/index.html">
 <meta property="og:site_name" content="TxW Tech Studio">
-<meta property="og:description" content="OpenWrt 裡面的套件包真的是又多又雜，開一篇文章來記錄一下都裝了什麼。">
+<meta property="og:description" content="Graph 題我直接當場去世。">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-03-07T02:01:00.000Z">
+<meta property="article:published_time" content="2022-06-25T02:00:00.000Z">
 <meta property="article:modified_time" content="2022-06-28T13:57:49.225Z">
 <meta property="article:author" content="Trevor Wu">
 <meta property="article:tag" content="txw">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://mrnegativetw.github.io/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-%E6%8E%A8%E8%96%A6%E5%AE%89%E8%A3%9D%E7%9A%84%E5%A5%97%E4%BB%B6%E5%8C%85/">
+<link rel="canonical" href="https://mrnegativetw.github.io/Leetcode/Biweekly-Contest-81/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-%E6%8E%A8%E8%96%A6%E5%AE%89%E8%A3%9D%E7%9A%84%E5%A5%97%E4%BB%B6%E5%8C%85/","path":"OpenWrt-筆記/OpenWrt-推薦安裝的套件包/","title":"OpenWrt 推薦安裝的套件包"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/Leetcode/Biweekly-Contest-81/","path":"Leetcode/Biweekly-Contest-81/","title":"Leetcode Biweekly Contest 81"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>OpenWrt 推薦安裝的套件包 | TxW Tech Studio</title>
+<title>Leetcode Biweekly Contest 81 | TxW Tech Studio</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127718395-1"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-127718395-1","only_pageview":false}</script>
@@ -122,7 +122,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">中文化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B6%B2%E8%B7%AF%E5%96%9A%E9%86%92-x2F-WOL"><span class="nav-number">2.</span> <span class="nav-text">網路喚醒 &#x2F; WOL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WiFi-%E6%8E%92%E7%A8%8B-x2F-WiFi-Schedule"><span class="nav-number">3.</span> <span class="nav-text">WiFi 排程 &#x2F; WiFi Schedule</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#USB-%E7%B6%B2%E8%B7%AF%E5%85%B1%E4%BA%AB-x2F-USB-Tethering"><span class="nav-number">4.</span> <span class="nav-text">USB 網路共享 &#x2F; USB Tethering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%B1%E8%A8%88-x2F-Statistics"><span class="nav-number">5.</span> <span class="nav-text">統計 &#x2F; Statistics</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2315-Count-Asterisks"><span class="nav-number">1.</span> <span class="nav-text">2315. Count Asterisks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE%E8%A7%A3%E9%87%8B"><span class="nav-number">1.1.</span> <span class="nav-text">題目解釋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.</span> <span class="nav-text">Solution</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -191,7 +191,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-%E6%8E%A8%E8%96%A6%E5%AE%89%E8%A3%9D%E7%9A%84%E5%A5%97%E4%BB%B6%E5%8C%85/">
+    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Leetcode/Biweekly-Contest-81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -204,7 +204,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          OpenWrt 推薦安裝的套件包
+          Leetcode Biweekly Contest 81
         </h1>
 
         <div class="post-meta-container">
@@ -215,7 +215,7 @@
       </span>
       <span class="post-meta-item-text">發表於</span>
 
-      <time title="創建時間：2020-03-07 10:01:00" itemprop="dateCreated datePublished" datetime="2020-03-07T10:01:00+08:00">2020-03-07</time>
+      <time title="創建時間：2022-06-25 10:00:00" itemprop="dateCreated datePublished" datetime="2022-06-25T10:00:00+08:00">2022-06-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -230,7 +230,7 @@
       </span>
       <span class="post-meta-item-text">分類於</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/OpenWrt-%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">OpenWrt 筆記</span></a>
+          <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
         </span>
     </span>
 
@@ -244,15 +244,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>OpenWrt 裡面的套件包真的是又多又雜，開一篇文章來記錄一下都裝了什麼。</p>
+        <p>Graph 題我直接當場去世。</p>
 <span id="more"></span>
-<h2 id="中文化"><a href="#中文化" class="headerlink" title="中文化"></a>中文化</h2><p><code>*-zh-TW</code><br>雖然中文化有時候怪怪的，不過可以更快找到目標，不裝嗎？<br>而且我有在幫忙翻譯，所以會越來越好的。</p>
-<h2 id="網路喚醒-x2F-WOL"><a href="#網路喚醒-x2F-WOL" class="headerlink" title="網路喚醒 &#x2F; WOL"></a>網路喚醒 &#x2F; WOL</h2><p><code>luci-app-wol</code></p>
-<h2 id="WiFi-排程-x2F-WiFi-Schedule"><a href="#WiFi-排程-x2F-WiFi-Schedule" class="headerlink" title="WiFi 排程 &#x2F; WiFi Schedule"></a>WiFi 排程 &#x2F; WiFi Schedule</h2><p><code>luci-app-wifischedule</code></p>
-<h2 id="USB-網路共享-x2F-USB-Tethering"><a href="#USB-網路共享-x2F-USB-Tethering" class="headerlink" title="USB 網路共享 &#x2F; USB Tethering"></a>USB 網路共享 &#x2F; USB Tethering</h2><p><code>kmod-usb-net</code><br><code>kmod-usb-net-cdc-ether</code><br><code>kmod-usb-net-rndis</code></p>
-<p>For Android, iPhone 需要需要其他<a target="_blank" rel="noopener" href="https://openwrt.org/docs/guide-user/network/wan/smartphone.usb.tethering">額外的套件</a>。</p>
-<h2 id="統計-x2F-Statistics"><a href="#統計-x2F-Statistics" class="headerlink" title="統計 &#x2F; Statistics"></a>統計 &#x2F; Statistics</h2><p><code>luci-app-statistics</code></p>
 
+<h1 id="2315-Count-Asterisks"><a href="#2315-Count-Asterisks" class="headerlink" title="2315. Count Asterisks"></a>2315. Count Asterisks</h1><p>Difficulty: <code>Easy</code>, <a target="_blank" rel="noopener" href="https://leetcode.com/contest/biweekly-contest-81/problems/count-asterisks/">Open in Leetcode</a></p>
+<p>You are given a string <code>s</code>, where every two consecutive vertical bars <code>&#39;|&#39;</code> are grouped into a pair. In other words, the 1st and 2nd <code>&#39;|&#39;</code> make a pair, the 3rd and 4th <code>&#39;|&#39;</code> make a pair, and so forth.</p>
+<p>Return the number of <code>&#39;*&#39;</code> in <code>s</code>, excluding the <code>&#39;*&#39;</code> between each pair of <code>&#39;|&#39;</code>.</p>
+<p>Note that each <code>&#39;|&#39;</code> will belong to exactly one pair.</p>
+<h2 id="題目解釋"><a href="#題目解釋" class="headerlink" title="題目解釋"></a>題目解釋</h2><p>以 <code>|</code> 為分隔下去 split，算出奇數 index 的  <code>*</code> 有幾個</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>不知道算不算暴力。先用 <code>split()</code> 依照 <code>|</code> 分開字串，接著用 <code>count()</code> 計算奇數 index 中的 <code>*</code>，<br>加總後就是答案了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countAsterisks</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        s_arr = s.split(<span class="string">&quot;|&quot;</span>)</span><br><span class="line">        n = <span class="built_in">len</span>(s_arr)</span><br><span class="line">        result = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, n, <span class="number">2</span>):</span><br><span class="line">            result = result + s_arr[i].count(<span class="string">&quot;*&quot;</span>)</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<p>來看另一種解法，跑過一次的同時紀錄 <code>|</code> 狀況，最後也是加總就答案。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">countAsterisks</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">    bar = <span class="literal">False</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> s:</span><br><span class="line">        <span class="keyword">if</span> x==<span class="string">&#x27;|&#x27;</span>:</span><br><span class="line">            bar = <span class="keyword">not</span> bar</span><br><span class="line">                </span><br><span class="line">        <span class="keyword">if</span> x==<span class="string">&#x27;*&#x27;</span> <span class="keyword">and</span> bar==<span class="literal">False</span>:</span><br><span class="line">            count+=<span class="number">1</span></span><br><span class="line">            </span><br><span class="line">    <span class="keyword">return</span> count</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -265,14 +269,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2%E7%9A%84%E7%B6%B2%E8%B7%AF%E4%BB%8B%E9%9D%A2%E8%A8%AD%E7%BD%AE/" rel="prev" title="OpenWrt 筆記 - TP-Link Archer C7 V2 網路介面設置">
-                  <i class="fa fa-chevron-left"></i> OpenWrt 筆記 - TP-Link Archer C7 V2 網路介面設置
+                <a href="/%E9%96%8B%E7%AE%B1/%E9%96%8B%E7%AE%B1-Dell-P2319H-%E8%9E%A2%E5%B9%95/" rel="prev" title="開箱 - Dell P2319H">
+                  <i class="fa fa-chevron-left"></i> 開箱 - Dell P2319H
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/macOS/macOS-%E7%9D%A1%E7%9C%A0%E5%BE%8C%E7%84%A1%E8%81%B2%E9%9F%B3%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95/" rel="next" title="macOS 睡眠喚醒後沒聲音解決辦法">
-                  macOS 睡眠喚醒後沒聲音解決辦法 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
