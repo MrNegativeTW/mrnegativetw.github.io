@@ -20,28 +20,28 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="換到 ZSH 之後 gcloud 指令就不管用了嗎？這篇教你把指令找回來。">
+<meta name="description" content="在系統廠與接案廠的綜合體之中，總能遇到很多正規 Android 手機不會遇到的問題，像這次 MediaPlayer 掛掉的原因連 MediaPlayer 自己都不知道">
 <meta property="og:type" content="article">
-<meta property="og:title" content="將 Cloud SDK 路徑加入 ZSH 中">
-<meta property="og:url" content="https://mrnegativetw.github.io/Google-Cloud-Platform/GCP-%E5%B0%87CloudSDK%E8%B7%AF%E7%B6%93%E5%8A%A0%E5%85%A5zsh/index.html">
+<meta property="og:title" content="Android 筆記 - MediaPlayer Error 100,0">
+<meta property="og:url" content="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-MediaPlayer-Error-100/index.html">
 <meta property="og:site_name" content="TxW Tech Studio">
-<meta property="og:description" content="換到 ZSH 之後 gcloud 指令就不管用了嗎？這篇教你把指令找回來。">
+<meta property="og:description" content="在系統廠與接案廠的綜合體之中，總能遇到很多正規 Android 手機不會遇到的問題，像這次 MediaPlayer 掛掉的原因連 MediaPlayer 自己都不知道">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-06-16T02:00:00.000Z">
+<meta property="article:published_time" content="2022-09-16T02:00:00.000Z">
 <meta property="article:modified_time" content="2022-09-16T13:10:36.007Z">
 <meta property="article:author" content="Trevor Wu">
 <meta property="article:tag" content="txw">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://mrnegativetw.github.io/Google-Cloud-Platform/GCP-%E5%B0%87CloudSDK%E8%B7%AF%E7%B6%93%E5%8A%A0%E5%85%A5zsh/">
+<link rel="canonical" href="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-MediaPlayer-Error-100/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/Google-Cloud-Platform/GCP-%E5%B0%87CloudSDK%E8%B7%AF%E7%B6%93%E5%8A%A0%E5%85%A5zsh/","path":"Google-Cloud-Platform/GCP-將CloudSDK路經加入zsh/","title":"將 Cloud SDK 路徑加入 ZSH 中"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-MediaPlayer-Error-100/","path":"Android-筆記/Android-MediaPlayer-Error-100/","title":"Android 筆記 - MediaPlayer Error 100,0"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>將 Cloud SDK 路徑加入 ZSH 中 | TxW Tech Studio</title>
+<title>Android 筆記 - MediaPlayer Error 100,0 | TxW Tech Studio</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127718395-1"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-127718395-1","only_pageview":false}</script>
@@ -122,7 +122,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B7%A8%E8%BC%AF%E7%92%B0%E5%A2%83%E6%AA%94"><span class="nav-number">1.</span> <span class="nav-text">編輯環境檔</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Log"><span class="nav-number">2.</span> <span class="nav-text">Log</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#99-%E5%AE%8C%E7%BE%8E%E7%9A%84%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">99% 完美的解決辦法</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -191,7 +191,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Google-Cloud-Platform/GCP-%E5%B0%87CloudSDK%E8%B7%AF%E7%B6%93%E5%8A%A0%E5%85%A5zsh/">
+    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-MediaPlayer-Error-100/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -204,7 +204,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          將 Cloud SDK 路徑加入 ZSH 中
+          Android 筆記 - MediaPlayer Error 100,0
         </h1>
 
         <div class="post-meta-container">
@@ -214,15 +214,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
+      
 
-      <time title="創建時間：2020-06-16 10:00:00" itemprop="dateCreated datePublished" datetime="2020-06-16T10:00:00+08:00">2020-06-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-09-16 21:10:36" itemprop="dateModified" datetime="2022-09-16T21:10:36+08:00">2022-09-16</time>
+      <time title="創建時間：2022-09-16 10:00:00 / 修改時間：21:10:36" itemprop="dateCreated datePublished" datetime="2022-09-16T10:00:00+08:00">2022-09-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -230,7 +224,7 @@
       </span>
       <span class="post-meta-item-text">分類於</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Google-Cloud-Platform/" itemprop="url" rel="index"><span itemprop="name">Google Cloud Platform</span></a>
+          <a href="/categories/Android-%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">Android 筆記</span></a>
         </span>
     </span>
 
@@ -244,10 +238,21 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>換到 ZSH 之後 <code>gcloud</code> 指令就不管用了嗎？這篇教你把指令找回來。</p>
+        <p>在系統廠與接案廠的綜合體之中，總能遇到很多正規 Android 手機不會遇到的問題，像這次 MediaPlayer 掛掉的原因連 MediaPlayer 自己都不知道</p>
 <span id="more"></span>
-<h1 id="編輯環境檔"><a href="#編輯環境檔" class="headerlink" title="編輯環境檔"></a>編輯環境檔</h1><p>編輯位於家目錄底下的 <code>.zshrc</code>，使用任何文字編輯器打開定加入以下片段：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The next line updates PATH for the Google Cloud SDK.</span></span><br><span class="line"><span class="built_in">source</span> /Users/trevor/google-cloud-sdk/path.zsh.inc</span><br><span class="line"></span><br><span class="line"><span class="comment"># The next line enables zsh completion for gcloud.</span></span><br><span class="line"><span class="built_in">source</span> /Users/trevor/google-cloud-sdk/completion.zsh.inc</span><br></pre></td></tr></table></figure>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>這個案子是某醫院的自助報到機，他使用 WebView 的 JavascriptInterface 來觸發 Android App 中的 TTS，而且不是使用 Google TTS，而是使用 Cyberon TTS。</p>
+<p>這 Bug 行為也很妙，他會在播放語音的 n 次之後出現爆音，然後就再也沒聲音了。至於這個 n 是幾次呢？有可能是 30 也有可能是 800。</p>
+<p>還記得我那天出差到醫院去，從中午坐在那邊搞到晚上 6 點。</p>
+<h2 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h2><p>這問題也很冷門，Google 一下之後找到的文章寥寥無幾，而且苦主是 Nexus。</p>
+<p>就讓我們來看一下出問題時的 Log 長怎樣吧</p>
+<p>首先會有 media server died，接著是 error(100, 0)，然後就沒聲音了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">2022-08-22 14:12:59.270 21001-21034 AudioSystem             com.package.release  W  AudioFlinger server died!</span><br><span class="line">2022-08-22 14:12:59.271 21001-21018 IMediaDeathNotifier     com.package.release  W  media server died</span><br><span class="line">2022-08-22 14:12:59.271 21001-21018 MediaPlayer             com.package.release  E  error (100, 0)</span><br><span class="line">2022-08-22 14:12:59.271 21001-21018 MediaPlayer             com.package.release  E  error (100, 0)</span><br><span class="line">2022-08-22 14:12:59.271 21001-21021 AudioSystem             com.package.release  W  AudioPolicyService server died!</span><br><span class="line">2022-08-22 14:12:59.274 21001-21001 ServiceManager          com.package.release  I  Waiting for service media.audio_flinger...</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h2 id="99-完美的解決辦法"><a href="#99-完美的解決辦法" class="headerlink" title="99% 完美的解決辦法"></a>99% 完美的解決辦法</h2><p>重設 MediaPlayer。對。</p>
+<p>MediaPlayer 有一個 onErrorListener，在這邊可以完美收到 <code>error (100, 0)</code> 這個錯誤，所以在錯誤發生時將 MediaPlayer 殺掉就可以了。</p>
+<p>Code 大概會長這樣：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">PlayBellTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">String</span>, <span class="title">String</span>, <span class="title">Void</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playBellSound</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        mp.setOnErrorListener(<span class="keyword">new</span> MediaPlayer.OnErrorListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onError</span><span class="params">(MediaPlayer mediaPlayer, <span class="keyword">int</span> what, <span class="keyword">int</span> extra)</span> </span>&#123;</span><br><span class="line">                Log.e(TAG, <span class="string">&quot;PlayBellTask() playBellSound() onError(), what: &quot;</span> + what + <span class="string">&quot;, extra: &quot;</span> + extra);</span><br><span class="line">                isPlaying = <span class="keyword">false</span>;</span><br><span class="line">                mediaPlayer.stop();</span><br><span class="line">                mediaPlayer.reset();</span><br><span class="line">                mp.release();</span><br><span class="line">                mp = <span class="keyword">null</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -260,14 +265,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/Hexo-%E6%9E%B6%E8%A8%AD%E7%9B%B8%E9%97%9C/Hexo-Hexo%E6%9B%B4%E6%96%B0%E6%95%99%E5%AD%B8/" rel="prev" title="Hexo 架設教學 - 如何更新 Hexo 版本">
-                  <i class="fa fa-chevron-left"></i> Hexo 架設教學 - 如何更新 Hexo 版本
+                <a href="/Android-%E7%AD%86%E8%A8%98/Android-OkHttp-With-Self-Signed-Certificate/" rel="prev" title="Android Notes - OkHttp with Self-Signed Certificate">
+                  <i class="fa fa-chevron-left"></i> Android Notes - OkHttp with Self-Signed Certificate
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/Android-%E7%AD%86%E8%A8%98/Android-ViewModelLiveDataDataBinding/" rel="next" title="Android 筆記 - ViewModel、LiveData、DataBinding">
-                  Android 筆記 - ViewModel、LiveData、DataBinding <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
