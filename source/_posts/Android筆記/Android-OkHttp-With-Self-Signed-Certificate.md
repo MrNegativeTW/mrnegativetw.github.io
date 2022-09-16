@@ -73,7 +73,7 @@ KOqkqm57TH2H3eDJAkSnh6/DNFu0Qg==
 -----END CERTIFICATE-----
 ```
 
-## Dependencies
+## Add Dependencies
 
 Back to Android Studio, and add the dependencies in your `build.gradle(app)`
 
@@ -87,7 +87,7 @@ dependencies {
 }
 ```
 
-## OkHttpClient
+## Create OkHttpClient
 
 Create a new file `OkHttpClientManager.kt`, than you can craft your `okHttpClient` as the following:
 
@@ -135,6 +135,29 @@ private val certificates = HandshakeCertificates.Builder()
 
 val okHttpClient = OkHttpClient.Builder()
     .sslSocketFactory(certificates.sslSocketFactory(), certificates.trustManager)
+    .connectTimeout(15, TimeUnit.SECONDS)
+    .writeTimeout(15, TimeUnit.SECONDS)
+    .readTimeout(15, TimeUnit.SECONDS)
+    .build()
+```
+
+## SSLPeerUnverified
+
+You may face the problem `SSLPeerUnverifiedException`
+
+```
+javax.net.ssl.SSLPeerUnverifiedException: Hostname example.com not verified:
+        certificate: sha256/7......=
+```
+
+Don't worry, just add hostnameVerifier to verify domain or return true for all condition.
+
+```kotlin
+val okHttpClient = OkHttpClient.Builder()
+    .sslSocketFactory(certificates.sslSocketFactory(), certificates.trustManager)
+    .hostnameVerifier { hostname, session ->
+        true
+    }
     .connectTimeout(15, TimeUnit.SECONDS)
     .writeTimeout(15, TimeUnit.SECONDS)
     .readTimeout(15, TimeUnit.SECONDS)
