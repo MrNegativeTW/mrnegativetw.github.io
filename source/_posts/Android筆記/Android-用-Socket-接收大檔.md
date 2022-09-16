@@ -150,3 +150,36 @@ private fun isReceiverJsonIntact(message: String) {
     // TOOD
 }
 ```
+
+## 大檔傳送很慢
+
+由於這個產品是用 Socket 來實作後端資料同步，從後端過來的資料又是 base64 編碼的圖片，所以 QA 那邊常常反應：「傳輸很慢，很容易失敗」
+
+不如我們在 `data.append` 後面印出 `data.length()` 來看看到底有沒有收到資料
+
+```java
+do {
+    length = in.read(buffer);
+    if (length != -1) {
+        data.append(new String(buffer, 0, length));
+    }
+
+    // Print data.length each loop
+    Log.i(TAG, "data.length(): " + data.length());
+
+    if (isReceivedJsonIntact(data.toString())) {
+        break;
+    }
+} while (length > 0);
+```
+
+印出每次 loop 的 `data.length()` 後會發現，「哇，這收資料速度也太慢」，這時矛頭就指向了 buffer 和 `StringBuilder` ，由於 buffer 只有 1KB 的大小，導致 `StringBuilder.append()` 用了很多時間，不如一口氣將 buffer 提升至 64K，直接讓效能提高不知道幾百 %
+
+```java
+byte[] buffer = new byte[65536]; // 65536 Bytes == 64KB
+```
+
+就這樣，覆蓋一張華麗的 64K 結束被 QA 煩三週的 Issue！
+
+
+> 我知道這解法很醜，但不小心跑到接案廠就是這樣，只求能動 : (
