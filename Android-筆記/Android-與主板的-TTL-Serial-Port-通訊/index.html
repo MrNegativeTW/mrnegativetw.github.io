@@ -20,26 +20,28 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="I&#39;m afraid of HARDWARE. Don&#39;t scare me.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="TxW Tech Studio">
-<meta property="og:url" content="https://mrnegativetw.github.io/index.html">
+<meta name="description" content="手把手教你在 Android 上使用 TTL 接口與 RS485 溝通，並送出帶有 Hi Lo 的 CRC 到裝置上! 本文應該不適用你手上的 Android 手機，僅適用於「開發版」，一般的 Android 手機可參考mik3y&#x2F;usb-serial-for-android  整合第三方資源首先你會需要大神的 cepr&#x2F;android-serialport-api jni 檔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 如何與原生 TTL Serial Port 溝通">
+<meta property="og:url" content="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-%E8%88%87%E4%B8%BB%E6%9D%BF%E7%9A%84-TTL-Serial-Port-%E9%80%9A%E8%A8%8A/index.html">
 <meta property="og:site_name" content="TxW Tech Studio">
-<meta property="og:description" content="I&#39;m afraid of HARDWARE. Don&#39;t scare me.">
+<meta property="og:description" content="手把手教你在 Android 上使用 TTL 接口與 RS485 溝通，並送出帶有 Hi Lo 的 CRC 到裝置上! 本文應該不適用你手上的 Android 手機，僅適用於「開發版」，一般的 Android 手機可參考mik3y&#x2F;usb-serial-for-android  整合第三方資源首先你會需要大神的 cepr&#x2F;android-serialport-api jni 檔">
 <meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2024-03-28T02:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-25T07:07:03.572Z">
 <meta property="article:author" content="Trevor Wu">
 <meta property="article:tag" content="txw">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://mrnegativetw.github.io/">
+<link rel="canonical" href="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-%E8%88%87%E4%B8%BB%E6%9D%BF%E7%9A%84-TTL-Serial-Port-%E9%80%9A%E8%A8%8A/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-TW","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-%E8%88%87%E4%B8%BB%E6%9D%BF%E7%9A%84-TTL-Serial-Port-%E9%80%9A%E8%A8%8A/","path":"Android-筆記/Android-與主板的-TTL-Serial-Port-通訊/","title":"Android 如何與原生 TTL Serial Port 溝通"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>TxW Tech Studio</title>
+<title>Android 如何與原生 TTL Serial Port 溝通 | TxW Tech Studio</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127718395-1"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-127718395-1","only_pageview":false}</script>
@@ -71,7 +73,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">TxW Tech Studio</h1>
+      <p class="site-title">TxW Tech Studio</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">什麼都寫 什麼都不奇怪</p>
@@ -107,7 +109,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目錄
@@ -120,6 +122,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B4%E5%90%88%E7%AC%AC%E4%B8%89%E6%96%B9%E8%B3%87%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">整合第三方資源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jni-%E6%AA%94%E6%A1%88"><span class="nav-number">1.1.</span> <span class="nav-text">jni 檔案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E6%AA%94%E6%A1%88"><span class="nav-number">1.2.</span> <span class="nav-text">Java 檔案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Migrate-from-ndk-build-to-CMake"><span class="nav-number">1.3.</span> <span class="nav-text">Migrate from ndk-build to CMake</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-gradle"><span class="nav-number">1.4.</span> <span class="nav-text">build.gradle</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%AF%84%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">使用範例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Extensions"><span class="nav-number">2.1.</span> <span class="nav-text">Extensions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Modbus-CRC-Lo-x2F-Hi"><span class="nav-number">2.2.</span> <span class="nav-text">Modbus CRC Lo &#x2F; Hi</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-usage"><span class="nav-number">2.2.1.</span> <span class="nav-text">Basic usage</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Send-it"><span class="nav-number">2.3.</span> <span class="nav-text">Send it!</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -177,16 +180,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-%E8%88%87%E4%B8%BB%E6%9D%BF%E7%9A%84-TTL-Serial-Port-%E9%80%9A%E8%A8%8A/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -199,9 +203,9 @@
       <meta itemprop="name" content="TxW Tech Studio">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Android-%E7%AD%86%E8%A8%98/Android-%E8%88%87%E4%B8%BB%E6%9D%BF%E7%9A%84-TTL-Serial-Port-%E9%80%9A%E8%A8%8A/" class="post-title-link" itemprop="url">Android 如何與原生 TTL Serial Port 溝通</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Android 如何與原生 TTL Serial Port 溝通
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -240,7 +244,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>手把手教你在 Android 上使用 TTL 接口與 RS485 溝通，並送出帶有 Hi Lo 的 CRC 到裝置上!</p>
+        <p>手把手教你在 Android 上使用 TTL 接口與 RS485 溝通，並送出帶有 Hi Lo 的 CRC 到裝置上!</p>
 <p>本文應該不適用你手上的 Android 手機，僅適用於「開發版」，一般的 Android 手機可參考<br><a target="_blank" rel="noopener" href="https://github.com/mik3y/usb-serial-for-android">mik3y&#x2F;usb-serial-for-android</a></p>
 <hr>
 <h1 id="整合第三方資源"><a href="#整合第三方資源" class="headerlink" title="整合第三方資源"></a>整合第三方資源</h1><p>首先你會需要大神的 <a target="_blank" rel="noopener" href="https://github.com/cepr/android-serialport-api">cepr&#x2F;android-serialport-api</a></p>
@@ -284,7 +288,6 @@
 <p>例如：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MagicDeviceController</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">runTests</span><span class="params">()</span></span> &#123;</span><br><span class="line">        listOf&lt;String&gt;(</span><br><span class="line">            <span class="string">&quot;01 06 00 0D 02 58&quot;</span></span><br><span class="line">        ).forEach &#123; commandRaw -&gt;</span><br><span class="line">            sendDataToSerialPort(commandRaw)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
     </div>
 
     
@@ -292,270 +295,18 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/GoLang-%E7%AD%86%E8%A8%98/Go-uuid-expect-two-arguments/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Trevor Wu">
-      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TxW Tech Studio">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/GoLang-%E7%AD%86%E8%A8%98/Go-uuid-expect-two-arguments/" class="post-title-link" itemprop="url">使用 satori/go.uuid 卻收到 expects two arguments</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2024-01-05 10:00:00" itemprop="dateCreated datePublished" datetime="2024-01-05T10:00:00+08:00">2024-01-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-05-25 15:07:03" itemprop="dateModified" datetime="2024-05-25T15:07:03+08:00">2024-05-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/GoLang-%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">GoLang 筆記</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>前言：你接手了一個舊專案，你嘗試將這個專案 build and run，然後發生了 expects two arguments，WTF?</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/GoLang-%E7%AD%86%E8%A8%98/Go-uuid-expect-two-arguments/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-ontouchlistener-mediacontroller-hole/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Trevor Wu">
-      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TxW Tech Studio">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Android-%E7%AD%86%E8%A8%98/Android-ontouchlistener-mediacontroller-hole/" class="post-title-link" itemprop="url">OnTouchListener 與 MediaController 同時使用的坑</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2023-10-17 10:00:00" itemprop="dateCreated datePublished" datetime="2023-10-17T10:00:00+08:00">2023-10-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-05-25 15:07:03" itemprop="dateModified" datetime="2024-05-25T15:07:03+08:00">2024-05-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Android-%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">Android 筆記</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>因公司的開發需求，VideoView 的 setOnTouchListener 有做 <code>ACTION_DOWN</code> <code>ACTION_UP</code> 的動作處理，這時加入 MediaController 若沒弄好 return true&#x2F;false 就容易發生點擊 VideoView 時 MediaController 會不正常跳動的問題</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Android-%E7%AD%86%E8%A8%98/Android-ontouchlistener-mediacontroller-hole/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/GoLang-%E7%AD%86%E8%A8%98/Go-uuid-expect-two-arguments/" rel="prev" title="使用 satori/go.uuid 卻收到 expects two arguments">
+                  <i class="fa fa-chevron-left"></i> 使用 satori/go.uuid 卻收到 expects two arguments
+                </a>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-how-to-get-mac-address/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Trevor Wu">
-      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TxW Tech Studio">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Android-%E7%AD%86%E8%A8%98/Android-how-to-get-mac-address/" class="post-title-link" itemprop="url">Android 系統的行業主板取得 MAC 位置</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2023-09-18 10:00:00" itemprop="dateCreated datePublished" datetime="2023-09-18T10:00:00+08:00">2023-09-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-05-25 15:07:03" itemprop="dateModified" datetime="2024-05-25T15:07:03+08:00">2024-05-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Android-%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">Android 筆記</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>注意：此文章適用行業主板，一般手機不保證能做到</p>
-<p>眾所皆知，較新版本的 Android 因為隱私需求，拿到的 MAC 位置都會是 <code>02:00:00:00:00:00</code>，但在我們產品中還是需要 MAC，甚至會有客戶拿自己的機器過來想裝我們的系統</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Android-%E7%AD%86%E8%A8%98/Android-how-to-get-mac-address/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
+            <div class="post-nav-item">
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          </div>
     </footer>
   </article>
 </div>
@@ -563,533 +314,7 @@
 
 
 
-    
 
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-how-to-debug-system-signed-fast/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Trevor Wu">
-      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TxW Tech Studio">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Android-%E7%AD%86%E8%A8%98/Android-how-to-debug-system-signed-fast/" class="post-title-link" itemprop="url">開發階段如何快速 debug 系統簽名的 APP</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2023-09-06 10:00:00" itemprop="dateCreated datePublished" datetime="2023-09-06T10:00:00+08:00">2023-09-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-05-25 15:07:03" itemprop="dateModified" datetime="2024-05-25T15:07:03+08:00">2024-05-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Android-%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">Android 筆記</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>眾所皆知，系統簽名的 APP 可以拿到比較屌的權限，但開發階段總不可能每次都傳到主板商的伺服器去做簽名，然後載回來安裝測試，太麻煩</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Android-%E7%AD%86%E8%A8%98/Android-how-to-debug-system-signed-fast/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-wrong-usage-with-OkHttpClient/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Trevor Wu">
-      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TxW Tech Studio">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Android-%E7%AD%86%E8%A8%98/Android-wrong-usage-with-OkHttpClient/" class="post-title-link" itemprop="url">錯誤使用 OkHttpClient 導致的 Too many open files</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2023-02-15 10:00:00" itemprop="dateCreated datePublished" datetime="2023-02-15T10:00:00+08:00">2023-02-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-05-25 15:07:03" itemprop="dateModified" datetime="2024-05-25T15:07:03+08:00">2024-05-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Android-%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">Android 筆記</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>這問題困擾我們業務一段時間了，因為業務用的資料量比較大 (檔案數 1800 多個)，每次更新都無法正確下載完成，<br>但實際客戶因檔案數較少沒遇過這問題。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Android-%E7%AD%86%E8%A8%98/Android-wrong-usage-with-OkHttpClient/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-%E9%97%9C%E6%96%BC%E7%94%A8Zxing%E8%87%AA%E5%B7%B1%E7%94%A2%E7%94%9F%E7%99%BC%E7%A5%A8%E7%9A%84%E5%85%A9%E4%B8%89%E4%BB%B6%E4%BA%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Trevor Wu">
-      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TxW Tech Studio">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Android-%E7%AD%86%E8%A8%98/Android-%E9%97%9C%E6%96%BC%E7%94%A8Zxing%E8%87%AA%E5%B7%B1%E7%94%A2%E7%94%9F%E7%99%BC%E7%A5%A8%E7%9A%84%E5%85%A9%E4%B8%89%E4%BB%B6%E4%BA%8B/" class="post-title-link" itemprop="url">關於用 Zxing 產生發票的兩三件事</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2023-01-06 10:00:00" itemprop="dateCreated datePublished" datetime="2023-01-06T10:00:00+08:00">2023-01-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-05-25 15:07:03" itemprop="dateModified" datetime="2024-05-25T15:07:03+08:00">2024-05-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Android-%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">Android 筆記</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>你要用 Android 產生發票上的 Barcode 和 QR Code 嗎？我也是。</p>
-<p>這篇文章會簡單敘述 Barcode 和 QR Code 該有的格式、內容，然後使用 Zxing 產生這三個圖檔，並組合起來變成一張圖，讓你可以拿去列印</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Android-%E7%AD%86%E8%A8%98/Android-%E9%97%9C%E6%96%BC%E7%94%A8Zxing%E8%87%AA%E5%B7%B1%E7%94%A2%E7%94%9F%E7%99%BC%E7%A5%A8%E7%9A%84%E5%85%A9%E4%B8%89%E4%BB%B6%E4%BA%8B/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-MVVM%E4%B8%AD%E7%9A%84RecyclerView%E9%BB%9E%E6%93%8A%E4%BA%8B%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Trevor Wu">
-      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TxW Tech Studio">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Android-%E7%AD%86%E8%A8%98/Android-MVVM%E4%B8%AD%E7%9A%84RecyclerView%E9%BB%9E%E6%93%8A%E4%BA%8B%E4%BB%B6/" class="post-title-link" itemprop="url">Android 筆記 - MVVM 中的 RecyclerView 點擊事件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2022-12-11 10:00:00" itemprop="dateCreated datePublished" datetime="2022-12-11T10:00:00+08:00">2022-12-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-05-25 15:07:03" itemprop="dateModified" datetime="2024-05-25T15:07:03+08:00">2024-05-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Android-%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">Android 筆記</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>自從進系統廠就很久沒碰到正常 Android 的世界了，這次難得有專案可以重回正常的世界。</p>
-<p>本次使用 MVVM 架構，RecyclerView 的 Adapter 使用 <a target="_blank" rel="noopener" href="https://developer.android.com/reference/androidx/recyclerview/widget/ListAdapter">ListAdapter</a> 而非 RecyclerView.Adapter，UI 綁定使用 <a target="_blank" rel="noopener" href="https://developer.android.com/topic/libraries/view-binding">ViewBinding</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Android-%E7%AD%86%E8%A8%98/Android-MVVM%E4%B8%AD%E7%9A%84RecyclerView%E9%BB%9E%E6%93%8A%E4%BA%8B%E4%BB%B6/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-OOM%E8%A7%A3%E6%B1%BA%E7%B6%93%E9%A9%97%E8%AB%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Trevor Wu">
-      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TxW Tech Studio">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Android-%E7%AD%86%E8%A8%98/Android-OOM%E8%A7%A3%E6%B1%BA%E7%B6%93%E9%A9%97%E8%AB%87/" class="post-title-link" itemprop="url">Android 筆記 - OutOfMemory 解決經驗談</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2022-12-10 10:00:00" itemprop="dateCreated datePublished" datetime="2022-12-10T10:00:00+08:00">2022-12-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-05-25 15:07:03" itemprop="dateModified" datetime="2024-05-25T15:07:03+08:00">2024-05-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Android-%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">Android 筆記</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>神奇的 OutOfMemory，以前一直以為只有記憶體被吃爆會遇到，沒想到 threads 太多也會噴這個錯。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Android-%E7%AD%86%E8%A8%98/Android-OOM%E8%A7%A3%E6%B1%BA%E7%B6%93%E9%A9%97%E8%AB%87/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/Android-%E7%AD%86%E8%A8%98/Android-MediaPlayer-Error-100/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Trevor Wu">
-      <meta itemprop="description" content="I'm afraid of HARDWARE. Don't scare me.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TxW Tech Studio">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Android-%E7%AD%86%E8%A8%98/Android-MediaPlayer-Error-100/" class="post-title-link" itemprop="url">Android 筆記 - MediaPlayer Error 100,0</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">發表於</span>
-
-      <time title="創建時間：2022-09-16 10:00:00" itemprop="dateCreated datePublished" datetime="2022-09-16T10:00:00+08:00">2022-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-05-25 15:07:03" itemprop="dateModified" datetime="2024-05-25T15:07:03+08:00">2024-05-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分類於</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Android-%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">Android 筆記</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在系統廠與接案廠的綜合體之中，總能遇到很多正規 Android 手機不會遇到的問題，像這次 MediaPlayer 掛掉的原因連 MediaPlayer 自己都不知道</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Android-%E7%AD%86%E8%A8%98/Android-MediaPlayer-Error-100/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
-  </nav>
 
 </div>
   </main>
