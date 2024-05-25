@@ -11,7 +11,7 @@ categories:
 本文應該不適用你手上的 Android 手機，僅適用於「開發版」，一般的 Android 手機可參考 
 [mik3y/usb-serial-for-android](https://github.com/mik3y/usb-serial-for-android)
 
----
+<!-- more -->
 
 # 整合第三方資源
 
