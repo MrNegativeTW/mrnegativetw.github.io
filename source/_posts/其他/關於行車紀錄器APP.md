@@ -14,7 +14,7 @@ categories:
 
 這年頭機車用的行車紀錄器幾乎都可以與手機連線，但有些廠商的 APP 看起來很棒，有些顯得陽春許多，甚至可以說很醜，究竟有沒有替代方案呢？
 
-還真的有，我第一台裝車上的行車紀錄器是買錄得清的，但他們 APP 好的有點讓人懷疑，所以在一陣調查後發現是一家叫做[錄風者 (前名6帧探)](https://www.lufengzhe.com/) 的中國廠商做的，只是公版軟體換皮而已。
+還真的有，我第一台裝車上的行車紀錄器是買錄得清的，但他們 APP 好用到有點讓人懷疑，導致我又買了第二台，在一陣調查後發現是一家叫做[錄風者 (前名6帧探)](https://www.lufengzhe.com/) 的中國廠商做的，只是公版軟體換皮而已。
 
 但這個錄風者 (前名6帧探) 可不簡單，它支援了各大晶片，擷取一段官網的宣傳
 
@@ -31,7 +31,7 @@ categories:
 
 ## 全球鷹 (aka. 響尾蛇)
 
-官方 APP 為愛國者 Patriot Cam [App Store](https://apps.apple.com/tw/app/global-eagle/id1527201956) / [Play Store](https://play.google.com/store/apps/details?id=com.ligo.aglobaleagle)，猜測是外包給中國的開發者/公司，畢竟 app 簡介寫著各種中國用語 (支持/記錄儀/實时)
+官方 APP 為愛國者 Patriot Cam [App Store](https://apps.apple.com/tw/app/global-eagle/id1527201956) / [Play Store](https://play.google.com/store/apps/details?id=com.ligo.aglobaleagle)，猜測是外包給中國的開發者/公司，畢竟 app 簡介寫著各種中國用語 (支持/記錄儀/實时/視頻)
 
 ## Patriot (aka. 愛國者)
 
@@ -126,7 +126,7 @@ APP 單憑使用體驗，感覺是 React Native 寫的，查大通時查到 [融
 
 1. 用錄風者(6帧探) 的產品，除了錄得清，其餘在 APP 都是裝置型號空白、無圖片，然後愛國者軟體版本特長，還把 MAC 位置寫到軟體版本了 ==
 
-2. 簡單說，上面提到可用的機器功能都不齊全，畢竟沒有與錄風者(6帧探)串接，求 APP 好看/好用/全功能支援還是得買錄得清。
+2. 簡單說，上面提到可用的機器功能都不齊全，畢竟沒有與錄風者(6帧探)串接，求 APP 好看/好用/全功能支援還是得買錄得清/Mio。
 
 3. 錄得清是真的聰明，找錄風者(6帧探)客製化，APP 好看/好用，不像其他的 UI 真的很醜
 
