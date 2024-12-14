@@ -27,13 +27,13 @@ categories:
 # 拆解
 既然買的東西正常，就該開始拆滑鼠了
 這滑鼠只有一顆螺絲，撕開貼紙即可看到
-![M325_1](https://2cpxqa.bn.files.1drv.com/y4mPm9r00Dy4m21Tcyv8lzPcWpfq9ZH9YLcaf09ul8hyfQfJ_GvXHMfBsYjJ5PNsfifRWUHX2Ee6MtkfPqQJsf7OY-a2LTfZP5xiTHcjl3W3U2JQ311YErxUsuI2NzLqRr2kA7RzqFIsk1jQovTFWeKYkHVIpVZ-mhwe4kFo8K7NpQcci4r_9DdgP8KF4TSHOTg000GDy9B8POAtIs-jlBXxw)
+![M325_1](M325_1.jpg)
 
 繼續拆下去，就可以看到電路板了，這邊有兩個卡準，分別搬開就可以取出電路板了。
 電路板、電池接點、雷射感應器，這三個東西是一塊的。
 滑鼠開關請小心，拆完有可能會不知道噴到哪裡去。
 滾輪也是另外的，拆起電路板滾輪自然會下來，不用特別著墨。
-![M325_2](https://fvt5aq.bn.files.1drv.com/y4mM7tTP3QRNYEQNWdcfwCQPjt9w50_4KSITuC46_h7Eaq3vVETZoSdDDrhpRkFQOVFKzl4Bz4u8_nC1DUrx_rH1rBZmbRaS5tEpIIwTdk8KilWf6LW2y7OpgXmDUkTgMBHeqRrHIpCgbr0RUI5DJzJ_9cs56NcvFfso2croT2gZ3igUSVw5BrbgXKQ1Pwti18EVywN0WfMld_9AD-VYEto6A)
+![M325_2](M325_2.jpg)
 
 # 更換
 {% note danger %} 烙鐵高溫，危險勿碰。無經驗者請找有經驗的朋友幫忙！ {% endnote %}
@@ -46,6 +46,6 @@ PS. 微動不能只焊 2 支腳，我想偷懶，結果不行。
 
 # 關於滾輪
 特寫一下髒髒的滾輪
-![M325_3](https://2cq8mw.bn.files.1drv.com/y4m96NYgwS0WdBESUs6b8ZW7gXY-haNz4nFRoLZiMRw6tGZQpkO1j0Z7yYz1fdSDSempDrCeNDOlLSnwrJb8uUUP19BysGAgFh8Ht4bITjOgk8a3oPn6bVNI77UR9nmLpEGxqC9nRSk1fuwL0Ob-GMsQgx9BygEel5WGMm3IgjekpJzrxSQ0pnoA6F_EK1JRwvZnQdxQUHnGSLybHm7nq8fTA)
+![M325_3](M325_3.jpg)
 
 關於這東西，可以拿衛生紙清理，要注意的是，橡膠的地方內圈是有油的，所以清理橡膠地方時請小力，不然會像我一樣把橡膠弄破...

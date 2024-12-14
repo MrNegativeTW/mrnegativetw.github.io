@@ -11,7 +11,7 @@ categories:
 官網註冊產品的流程就不贅述了，總之不用發票也能註冊。
 接著就可以進到[我的支援中心]()建立 RMA 了，勾選產品選擇原因後按標準 RMA 即可
 
-![WD_RMA_1](https://mqqukw.bn.files.1drv.com/y4m5H88aXL_DE6i0QqusuALhaRXdv9cnaL0O1pN-WM9dhSdeiufIzl-11JTMVpIQVXzI5fRd4I-snZxlJ2PwKAZRCMxeUoIVYA3i9_CZzom4unAAuM2sC9qMoXom1-0CW8hgjoSNn3-X-WJXtKMmGuQ2vltpWLCTFsYArjeZvLalXV0d1U_uJNHXobK0JQ5iPvHoAWIrhduhF0h4ehRyiKm4Q)
+![WD_RMA_1](WD_RMA_1.png)
 
 其餘流程不贅述，建立完成後在 [RMA 記錄](https://westerndigital.secure.force.com/ind/ID_CheckRMAHistoryStatus)可以查到編號和包裝資訊等等
 
@@ -29,7 +29,7 @@ categories:
 {% endnote %}
 這一個區段會看到一組編號與地址，另外還有 WD 貼心幫你做好的「外箱資訊」可以下載，「外箱資訊」會以網頁方式呈現，所以可以自行製作 PDF 並列印，PDF 中會有兩頁，一頁為「沒有貨運單所以 WD 幫你印好地址」，另一頁為「你有貨運單 WD 幫你印條碼」，建議印「你有貨運單 WD 幫你印條碼」這邊就好。
 
-![WD_RMA_2](https://mqr5hg.bn.files.1drv.com/y4m_oIS_Dj6Tw5R3nNmmQ8HxCabEoRY9ow-HkJKfgkXm1THNmezoVZ_ov9zJXVOGO8Q8nFN8nk2aAWIZm5-Ga2tW6Mf8aTC_i7j6uqcxKKKNlI_ujjDq7GlIxV_1ZaX9SKnDPWwAJ_eqHAYhJCeWhkmirQ-_FnFtF6V7nugZvqzQnpRkgwyEXQXT43EJ5z8iIZyDmcUcG24fqX_RaH1qiupqw)
+![WD_RMA_2](WD_RMA_2.png)
 
 Tips: 外箱資訊的條碼網頁，可以利用瀏覽器的開發者工具將條碼的區域複製多次，使得製作出來的 PDF 一頁中能有許多條碼。
 
@@ -51,4 +51,4 @@ WD 顧客服務中心
 
 SSD 無痛升級，爽！可是箱子裡面沒有 WD 紀念品QQ
 
-![WD_RMA_3](https://mqpeqg.bn.files.1drv.com/y4mjQ1kQCQhEPdGvkI0ijAhG6cYcy9DPR7ut0rtvNlhmGPB6d2hKhK26GNv0RDo5YfWdiQK7292YxbnXsYd0i5peBX_0UXcBmX1VAVp37BaFFHfKhjjh8H6M6OoinwAggvTYg2aZeERf2IAESAlqRvVt7s6I4ds6O86hbS4Ehh9IbmZ5Wd8p_gpQ0sLMPrhmRqYiyvUD4LZql6DkGtE2yH2ew)
+![WD_RMA_3](WD_RMA_3.png)
