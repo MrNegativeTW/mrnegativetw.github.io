@@ -23,27 +23,27 @@
 <meta name="description" content="OpenWrt 刷上去興奮的開機了，結果換來的是網路無法聯外，僅能在本地自嗨，究竟是什麼問題呢？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenWrt 筆記 - TP-Link Archer C7 V2 網路介面設置">
-<meta property="og:url" content="https://mrnegativetw.github.io/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2%E7%9A%84%E7%B6%B2%E8%B7%AF%E4%BB%8B%E9%9D%A2%E8%A8%AD%E7%BD%AE/index.html">
+<meta property="og:url" content="https://mrnegativetw.github.io/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2-network-interface-config/index.html">
 <meta property="og:site_name" content="TxW Tech Studio">
 <meta property="og:description" content="OpenWrt 刷上去興奮的開機了，結果換來的是網路無法聯外，僅能在本地自嗨，究竟是什麼問題呢？">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://okhzwa.bn.files.1drv.com/y4mZrbamB76IQh_xpRMoQV7d-963Un7V22QroYhfIxLP_aEEFmFGkjB3Upw6H-zqGEOCZJjNVrqkI2ubVaXBHHCiniaMM9Mrwwn_bApWmiNWogzsR3E0sPcuPyt9v2plE8AWVsq0h0GwSd-2QSlKpaLMeLgrkH-kg7g3xjZH7edxHlqoNzM7HUGuIt-E4FyTRpPhZmkwEsBpW3ugXr6wkTvBQ">
-<meta property="og:image" content="https://okf0nq.bn.files.1drv.com/y4mVmF4lH79vHg7WmXT1PJ4tuCUTRZxUc_jbzAzdKeWrKkd8fhCngqiMbqBr_eAWbrtkKVM8SUGgE_pomEfMTzBlGA9XMW1Q1lhzQeJFI0oIcS6dKB_ybUQvqUAb0M_ieL1KEktWQo0zXSBwAWuYeUuiszM1uaz9b4CGErkRx6lc8VY2RxDqi-SqenjKLeX2tPW1KF1bxjAhCVw1xWAj2XL1A">
-<meta property="og:image" content="https://okepta.bn.files.1drv.com/y4mW1YQx15uucGPF5TXSDZrMQiBh8CGieJqiYfUeJDOYllCfiGSITjaG0OxWjOuKae9lhevlcm6TzPD8v3yMoF1mCsgziYweFkB1YkonKGfcN2lJAXKvKUV-IsDDtzuiU8dSBjKy94jDHOzua5987pFcrwct1U7GojetwDI3DzBTL1p2tx6Z7ufBbZVAW8JEMg920jVgU5K-TW3GYH1sgfC4g">
-<meta property="og:image" content="https://okgj1w.bn.files.1drv.com/y4mABQouAKqyfSabiMbTVKD3aGfn6ekbiOtyt9B8NJSRkEbSwhj_-d0MOK1mvJ8cVk-TjnH_76Dev62wAPlHj209lsKHz90timxPI5Ks6E3LrRrYppdTBvUlNmATe-yDjF2t1P0DmF1Q_GIKYkI23dKhNlLPxG5aNSBLdJ-KcS2Pldp5E0JpgfnpEZMtGl_a2S36-DL6Voz8gRhLD-kphVxTQ">
+<meta property="og:image" content="https://mrnegativetw.github.io/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2-network-interface-config/Openwrt_interfaceSetting_0.png">
+<meta property="og:image" content="https://mrnegativetw.github.io/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2-network-interface-config/Openwrt_interfaceSetting_1.png">
+<meta property="og:image" content="https://mrnegativetw.github.io/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2-network-interface-config/Openwrt_interfaceSetting_2.png">
+<meta property="og:image" content="https://mrnegativetw.github.io/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2-network-interface-config/Openwrt_interfaceSetting_3.png">
 <meta property="article:published_time" content="2020-03-07T02:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-14T09:31:02.518Z">
+<meta property="article:modified_time" content="2024-12-14T10:21:24.737Z">
 <meta property="article:author" content="Trevor Wu">
 <meta property="article:tag" content="txw">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://okhzwa.bn.files.1drv.com/y4mZrbamB76IQh_xpRMoQV7d-963Un7V22QroYhfIxLP_aEEFmFGkjB3Upw6H-zqGEOCZJjNVrqkI2ubVaXBHHCiniaMM9Mrwwn_bApWmiNWogzsR3E0sPcuPyt9v2plE8AWVsq0h0GwSd-2QSlKpaLMeLgrkH-kg7g3xjZH7edxHlqoNzM7HUGuIt-E4FyTRpPhZmkwEsBpW3ugXr6wkTvBQ">
+<meta name="twitter:image" content="https://mrnegativetw.github.io/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2-network-interface-config/Openwrt_interfaceSetting_0.png">
 
 
-<link rel="canonical" href="https://mrnegativetw.github.io/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2%E7%9A%84%E7%B6%B2%E8%B7%AF%E4%BB%8B%E9%9D%A2%E8%A8%AD%E7%BD%AE/">
+<link rel="canonical" href="https://mrnegativetw.github.io/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2-network-interface-config/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2%E7%9A%84%E7%B6%B2%E8%B7%AF%E4%BB%8B%E9%9D%A2%E8%A8%AD%E7%BD%AE/","path":"OpenWrt-筆記/OpenWrt-TpLinkArcherC7V2的網路介面設置/","title":"OpenWrt 筆記 - TP-Link Archer C7 V2 網路介面設置"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://mrnegativetw.github.io/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2-network-interface-config/","path":"OpenWrt-筆記/OpenWrt-TpLinkArcherC7V2-network-interface-config/","title":"OpenWrt 筆記 - TP-Link Archer C7 V2 網路介面設置"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>OpenWrt 筆記 - TP-Link Archer C7 V2 網路介面設置 | TxW Tech Studio</title>
@@ -196,7 +196,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2%E7%9A%84%E7%B6%B2%E8%B7%AF%E4%BB%8B%E9%9D%A2%E8%A8%AD%E7%BD%AE/">
+    <link itemprop="mainEntityOfPage" href="https://mrnegativetw.github.io/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2-network-interface-config/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -227,7 +227,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-12-14 17:31:02" itemprop="dateModified" datetime="2024-12-14T17:31:02+08:00">2024-12-14</time>
+      <time title="修改時間：2024-12-14 18:21:24" itemprop="dateModified" datetime="2024-12-14T18:21:24+08:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -259,13 +259,13 @@
 <h2 id="實體介面設置"><a href="#實體介面設置" class="headerlink" title="實體介面設置"></a>實體介面設置</h2><h3 id="LAN"><a href="#LAN" class="headerlink" title="LAN"></a>LAN</h3><p>接著將 LAN 介面如下打勾：</p>
 <div class="note info"><p>Switch VLAN: “eth1.1” (lan)<br>無線網路: Master “SSID” (lan)<br>無線網路: Master “SSID”  (lan)</p>
 </div>
-<p><img data-src="https://okhzwa.bn.files.1drv.com/y4mZrbamB76IQh_xpRMoQV7d-963Un7V22QroYhfIxLP_aEEFmFGkjB3Upw6H-zqGEOCZJjNVrqkI2ubVaXBHHCiniaMM9Mrwwn_bApWmiNWogzsR3E0sPcuPyt9v2plE8AWVsq0h0GwSd-2QSlKpaLMeLgrkH-kg7g3xjZH7edxHlqoNzM7HUGuIt-E4FyTRpPhZmkwEsBpW3ugXr6wkTvBQ" alt="Openwrt_interfaceSetting_0"></p>
+<p><img data-src="/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2-network-interface-config/Openwrt_interfaceSetting_0.png" alt="Openwrt_interfaceSetting_0"></p>
 <h3 id="WAN"><a href="#WAN" class="headerlink" title="WAN"></a>WAN</h3><p>接著將 WAN 介面如下打勾：</p>
 <div class="note info"><p>Switch VLAN: “eth0.1” (wan, wan6)</p>
 </div>
-<p><img data-src="https://okf0nq.bn.files.1drv.com/y4mVmF4lH79vHg7WmXT1PJ4tuCUTRZxUc_jbzAzdKeWrKkd8fhCngqiMbqBr_eAWbrtkKVM8SUGgE_pomEfMTzBlGA9XMW1Q1lhzQeJFI0oIcS6dKB_ybUQvqUAb0M_ieL1KEktWQo0zXSBwAWuYeUuiszM1uaz9b4CGErkRx6lc8VY2RxDqi-SqenjKLeX2tPW1KF1bxjAhCVw1xWAj2XL1A" alt="Openwrt_interfaceSetting_1"></p>
-<h2 id="防火牆設置"><a href="#防火牆設置" class="headerlink" title="防火牆設置"></a>防火牆設置</h2><p>防火牆設定上也請注意，別為了讓路由可以上網把 WAN 跟 LAN 指定到同一區域了，我的設定如下：<br><img data-src="https://okepta.bn.files.1drv.com/y4mW1YQx15uucGPF5TXSDZrMQiBh8CGieJqiYfUeJDOYllCfiGSITjaG0OxWjOuKae9lhevlcm6TzPD8v3yMoF1mCsgziYweFkB1YkonKGfcN2lJAXKvKUV-IsDDtzuiU8dSBjKy94jDHOzua5987pFcrwct1U7GojetwDI3DzBTL1p2tx6Z7ufBbZVAW8JEMg920jVgU5K-TW3GYH1sgfC4g" alt="Openwrt_interfaceSetting_2"></p>
-<h2 id="完工圖"><a href="#完工圖" class="headerlink" title="完工圖"></a>完工圖</h2><p>設定都正確的話理論上會呈現如下圖，WAN 顏色都為紅色，LAN 顏色都為綠色。<br><img data-src="https://okgj1w.bn.files.1drv.com/y4mABQouAKqyfSabiMbTVKD3aGfn6ekbiOtyt9B8NJSRkEbSwhj_-d0MOK1mvJ8cVk-TjnH_76Dev62wAPlHj209lsKHz90timxPI5Ks6E3LrRrYppdTBvUlNmATe-yDjF2t1P0DmF1Q_GIKYkI23dKhNlLPxG5aNSBLdJ-KcS2Pldp5E0JpgfnpEZMtGl_a2S36-DL6Voz8gRhLD-kphVxTQ" alt="Openwrt_interfaceSetting_3"></p>
+<p><img data-src="/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2-network-interface-config/Openwrt_interfaceSetting_1.png" alt="Openwrt_interfaceSetting_1"></p>
+<h2 id="防火牆設置"><a href="#防火牆設置" class="headerlink" title="防火牆設置"></a>防火牆設置</h2><p>防火牆設定上也請注意，別為了讓路由可以上網把 WAN 跟 LAN 指定到同一區域了，我的設定如下：<br><img data-src="/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2-network-interface-config/Openwrt_interfaceSetting_2.png" alt="Openwrt_interfaceSetting_2"></p>
+<h2 id="完工圖"><a href="#完工圖" class="headerlink" title="完工圖"></a>完工圖</h2><p>設定都正確的話理論上會呈現如下圖，WAN 顏色都為紅色，LAN 顏色都為綠色。<br><img data-src="/OpenWrt-%E7%AD%86%E8%A8%98/OpenWrt-TpLinkArcherC7V2-network-interface-config/Openwrt_interfaceSetting_3.png" alt="Openwrt_interfaceSetting_3"></p>
 
     </div>
 
