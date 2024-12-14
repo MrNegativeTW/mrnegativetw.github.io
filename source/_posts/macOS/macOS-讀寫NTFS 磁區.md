@@ -9,16 +9,17 @@ macOS 預設情況下，是無法對 NTFS 磁區進行寫入的，只能有讀�
 <!--more-->
 # 解決辦法
 安裝可以讀寫的程式，有兩個方案
-方案一：Microsoft NTFS for Mac by Paragon Software
-方案二：Mounty for NTFS
+- Microsoft NTFS for Mac by Paragon Software
+- 方案二：Mounty for NTFS
 
-## 方案一
+## MS NTFS for Mac by Paragon Software
 `付費方案`
 ​{% note info %}
 官網：https://www.paragon-software.com/home/ntfs-mac/​ {% endnote %}
-付錢解決，有錢人的做法，我們 窮人 開源節流的人是不會這樣的，不過經過試用，穩！
 
-## 方案二
+付錢解決，穩！
+
+## Mounty for NTFS
 `免費方案`
 {% note success %}​ 官網：https://mounty.app/​ {% endnote %}
 
@@ -26,7 +27,7 @@ macOS 預設情況下，是無法對 NTFS 磁區進行寫入的，只能有讀�
 
 原本沒這套工具又要使用內建的讀寫時，需要手動重新掛載磁區，有夠麻煩， 所以這套工具就被開發出來，按一下即可自動幫你重新掛載
 
-# 方案二的已知問題
+# Mounty for NTFS 的已知問題
 ## 無法掛載
 問題：隨身碟插入後無法掛載 或 電腦意外斷電後無法掛載磁區
 解法：插上 Windows 的電腦並安全移除；重啟進入 Windows 然後再重啟進入 macOS
