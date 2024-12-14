@@ -28,7 +28,7 @@
 <meta property="og:description" content="macOS 預設情況下，是無法對 NTFS 磁區進行寫入的，只能有讀取功能，而且有些檔案還會呈現灰色無法拉出使用…">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2019-01-17T14:00:00.000Z">
-<meta property="article:modified_time" content="2024-07-28T15:11:10.537Z">
+<meta property="article:modified_time" content="2024-12-14T08:07:57.525Z">
 <meta property="article:author" content="Trevor Wu">
 <meta property="article:tag" content="txw">
 <meta name="twitter:card" content="summary">
@@ -122,7 +122,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">解決辦法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80"><span class="nav-number">1.1.</span> <span class="nav-text">方案一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C"><span class="nav-number">1.2.</span> <span class="nav-text">方案二</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C%E7%9A%84%E5%B7%B2%E7%9F%A5%E5%95%8F%E9%A1%8C"><span class="nav-number">2.</span> <span class="nav-text">方案二的已知問題</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%84%A1%E6%B3%95%E6%8E%9B%E8%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">無法掛載</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AA%94%E6%A1%88%E4%B8%8D%E8%A6%8B%E4%BA%86"><span class="nav-number">2.2.</span> <span class="nav-text">檔案不見了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AA%94%E6%A1%88%E8%AE%8A%E7%81%B0%E8%89%B2"><span class="nav-number">2.3.</span> <span class="nav-text">檔案變灰色</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%B1%BA%E8%BE%A6%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">解決辦法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MS-NTFS-for-Mac-by-Paragon-Software"><span class="nav-number">1.1.</span> <span class="nav-text">MS NTFS for Mac by Paragon Software</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mounty-for-NTFS"><span class="nav-number">1.2.</span> <span class="nav-text">Mounty for NTFS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mounty-for-NTFS-%E7%9A%84%E5%B7%B2%E7%9F%A5%E5%95%8F%E9%A1%8C"><span class="nav-number">2.</span> <span class="nav-text">Mounty for NTFS 的已知問題</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%84%A1%E6%B3%95%E6%8E%9B%E8%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">無法掛載</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AA%94%E6%A1%88%E4%B8%8D%E8%A6%8B%E4%BA%86"><span class="nav-number">2.2.</span> <span class="nav-text">檔案不見了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AA%94%E6%A1%88%E8%AE%8A%E7%81%B0%E8%89%B2"><span class="nav-number">2.3.</span> <span class="nav-text">檔案變灰色</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -137,7 +137,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">84</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -222,7 +222,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-07-28 23:11:10" itemprop="dateModified" datetime="2024-07-28T23:11:10+08:00">2024-07-28</time>
+      <time title="修改時間：2024-12-14 16:07:57" itemprop="dateModified" datetime="2024-12-14T16:07:57+08:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -246,16 +246,21 @@
     <div class="post-body" itemprop="articleBody">
         <p>macOS 預設情況下，是無法對 NTFS 磁區進行寫入的，只能有讀取功能，而且有些檔案還會呈現灰色無法拉出使用…</p>
 <span id="more"></span>
-<h1 id="解決辦法"><a href="#解決辦法" class="headerlink" title="解決辦法"></a>解決辦法</h1><p>安裝可以讀寫的程式，有兩個方案<br>方案一：Microsoft NTFS for Mac by Paragon Software<br>方案二：Mounty for NTFS</p>
-<h2 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h2><p><code>付費方案</code><br>​<div class="note info"><p>官網：<a target="_blank" rel="noopener" href="https://www.paragon-software.com/home/ntfs-mac/%E2%80%8B">https://www.paragon-software.com/home/ntfs-mac/​</a> </p>
-</div><br>付錢解決，有錢人的做法，我們 窮人 開源節流的人是不會這樣的，不過經過試用，穩！</p>
-<h2 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h2><p><code>免費方案</code></p>
+<h1 id="解決辦法"><a href="#解決辦法" class="headerlink" title="解決辦法"></a>解決辦法</h1><p>安裝可以讀寫的程式，有兩個方案</p>
+<ul>
+<li>Microsoft NTFS for Mac by Paragon Software</li>
+<li>方案二：Mounty for NTFS</li>
+</ul>
+<h2 id="MS-NTFS-for-Mac-by-Paragon-Software"><a href="#MS-NTFS-for-Mac-by-Paragon-Software" class="headerlink" title="MS NTFS for Mac by Paragon Software"></a>MS NTFS for Mac by Paragon Software</h2><p><code>付費方案</code><br>​<div class="note info"><p>官網：<a target="_blank" rel="noopener" href="https://www.paragon-software.com/home/ntfs-mac/%E2%80%8B">https://www.paragon-software.com/home/ntfs-mac/​</a> </p>
+</div></p>
+<p>付錢解決，穩！</p>
+<h2 id="Mounty-for-NTFS"><a href="#Mounty-for-NTFS" class="headerlink" title="Mounty for NTFS"></a>Mounty for NTFS</h2><p><code>免費方案</code></p>
 <div class="note success"><p>​ 官網：<a target="_blank" rel="noopener" href="https://mounty.app/%E2%80%8B">https://mounty.app/​</a> </p>
 </div>
 
 <p>其實，macOS 內建是支援 NTFS 讀寫的，不過基於某種原因（不穩定，我猜）被鎖起來了，這套工具只是幫你把內建的功能打開，使用時還是小心為上</p>
 <p>原本沒這套工具又要使用內建的讀寫時，需要手動重新掛載磁區，有夠麻煩， 所以這套工具就被開發出來，按一下即可自動幫你重新掛載</p>
-<h1 id="方案二的已知問題"><a href="#方案二的已知問題" class="headerlink" title="方案二的已知問題"></a>方案二的已知問題</h1><h2 id="無法掛載"><a href="#無法掛載" class="headerlink" title="無法掛載"></a>無法掛載</h2><p>問題：隨身碟插入後無法掛載 或 電腦意外斷電後無法掛載磁區<br>解法：插上 Windows 的電腦並安全移除；重啟進入 Windows 然後再重啟進入 macOS<br>說明：請謹記，任何 NTFS 格式的裝置在前一台電腦必須是安全的被移除（也就是按下退出），否則都會無法掛載</p>
+<h1 id="Mounty-for-NTFS-的已知問題"><a href="#Mounty-for-NTFS-的已知問題" class="headerlink" title="Mounty for NTFS 的已知問題"></a>Mounty for NTFS 的已知問題</h1><h2 id="無法掛載"><a href="#無法掛載" class="headerlink" title="無法掛載"></a>無法掛載</h2><p>問題：隨身碟插入後無法掛載 或 電腦意外斷電後無法掛載磁區<br>解法：插上 Windows 的電腦並安全移除；重啟進入 Windows 然後再重啟進入 macOS<br>說明：請謹記，任何 NTFS 格式的裝置在前一台電腦必須是安全的被移除（也就是按下退出），否則都會無法掛載</p>
 <h2 id="檔案不見了"><a href="#檔案不見了" class="headerlink" title="檔案不見了"></a>檔案不見了</h2><p>問題：對 NTFS 磁區進行操作時，突然間整個 資料夾 &#x2F; 檔案 全部消失了<br>解法：</p>
 <ol>
 <li>開啟 Windows 並對磁區進行掃描與修復</li>
@@ -275,8 +280,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/macOS/macOS-%E8%A7%A3%E6%B1%BABeardedSpice%E5%A4%B1%E6%95%88%E7%84%A1%E6%B3%95%E6%8E%A7%E5%88%B6Chrome%E9%9F%B3%E6%A8%82%E5%95%8F%E9%A1%8C/" rel="prev" title="解決 BeardedSpice 失效無法控制 Chrome 音樂問題">
-                  <i class="fa fa-chevron-left"></i> 解決 BeardedSpice 失效無法控制 Chrome 音樂問題
+                <a href="/%E5%85%B6%E4%BB%96/%E5%A6%82%E4%BD%95%E5%9C%A8Gitbook%E4%B8%AD%E5%8A%A0%E5%85%A5GoogleAnalytics%E9%80%B2%E8%A1%8C%E6%B5%81%E9%87%8F%E8%BF%BD%E8%B9%A4/" rel="prev" title="如何在 Gitbook 中加入 Google Analytics 進行流量追蹤">
+                  <i class="fa fa-chevron-left"></i> 如何在 Gitbook 中加入 Google Analytics 進行流量追蹤
                 </a>
             </div>
             <div class="post-nav-item">
