@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
-<meta name="generator" content="Hexo 6.0.0">
+<meta name="generator" content="Hexo 7.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -19,7 +19,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="今天在移動 Firebase 的 dependencies 到 *-ktx 時發現了些東西。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 筆記 - Firebase KTX 的背後">
@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://mqrcnq.bn.files.1drv.com/y4mMqUV2cTWrQufNzko3zgCNbbtbYfvPhEGwE6MOGgeK7g4_7x0nAstDTiBxqC5LwDxx4t5-BwQ8c2-TTaQggg0tks0zq_d1kPVu5j3_VC0Ty43RyF1FLti7T3E5viWDjCXysAFEHj-8wgjQmrW_-bJB2AIh7GifGczQKu0hXfEkjMljZ-ttM2UW6CekgB5apUybaNEsC89BfQ5CnZaAN636A">
 <meta property="og:image" content="https://nm8ftq.bn.files.1drv.com/y4myU7ySzGPqYCM6qSct5E0nKnhoYDif4uwsAGsOl7Vw1WfUxZSXHzzmjyGKeo1Reyd7n9Q1nvp4v2LeG5-LGYzSzS9qArYE3atkxhVOJ_RvJfWvLSYTTTFir8Kl03AwfnpjqkIZp4UbI2sa4_08DZxDK6sDaPwhlyTBkethc5ivE0iN23NAXJlRp18ObfAsKeh6Uy3otkVQyj32LY78PS9bg">
 <meta property="article:published_time" content="2020-09-05T02:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-14T08:07:57.521Z">
+<meta property="article:modified_time" content="2024-12-14T09:08:50.792Z">
 <meta property="article:author" content="Trevor Wu">
 <meta property="article:tag" content="txw">
 <meta name="twitter:card" content="summary">
@@ -228,7 +228,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-12-14 16:07:57" itemprop="dateModified" datetime="2024-12-14T16:07:57+08:00">2024-12-14</time>
+      <time title="修改時間：2024-12-14 17:08:50" itemprop="dateModified" datetime="2024-12-14T17:08:50+08:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -258,7 +258,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// Java</span><br><span class="line">com.google.firebase:firebase-firestore:21.6.0</span><br><span class="line"></span><br><span class="line">// Kotlin</span><br><span class="line">com.google.firebase:firebase-firestore-ktx:21.6.0</span><br></pre></td></tr></table></figure>
 
 <p>第二步就是改 code，這邊開始我就發現了些問題，把 java 版本的 SDK 注解掉之後 Code 竟然沒跳錯誤？咦？</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Java</span></span><br><span class="line"><span class="comment">// 照理來說換個 SDK 這裡就應該跳錯誤了</span></span><br><span class="line">val db = FirebaseFirestore.getInstance()</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Java</span></span><br><span class="line"><span class="comment">// 照理來說換個 SDK 這裡就應該跳錯誤了</span></span><br><span class="line"><span class="type">val</span> <span class="variable">db</span> <span class="operator">=</span> FirebaseFirestore.getInstance()</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Kotlin</span></span><br><span class="line"><span class="keyword">val</span> db = Firebase.firestore</span><br></pre></td></tr></table></figure>
 

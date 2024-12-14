@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
-<meta name="generator" content="Hexo 6.0.0">
+<meta name="generator" content="Hexo 7.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -19,7 +19,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mrnegativetw.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="OpenWrt 裡面的套件包真的是又多又雜，開一篇文章來記錄一下都裝了什麼。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenWrt 推薦安裝的套件包">
@@ -28,7 +28,7 @@
 <meta property="og:description" content="OpenWrt 裡面的套件包真的是又多又雜，開一篇文章來記錄一下都裝了什麼。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-03-07T02:01:00.000Z">
-<meta property="article:modified_time" content="2024-12-14T08:07:57.525Z">
+<meta property="article:modified_time" content="2024-12-14T09:08:50.796Z">
 <meta property="article:author" content="Trevor Wu">
 <meta property="article:tag" content="txw">
 <meta name="twitter:card" content="summary">
@@ -122,7 +122,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">中文化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B6%B2%E8%B7%AF%E5%96%9A%E9%86%92-x2F-WOL"><span class="nav-number">2.</span> <span class="nav-text">網路喚醒 &#x2F; WOL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WiFi-%E6%8E%92%E7%A8%8B-x2F-WiFi-Schedule"><span class="nav-number">3.</span> <span class="nav-text">WiFi 排程 &#x2F; WiFi Schedule</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#USB-%E7%B6%B2%E8%B7%AF%E5%85%B1%E4%BA%AB-x2F-USB-Tethering"><span class="nav-number">4.</span> <span class="nav-text">USB 網路共享 &#x2F; USB Tethering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%B1%E8%A8%88-x2F-Statistics"><span class="nav-number">5.</span> <span class="nav-text">統計 &#x2F; Statistics</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">中文化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B6%B2%E8%B7%AF%E5%96%9A%E9%86%92-WOL"><span class="nav-number">2.</span> <span class="nav-text">網路喚醒 &#x2F; WOL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WiFi-%E6%8E%92%E7%A8%8B-WiFi-Schedule"><span class="nav-number">3.</span> <span class="nav-text">WiFi 排程 &#x2F; WiFi Schedule</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#USB-%E7%B6%B2%E8%B7%AF%E5%85%B1%E4%BA%AB-USB-Tethering"><span class="nav-number">4.</span> <span class="nav-text">USB 網路共享 &#x2F; USB Tethering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%B1%E8%A8%88-Statistics"><span class="nav-number">5.</span> <span class="nav-text">統計 &#x2F; Statistics</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -222,7 +222,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-12-14 16:07:57" itemprop="dateModified" datetime="2024-12-14T16:07:57+08:00">2024-12-14</time>
+      <time title="修改時間：2024-12-14 17:08:50" itemprop="dateModified" datetime="2024-12-14T17:08:50+08:00">2024-12-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -247,11 +247,11 @@
         <p>OpenWrt 裡面的套件包真的是又多又雜，開一篇文章來記錄一下都裝了什麼。</p>
 <span id="more"></span>
 <h2 id="中文化"><a href="#中文化" class="headerlink" title="中文化"></a>中文化</h2><p><code>*-zh-TW</code><br>雖然中文化有時候怪怪的，不過可以更快找到目標，不裝嗎？<br>而且我有在幫忙翻譯，所以會越來越好的。</p>
-<h2 id="網路喚醒-x2F-WOL"><a href="#網路喚醒-x2F-WOL" class="headerlink" title="網路喚醒 &#x2F; WOL"></a>網路喚醒 &#x2F; WOL</h2><p><code>luci-app-wol</code></p>
-<h2 id="WiFi-排程-x2F-WiFi-Schedule"><a href="#WiFi-排程-x2F-WiFi-Schedule" class="headerlink" title="WiFi 排程 &#x2F; WiFi Schedule"></a>WiFi 排程 &#x2F; WiFi Schedule</h2><p><code>luci-app-wifischedule</code></p>
-<h2 id="USB-網路共享-x2F-USB-Tethering"><a href="#USB-網路共享-x2F-USB-Tethering" class="headerlink" title="USB 網路共享 &#x2F; USB Tethering"></a>USB 網路共享 &#x2F; USB Tethering</h2><p><code>kmod-usb-net</code><br><code>kmod-usb-net-cdc-ether</code><br><code>kmod-usb-net-rndis</code></p>
+<h2 id="網路喚醒-WOL"><a href="#網路喚醒-WOL" class="headerlink" title="網路喚醒 &#x2F; WOL"></a>網路喚醒 &#x2F; WOL</h2><p><code>luci-app-wol</code></p>
+<h2 id="WiFi-排程-WiFi-Schedule"><a href="#WiFi-排程-WiFi-Schedule" class="headerlink" title="WiFi 排程 &#x2F; WiFi Schedule"></a>WiFi 排程 &#x2F; WiFi Schedule</h2><p><code>luci-app-wifischedule</code></p>
+<h2 id="USB-網路共享-USB-Tethering"><a href="#USB-網路共享-USB-Tethering" class="headerlink" title="USB 網路共享 &#x2F; USB Tethering"></a>USB 網路共享 &#x2F; USB Tethering</h2><p><code>kmod-usb-net</code><br><code>kmod-usb-net-cdc-ether</code><br><code>kmod-usb-net-rndis</code></p>
 <p>For Android, iPhone 需要需要其他<a target="_blank" rel="noopener" href="https://openwrt.org/docs/guide-user/network/wan/smartphone.usb.tethering">額外的套件</a>。</p>
-<h2 id="統計-x2F-Statistics"><a href="#統計-x2F-Statistics" class="headerlink" title="統計 &#x2F; Statistics"></a>統計 &#x2F; Statistics</h2><p><code>luci-app-statistics</code></p>
+<h2 id="統計-Statistics"><a href="#統計-Statistics" class="headerlink" title="統計 &#x2F; Statistics"></a>統計 &#x2F; Statistics</h2><p><code>luci-app-statistics</code></p>
 
     </div>
 
