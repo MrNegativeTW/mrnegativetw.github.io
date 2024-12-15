@@ -164,4 +164,4 @@ class Solution:
 
 # 我就暴力
 
-![我就暴力](https://bnz05pap001files.storage.live.com/y4mqKdVDUSY-2JUIWS0AwUkOJAC3jyA5Blz2juHB89TvVorWcNP2f9DmAGl8rouDhQC6KvDTpUmPHYsd36QMXFop0UoWtQ5ta6_ri6zdtJmWAoLLGgJ9u2GB52zO_OZsgNjpR4VUdQe0fIrtNpHZ5K5IqPPNNJ5RnKkCzaJtepfqk2FVGnERVO-s5wspWGXXuOG?width=600&height=591&cropmode=none)
+![我就暴力](/images/leetcode-brute-force.jpg)

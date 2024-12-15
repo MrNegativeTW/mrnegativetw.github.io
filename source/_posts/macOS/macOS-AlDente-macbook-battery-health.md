@@ -9,7 +9,7 @@ categories:
 <!--more-->
 # 親測可用
 MacBook Pro (Retina, 13-inch, Early 2015) 親測可用。
-![](https://mqqmta.bn.files.1drv.com/y4m0wDCKin1PmzI8YHIiNWpseph-dWckBoykGfy-BNnWFuoGmuEBWbmW0mnahsvaF1WClw0FEYy7iLPhVuW3K-2lYirgkFHnIFkybmJvaooBTOY7txokh6XTb6uRQ5-Z_r67dms63TQRS_xks0qOga4R7JIXD-a9ecRGluWmm42MCj6Lc2iZbjUVKehBUHo3sITmY-abnOaoMxwPfWzn11S6w)
+![](cover.png)
 
 
 # AlDente

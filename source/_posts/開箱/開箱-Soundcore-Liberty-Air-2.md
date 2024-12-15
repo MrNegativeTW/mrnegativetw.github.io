@@ -8,7 +8,7 @@ categories:
 
 五倍券實在是不知道可以買什麼，原本想買 Dell P Series 螢幕，可想想還是存錢直上 Ezio 好，在五倍券快到期的情況就買了第二副藍牙耳機：Anker Soundcore Liberty Air 2，雅馬遜要價 `NT$ 1200` 左右，台灣代理商智選家賣到 `NT$ 2580`，都已經產品末期了，真有你的。
 
-![](https://bnz07pap001files.storage.live.com/y4mxMABg0_WP0x7ZRDhpiQaXolACgjSU1XyfaRV4S-HwpuNxElbTRgLNJadsZiYT7LUAW6GRIgIcvqdZgrsD7RIgL33Dfbj4C14yoHb7VDAgpAqw-kEHfeBh5Zq5LnE8uMkdCJ9SSVsGSJA3ROpBefazY_5i6AZDL6YpEH048-w3-Ie6vc8AOZRNDm59VrXtv43?width=960&height=1280&cropmode=none)
+![](cover.jpeg)
 
 <!-- more -->
 
