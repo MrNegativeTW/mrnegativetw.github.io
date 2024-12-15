@@ -28,7 +28,7 @@
 <meta property="og:description" content="Gitea 說明文件實在是寫得不太好，弄了一小段時間才成功裝上 Raspberry Pi。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-09-29T02:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-14T10:21:24.745Z">
+<meta property="article:modified_time" content="2024-12-15T03:42:57.851Z">
 <meta property="article:author" content="Trevor Wu">
 <meta property="article:tag" content="txw">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-12-14 18:21:24" itemprop="dateModified" datetime="2024-12-14T18:21:24+08:00">2024-12-14</time>
+      <time title="修改時間：2024-12-15 11:42:57" itemprop="dateModified" datetime="2024-12-15T11:42:57+08:00">2024-12-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -268,7 +268,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;gitea&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;gitea&#x27;</span>;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>開一個 <code>giteadb</code> 資料庫給 gitea 用</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE giteadb <span class="type">CHARACTER</span> <span class="keyword">SET</span> <span class="string">&#x27;utf8mb4&#x27;</span> <span class="keyword">COLLATE</span> <span class="string">&#x27;utf8mb4_unicode_ci&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE giteadb <span class="keyword">CHARACTER SET</span> <span class="string">&#x27;utf8mb4&#x27;</span> <span class="keyword">COLLATE</span> <span class="string">&#x27;utf8mb4_unicode_ci&#x27;</span>;</span><br></pre></td></tr></table></figure>
 <p>需要注意的是說明文件提到：用 <code>utf8mb4</code> 以便支援奇怪的東西</p>
 </li>
 <li><p>權限全開</p>
@@ -297,7 +297,7 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/macOS/macOS-%E4%BD%BF%E7%94%A8AlDente%E9%99%90%E5%88%B6MacBook%E5%85%85%E9%9B%BB%E9%9B%BB%E9%87%8F%E8%AE%93%E9%9B%BB%E6%B1%A0%E6%9B%B4%E5%81%A5%E5%BA%B7/" rel="prev" title="使用 AlDente 限制 MacBook 充電電量讓電池更健康">
+                <a href="/macOS/macOS-AlDente-macbook-battery-health/" rel="prev" title="使用 AlDente 限制 MacBook 充電電量讓電池更健康">
                   <i class="fa fa-chevron-left"></i> 使用 AlDente 限制 MacBook 充電電量讓電池更健康
                 </a>
             </div>
