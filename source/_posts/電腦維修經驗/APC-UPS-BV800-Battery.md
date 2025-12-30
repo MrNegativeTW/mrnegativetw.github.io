@@ -38,7 +38,7 @@ FR 只是差在比較防火的樣子，蝦皮 2025/11 購入 NT$ 560
 
 有一組接口不知道幹嘛的 TXD RXD VREF GND
 
-![](PXL_20251106_155357094_compressed)
+![](PXL_20251106_155357094_compressed.jpg)
 
 ![](PXL_20251106_155419109_compressed.jpg)
 
